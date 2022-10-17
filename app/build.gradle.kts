@@ -85,6 +85,9 @@ dependencies {
     // Google
     googleImplementation()
 
+    // Data layer
+    implementation(project(":domain"))
+
     // Quality Assurance
     androidTestImplementation(Kotlin.X.Test.coroutine) {
         exclude(group = Kotlin.X.group, module = Kotlin.X.Test.excludedModule)

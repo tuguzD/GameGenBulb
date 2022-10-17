@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 rootProject.name = "GameGenBulb"
 
 include(":app")
+include(":domain")
