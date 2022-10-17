@@ -15,10 +15,10 @@ plugins {
 
 android {
     compileSdk = 33
-    namespace = "com.example.gamegenbulb"
+    namespace = "io.github.tuguzd.gamegenbulb"
 
     defaultConfig {
-        applicationId = "com.example.gamegenbulb"
+        applicationId = "io.github.tuguzd.gamegenbulb"
         minSdk = 23
         targetSdk = 33
         versionCode = 1

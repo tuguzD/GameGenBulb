@@ -1,4 +1,4 @@
-package com.example.gamegenbulb.ui.theme
+package io.github.tuguzd.gamegenbulb.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

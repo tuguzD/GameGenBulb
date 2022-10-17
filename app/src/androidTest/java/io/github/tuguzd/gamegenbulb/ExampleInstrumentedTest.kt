@@ -1,4 +1,4 @@
-package com.example.gamegenbulb
+package io.github.tuguzd.gamegenbulb
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

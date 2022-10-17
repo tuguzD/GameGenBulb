@@ -1,4 +1,4 @@
-package com.example.gamegenbulb
+package io.github.tuguzd.gamegenbulb
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
