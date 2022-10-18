@@ -9,9 +9,13 @@ object AndroidX {
     const val security = "androidx.security:security-crypto:1.0.0"
     private const val splashScreen = "androidx.core:core-splashscreen:1.0.0"
 
-    fun DependencyHandler.androidXImplementation() {
+    fun DependencyHandler.androidXDataImplementation() {
         implementation(core)
         implementation(security)
+    }
+
+    fun DependencyHandler.androidXAppImplementation() {
+        androidXDataImplementation()
         implementation(lifecycle)
         implementation(splashScreen)
     }

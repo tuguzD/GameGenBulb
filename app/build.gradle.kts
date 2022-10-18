@@ -1,24 +1,22 @@
-import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.AndroidX.androidXImplementation
+import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.AndroidX.androidXAppImplementation
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.Google.googleImplementation
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.Hilt.hiltImplementation
-import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.JetpackCompose
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.Kotlin
 import io.github.tuguzd.gamegenbulb.buildconfig.android.implementation.*
 
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("plugin.serialization")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
 }
 
 android {
     compileSdk = 33
-    namespace = "io.github.tuguzd.gamegenbulb"
+    namespace = "io.github.tuguzd.gamegenbulb.app"
 
     defaultConfig {
-        applicationId = "io.github.tuguzd.gamegenbulb"
+        applicationId = "io.github.tuguzd.gamegenbulb.app"
         minSdk = 23
         targetSdk = 33
         versionCode = 1
@@ -63,7 +61,7 @@ android {
 
 dependencies {
     // Must-have Android dependencies
-    androidXImplementation()
+    androidXAppImplementation()
 
     // Jetpack Compose
     composeCoreImplementation()
@@ -77,7 +75,6 @@ dependencies {
     // Kotlin extensions
     implementation(Kotlin.X.coroutine)
     implementation(Kotlin.X.playServices)
-    implementation(Kotlin.X.serializationJson)
 
     // Dependency injection
     hiltImplementation()
@@ -85,7 +82,8 @@ dependencies {
     // Google
     googleImplementation()
 
-    // Data layer
+    // Clean Architecture layers
+    implementation(project(":data"))
     implementation(project(":domain"))
 
     // Quality Assurance

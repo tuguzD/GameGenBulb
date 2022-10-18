@@ -1,7 +1,8 @@
-package io.github.tuguzd.gamegenbulb
+package io.github.tuguzd.gamegenbulb.data
 
-import org.junit.Assert.assertEquals
 import org.junit.Test
+
+import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
