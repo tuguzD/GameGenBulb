@@ -16,7 +16,7 @@ android {
     namespace = "io.github.tuguzd.gamegenbulb.app"
 
     defaultConfig {
-        applicationId = "io.github.tuguzd.gamegenbulb.app"
+        applicationId = "io.github.tuguzd.gamegenbulb"
         minSdk = 23
         targetSdk = 33
         versionCode = 1
@@ -50,13 +50,16 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn")
     }
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 dependencies {
@@ -93,8 +96,4 @@ dependencies {
     loggingImplementation()
     unitTestingImplementation()
     instrumentTestingImplementation()
-}
-
-kapt {
-    correctErrorTypes = true
 }

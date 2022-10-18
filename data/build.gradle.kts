@@ -6,6 +6,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("plugin.serialization")
+    kotlin("kapt")
 }
 
 android {
@@ -17,7 +18,6 @@ android {
         targetSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,8 +35,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn")
     }
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 dependencies {
@@ -48,6 +51,12 @@ dependencies {
 
     // Clean Architecture layers
     implementation(project(":domain"))
+
+    // Persistence
+    roomImplementation()
+
+    // Retrofit
+    retrofitImplementation()
 
     // Quality Assurance
     androidTestImplementation(Kotlin.X.Test.coroutine) {
