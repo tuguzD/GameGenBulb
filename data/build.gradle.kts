@@ -1,4 +1,3 @@
-import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.AndroidX.androidXDataImplementation
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.Kotlin
 import io.github.tuguzd.gamegenbulb.buildconfig.android.implementation.*
 
@@ -7,6 +6,7 @@ plugins {
     kotlin("android")
     kotlin("plugin.serialization")
     kotlin("kapt")
+    id("io.realm.kotlin")
 }
 
 android {
@@ -44,23 +44,29 @@ kapt {
 
 dependencies {
     // Must-have Android dependencies
-    androidXDataImplementation()
+    dataImplementation()
+    // Clean Architecture layers
+    implementation(project(":domain"))
 
     // Kotlin extensions
     implementation(Kotlin.X.serializationJson)
 
-    // Clean Architecture layers
-    implementation(project(":domain"))
-
-    // Persistence
-    roomImplementation()
-
-    // Retrofit
+    // Remote data sources (for networking)
     retrofitImplementation()
+    fuelImplementation()
+    // Third party APIs
+    apiImplementation()
+
+    // Local data sources (for persistence)
+    roomImplementation()
+    realmImplementation()
 
     // Quality Assurance
-    androidTestImplementation(Kotlin.X.Test.coroutine) {
-        exclude(group = Kotlin.X.group, module = Kotlin.X.Test.excludedModule)
+    androidTestImplementation(Kotlin.X.Coroutine.Test.dependency) {
+        exclude(
+            group = Kotlin.X.group,
+            module = Kotlin.X.Coroutine.Test.excludedModule
+        )
     }
     loggingImplementation()
     unitTestingImplementation()

@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.buildconfig.android.dependency
+package io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.local
 
 object Room {
     private const val version = "2.4.3"

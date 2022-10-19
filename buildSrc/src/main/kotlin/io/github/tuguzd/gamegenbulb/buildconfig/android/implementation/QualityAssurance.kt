@@ -1,9 +1,9 @@
 package io.github.tuguzd.gamegenbulb.buildconfig.android.implementation
 
-import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.AndroidX
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.JetpackCompose
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.Kotlin
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.QualityAssurance
+import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.architecture.AndroidX
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 fun DependencyHandler.unitTestingImplementation() {

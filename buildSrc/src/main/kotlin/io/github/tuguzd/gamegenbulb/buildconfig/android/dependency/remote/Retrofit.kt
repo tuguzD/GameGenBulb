@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.buildconfig.android.dependency
+package io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.remote
 
 object Retrofit {
     private const val version = "2.9.0"

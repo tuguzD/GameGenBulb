@@ -1,6 +1,3 @@
-import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.AndroidX.androidXAppImplementation
-import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.Google.googleImplementation
-import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.Hilt.hiltImplementation
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.Kotlin
 import io.github.tuguzd.gamegenbulb.buildconfig.android.implementation.*
 
@@ -64,34 +61,35 @@ kapt {
 
 dependencies {
     // Must-have Android dependencies
-    androidXAppImplementation()
+    appImplementation()
+    // Clean Architecture layers
+    implementation(project(":data"))
+    implementation(project(":domain"))
+
+    // Kotlin extensions
+    implementation(Kotlin.X.Coroutine.android)
+    implementation(Kotlin.X.Coroutine.playServices)
+
+    // Dependency Injection (DI)
+    hiltImplementation()
 
     // Jetpack Compose
     composeCoreImplementation()
     materialDesignImplementation()
     navigationImplementation()
-
     // Additional features for Jetpack Compose
     composeThirdPartyImplementation()
     accompanistFeatureImplementation()
 
-    // Kotlin extensions
-    implementation(Kotlin.X.coroutine)
-    implementation(Kotlin.X.playServices)
-
-    // Dependency injection
-    hiltImplementation()
-
-    // Google
+    // Authentication
     googleImplementation()
 
-    // Clean Architecture layers
-    implementation(project(":data"))
-    implementation(project(":domain"))
-
     // Quality Assurance
-    androidTestImplementation(Kotlin.X.Test.coroutine) {
-        exclude(group = Kotlin.X.group, module = Kotlin.X.Test.excludedModule)
+    androidTestImplementation(Kotlin.X.Coroutine.Test.dependency) {
+        exclude(
+            group = Kotlin.X.group,
+            module = Kotlin.X.Coroutine.Test.excludedModule
+        )
     }
     loggingImplementation()
     unitTestingImplementation()
