@@ -4,13 +4,17 @@ plugins {
     kotlin("jvm") version "1.7.20" apply false
     kotlin("android") version "1.7.20" apply false
     kotlin("plugin.serialization") version "1.7.20" apply false
-    id("io.realm.kotlin") version "1.4.0" apply false
 }
 
 buildscript {
     dependencies {
         classpath(
-            io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.architecture.Hilt.plugin
+            io.github.tuguzd.gamegenbulb.buildconfig
+                .android.dependency.local.ObjectBox.plugin
+        )
+        classpath(
+            io.github.tuguzd.gamegenbulb.buildconfig
+                .android.dependency.architecture.Hilt.plugin
         )
     }
 }

@@ -6,7 +6,7 @@ plugins {
     kotlin("android")
     kotlin("plugin.serialization")
     kotlin("kapt")
-    id("io.realm.kotlin")
+    id("io.objectbox")
 }
 
 android {
@@ -59,7 +59,6 @@ dependencies {
 
     // Local data sources (for persistence)
     roomImplementation()
-    realmImplementation()
 
     // Quality Assurance
     androidTestImplementation(Kotlin.X.Coroutine.Test.dependency) {
