@@ -15,6 +15,7 @@ fun DependencyHandler.composeCoreImplementation() {
 fun DependencyHandler.composeThirdPartyImplementation() {
     implementation(JetpackCompose.ThirdParty.coil)
     implementation(JetpackCompose.ThirdParty.scalableDp)
+    implementation(JetpackCompose.ThirdParty.pagination)
     implementation(JetpackCompose.ThirdParty.SharedElement.dependency)
 }
 

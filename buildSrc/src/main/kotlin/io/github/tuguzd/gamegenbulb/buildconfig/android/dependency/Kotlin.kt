@@ -22,5 +22,5 @@ object Kotlin {
     }
 
     object CompilerExtension { const val version = "1.3.2" }
-    const val logger = "io.github.microutils:kotlin-logging-jvm:3.0.2"
+    const val logger = "io.github.microutils:kotlin-logging-jvm:3.0.4"
 }

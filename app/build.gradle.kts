@@ -4,6 +4,7 @@ import io.github.tuguzd.gamegenbulb.buildconfig.android.implementation.*
 plugins {
     id("com.android.application")
     kotlin("android")
+    // id("com.google.relay") version "0.3.01"
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
 }
