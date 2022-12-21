@@ -2,9 +2,9 @@ package io.github.tuguzd.gamegenbulb.domain.usecase.content.genre
 
 import io.github.tuguzd.gamegenbulb.domain.model.content.Genre
 import io.github.tuguzd.gamegenbulb.domain.repository.GenreRepository
-import io.github.tuguzd.gamegenbulb.domain.usecase.util.crud.ReadUseCase
+import io.github.tuguzd.gamegenbulb.domain.usecase.util.crud.CreateUseCase
 
-public class GetGenreUseCase(
+public class CreateGenreUseCase(
     genreRepository: GenreRepository
 ) :
-    ReadUseCase<Genre>(genreRepository)
+    CreateUseCase<Genre>(genreRepository)

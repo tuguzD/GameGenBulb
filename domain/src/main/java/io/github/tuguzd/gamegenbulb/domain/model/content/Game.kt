@@ -8,5 +8,5 @@ public data class Game(
     val name: String?,
     val desc: String?,
     val modes: List<Mode>,
-    val genres: List<String>,
+    val genres: List<Genre>,
 ) : Node
