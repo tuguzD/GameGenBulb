@@ -5,5 +5,5 @@ import io.github.tuguzd.gamegenbulb.domain.model.util.Node
 
 public data class Genre(
     override val id: Id<Genre>,
-    val name: String
+    val name: String?,
 ) : Node

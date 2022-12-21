@@ -6,7 +6,6 @@ plugins {
     kotlin("android")
     kotlin("plugin.serialization")
     kotlin("kapt")
-    id("io.objectbox")
 }
 
 android {
@@ -59,6 +58,7 @@ dependencies {
 
     // Local data sources (for persistence)
     roomImplementation()
+    objectBoxImplementation()
 
     // Quality Assurance
     androidTestImplementation(Kotlin.X.Coroutine.Test.dependency) {
@@ -70,3 +70,5 @@ dependencies {
     loggingImplementation()
     unitTestingImplementation()
 }
+
+apply(plugin = "io.objectbox")

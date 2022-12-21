@@ -5,5 +5,5 @@ import io.github.tuguzd.gamegenbulb.domain.model.util.Node
 
 public data class Mode(
     override val id: Id<Mode>,
-    val name: String
+    val name: String?,
 ) : Node

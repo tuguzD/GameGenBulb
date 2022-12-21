@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package io.github.tuguzd.gamegenbulb.buildconfig.android.implementation
 
 import org.gradle.api.artifacts.dsl.DependencyHandler
@@ -10,6 +12,9 @@ internal fun DependencyHandler.implementation(dependencyNotation: Any) =
 
 internal fun DependencyHandler.debugImplementation(dependencyNotation: Any) =
     add("debugImplementation", dependencyNotation)
+
+internal fun DependencyHandler.releaseImplementation(dependencyNotation: Any) =
+    add("releaseImplementation", dependencyNotation)
 
 internal fun DependencyHandler.testImplementation(dependencyNotation: Any) =
     add("testImplementation", dependencyNotation)
