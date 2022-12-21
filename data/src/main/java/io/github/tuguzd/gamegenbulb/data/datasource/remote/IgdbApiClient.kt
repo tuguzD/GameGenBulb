@@ -19,11 +19,13 @@ class IgdbApiClient {
         //    private val token: TwitchToken =
         //        TwitchAuthenticator.requestTwitchToken(idClient, secretClient)!!
         const val token = "SECRET"
+        const val clientId = "SECRET"
 
         val okHttpClient: OkHttpClient = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder()
                     .addHeader("Authorization", "Bearer $token")
+                    .addHeader("Client-ID", clientId)
                     .build()
                 chain.proceed(request)
             }.build()

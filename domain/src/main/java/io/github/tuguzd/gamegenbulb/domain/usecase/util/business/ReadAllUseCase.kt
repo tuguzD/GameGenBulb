@@ -6,8 +6,8 @@ import io.github.tuguzd.gamegenbulb.domain.util.DomainResult
 
 public open class ReadAllUseCase<T : Node>(
     private val domainRepository: ReadAllRepository<T>
-) : suspend (String) -> DomainResult<List<T>> {
+) : suspend () -> DomainResult<List<T>> {
     public override suspend
-    fun invoke(input: String): DomainResult<List<T>> =
-        domainRepository.readAll(input)
+    fun invoke(): DomainResult<List<T>> =
+        domainRepository.readAll()
 }

@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class IgdbMode(
-    val id: Long,
-    val name: String?,
+    val id: Long = 0,
+    val name: String? = null,
 )
 
 internal fun IgdbMode.toDomain() = Mode(

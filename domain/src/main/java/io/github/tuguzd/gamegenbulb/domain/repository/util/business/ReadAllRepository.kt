@@ -4,5 +4,5 @@ import io.github.tuguzd.gamegenbulb.domain.model.util.Node
 import io.github.tuguzd.gamegenbulb.domain.util.DomainResult
 
 public interface ReadAllRepository<T : Node> {
-    public suspend fun readAll(input: String): DomainResult<List<T>>
+    public suspend fun readAll(): DomainResult<List<T>>
 }

@@ -8,7 +8,7 @@ import io.github.tuguzd.gamegenbulb.domain.model.content.Game
 import io.github.tuguzd.gamegenbulb.domain.model.util.Id
 import io.github.tuguzd.gamegenbulb.domain.util.*
 
-public class GameIgdbDataSource(apiClient: IgdbApiClient) : GameDataSource {
+class GameIgdbDataSource(apiClient: IgdbApiClient) : GameDataSource {
     private val gameApi = apiClient.gameApi
 
     override suspend fun read(id: Id<Game>): DomainResult<Game?> =

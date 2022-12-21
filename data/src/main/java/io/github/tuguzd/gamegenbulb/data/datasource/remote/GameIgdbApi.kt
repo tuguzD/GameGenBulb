@@ -5,20 +5,20 @@ import io.github.tuguzd.gamegenbulb.data.model.remote.IgdbGame
 import retrofit2.http.*
 
 internal interface GameIgdbApi {
-    @GET("games")
+    @POST("games")
     suspend fun read(
         @Path("id") id: String,
         @Body query: String =
             "fields name, summary, game_modes.name, genres.name; where id=$id",
     ): ApiResponse<IgdbGame>
 
-    @GET("games")
+    @POST("games")
     suspend fun readAll(
         @Body query: String =
             "fields name, summary, game_modes.name, genres.name;",
     ): ApiResponse<List<IgdbGame>>
 
-    @GET("games")
+    @POST("games")
     suspend fun search(
         input: String,
         @Body query: String =
