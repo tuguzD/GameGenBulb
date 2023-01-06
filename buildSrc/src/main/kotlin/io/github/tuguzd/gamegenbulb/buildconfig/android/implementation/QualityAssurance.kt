@@ -4,6 +4,7 @@ import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.JetpackCompos
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.Kotlin
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.QualityAssurance
 import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.architecture.AndroidX
+import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.remote.Retrofit
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 fun DependencyHandler.unitTestingImplementation() {
@@ -11,9 +12,13 @@ fun DependencyHandler.unitTestingImplementation() {
     androidTestImplementation(AndroidX.UnitTest.jUnit)
 }
 
-fun DependencyHandler.loggingImplementation() {
+fun DependencyHandler.appLoggingImplementation() {
     implementation(Kotlin.logger)
     implementation(AndroidX.Log.logger)
+}
+
+fun DependencyHandler.dataLoggingImplementation() {
+    implementation(Retrofit.Logging.interceptor)
 }
 
 fun DependencyHandler.instrumentTestingImplementation() {

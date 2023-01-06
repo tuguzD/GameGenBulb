@@ -6,18 +6,18 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level
 import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.create
 
 class IgdbApiClient {
     private companion object {
         @OptIn(ExperimentalSerializationApi::class)
-        val converterFactory = Json.asConverterFactory("application/json".toMediaType())
+        val jsonConverterFactory = Json.asConverterFactory("application/json".toMediaType())
+        val scalarConverterFactory: ScalarsConverterFactory = ScalarsConverterFactory.create()
 
-        //    private val idClient = "SECRET"
-        //    private val secretClient = "SECRET"
-        //    private val token: TwitchToken =
-        //        TwitchAuthenticator.requestTwitchToken(idClient, secretClient)!!
         const val token = "SECRET"
         const val clientId = "SECRET"
 
@@ -28,12 +28,18 @@ class IgdbApiClient {
                     .addHeader("Client-ID", clientId)
                     .build()
                 chain.proceed(request)
-            }.build()
+            }
+            .addInterceptor(
+                HttpLoggingInterceptor().apply {
+                    setLevel(Level.BODY)
+                }
+            ).build()
     }
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.igdb.com/v4/")
-        .client(okHttpClient).addConverterFactory(converterFactory)
+        .baseUrl("https://api.igdb.com/v4/").client(okHttpClient)
+        .addConverterFactory(scalarConverterFactory)
+        .addConverterFactory(jsonConverterFactory)
         .addCallAdapterFactory(NetworkResponseAdapterFactory())
         .build()
 

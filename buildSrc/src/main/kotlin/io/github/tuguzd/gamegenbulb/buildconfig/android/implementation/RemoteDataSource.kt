@@ -7,6 +7,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 
 fun DependencyHandler.retrofitImplementation() {
     implementation(Retrofit.dependency)
+    implementation(Retrofit.scalarConverter)
     implementation(Retrofit.ThirdParty.kotlinXSerializationConverter)
     implementation(Retrofit.ThirdParty.networkResponseAdapter)
 }

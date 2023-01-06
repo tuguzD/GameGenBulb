@@ -67,7 +67,7 @@ dependencies {
             module = Kotlin.X.Coroutine.Test.excludedModule
         )
     }
-    loggingImplementation()
+    dataLoggingImplementation()
     unitTestingImplementation()
 }
 
