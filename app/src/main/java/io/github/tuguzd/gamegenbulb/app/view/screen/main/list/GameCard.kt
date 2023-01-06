@@ -11,8 +11,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import io.github.tuguzd.gamegenbulb.domain.model.content.Game
-import io.github.tuguzd.gamegenbulb.domain.model.content.Genre
-import io.github.tuguzd.gamegenbulb.domain.model.content.Mode
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,7 +37,7 @@ fun GameCard(
         if (game.genres.isNotEmpty()) {
             Spacer(modifier = Modifier.height(8.dp))
             LazyRow {
-                items(game.genres, key = Genre::id) { genre ->
+                items(game.genres, key = { it.id.toString() }) { genre ->
                     SuggestionChip(
                         onClick = { }, label = { Text(genre.name.toString()) }
                     )
@@ -49,7 +47,7 @@ fun GameCard(
         if (game.modes.isNotEmpty()) {
             Spacer(modifier = Modifier.height(8.dp))
             LazyRow {
-                items(game.modes, key = Mode::id) { mode ->
+                items(game.modes, key = { it.id.toString() }) { mode ->
                     SuggestionChip(
                         onClick = { }, label = { Text(mode.name.toString()) }
                     )

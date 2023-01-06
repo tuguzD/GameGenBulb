@@ -7,11 +7,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class IgdbGame(
-    val id: Long,
-    val name: String?,
-    @SerialName("summary") val desc: String?,
-    @SerialName("game_modes") val modes: List<IgdbMode>,
-    val genres: List<IgdbGenre>,
+    val id: Long = 0,
+    val name: String? = null,
+    @SerialName("summary") val desc: String? = null,
+    @SerialName("game_modes") val modes: List<IgdbMode> = listOf(),
+    val genres: List<IgdbGenre> = listOf(),
 )
 
 internal fun IgdbGame.toDomain() = Game(
