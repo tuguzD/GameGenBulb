@@ -9,13 +9,18 @@ fun DependencyHandler.hiltImplementation() {
     implementation(Hilt.dependency)
 }
 
-fun DependencyHandler.dataImplementation() {
+private fun DependencyHandler.androidImplementation() {
     implementation(AndroidX.core)
+    implementation(AndroidX.pagination)
+}
+
+fun DependencyHandler.dataImplementation() {
+    androidImplementation()
     implementation(AndroidX.security)
 }
 
 fun DependencyHandler.appImplementation() {
-    implementation(AndroidX.core)
+    androidImplementation()
     implementation(AndroidX.lifecycle)
     implementation(AndroidX.splashScreen)
 }

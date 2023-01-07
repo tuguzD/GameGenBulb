@@ -12,7 +12,7 @@ fun DependencyHandler.materialThemeImplementation() {
 // Provide Material icons for use without downloading files
 fun DependencyHandler.materialIconImplementation() {
     implementation(JetpackCompose.Material.Icons.dependency)
-    implementation(JetpackCompose.Material.Icons.extention)
+    implementation(JetpackCompose.Material.Icons.extension)
 }
 
 // Provide features to build complete Material app

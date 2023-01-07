@@ -15,7 +15,9 @@ internal interface GameIgdbApi {
     @POST("games")
     suspend fun readAll(
         @Body query: String =
-            "fields name, summary, game_modes.name, genres.name;",
+            "f name, summary, game_modes.name, genres.name;" +
+                "w aggregated_rating >= 95 & rating != 0;" +
+                "limit 6; offset 0;",
     ): ApiResponse<List<IgdbGame>>
 
     @POST("games")

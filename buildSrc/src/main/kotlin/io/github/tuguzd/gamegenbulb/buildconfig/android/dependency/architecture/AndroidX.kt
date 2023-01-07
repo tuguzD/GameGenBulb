@@ -6,6 +6,7 @@ object AndroidX {
 
     const val security = "androidx.security:security-crypto:1.0.0"
     const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+    const val pagination = "androidx.paging:paging-runtime:3.1.1"
 
     object Log {
         const val logger = "org.slf4j:slf4j-android:1.7.36"

@@ -5,6 +5,8 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.QuestionMark
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -34,21 +36,32 @@ fun GameCard(
             maxLines = 2,
             style = MaterialTheme.typography.titleLarge,
         )
-        if (game.genres.isNotEmpty()) {
+        if (game.genres.isNotEmpty() || game.modes.isNotEmpty()) {
             Spacer(modifier = Modifier.height(8.dp))
-            LazyRow {
+        }
+        if (game.genres.isNotEmpty()) {
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
                 items(game.genres, key = { it.id.toString() }) { genre ->
-                    SuggestionChip(
+                    AssistChip(
+                        leadingIcon = {
+                            Icon(Icons.Rounded.QuestionMark, contentDescription = "")
+                        },
                         onClick = { }, label = { Text(genre.name.toString()) }
                     )
                 }
             }
         }
         if (game.modes.isNotEmpty()) {
-            Spacer(modifier = Modifier.height(8.dp))
-            LazyRow {
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
                 items(game.modes, key = { it.id.toString() }) { mode ->
-                    SuggestionChip(
+                    AssistChip(
+                        leadingIcon = {
+                            Icon(Icons.Rounded.QuestionMark, contentDescription = "")
+                        },
                         onClick = { }, label = { Text(mode.name.toString()) }
                     )
                 }

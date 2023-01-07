@@ -1,15 +1,9 @@
 package io.github.tuguzd.gamegenbulb.app.view.screen.main.list
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -25,9 +19,9 @@ fun MainScreen(
     onGameClick: (Game) -> Unit,
 ) = Scaffold(
     topBar = {
-        CenterAlignedTopAppBar(
-            title = { Text(text = stringResource(R.string.app_name)) },
-        )
+        TopAppBar(title = {
+            Text(text = stringResource(R.string.app_name))
+        })
     },
 ) { padding ->
     GameList(
@@ -46,14 +40,13 @@ private fun GameList(
     onGameClick: (Game) -> Unit,
 ) = LazyColumn(
     modifier = modifier,
+    contentPadding = PaddingValues(16.dp),
     verticalArrangement = Arrangement.spacedBy(16.dp),
 ) {
     items(state.games, key = { it.id.toString() }) { game ->
         GameCard(
             game = game,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+            modifier = Modifier.fillMaxWidth(),
             onClick = { onGameClick(game) },
         )
     }

@@ -22,7 +22,7 @@ class MainScreenViewModel @Inject constructor(
 
     init { update() }
 
-    fun update() {
+    private fun update() {
         viewModelScope.launch {
             when (val result = readAllGameUseCase.invoke()) {
                 is Result.Error -> throw result.error

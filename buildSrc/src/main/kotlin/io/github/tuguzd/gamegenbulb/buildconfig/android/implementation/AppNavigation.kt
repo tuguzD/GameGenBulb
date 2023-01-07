@@ -5,7 +5,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 
 // Provide navigation by pairing Jetpack Compose and Hilt
 fun DependencyHandler.composeHiltNavigationImplementation() {
-    implementation(JetpackCompose.Core.navigation)
+    implementation(JetpackCompose.Features.navigation)
     implementation(JetpackCompose.ThirdParty.navigationHilt)
 }
 

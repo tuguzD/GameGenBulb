@@ -5,8 +5,15 @@ object JetpackCompose {
 
     object Core {
         const val ui = "androidx.compose.ui:ui:$version"
-        const val activity = "androidx.activity:activity-compose:1.6.1"
-        const val navigation = "androidx.navigation:navigation-compose:2.5.3"
+        const val activity =
+            "androidx.activity:activity-compose:1.6.1"
+    }
+
+    object Features {
+        const val pagination =
+            "androidx.paging:paging-compose:1.0.0-alpha17"
+        const val navigation =
+            "androidx.navigation:navigation-compose:2.5.3"
     }
 
     object Material {
@@ -15,7 +22,7 @@ object JetpackCompose {
         object Icons {
             const val dependency =
                 "androidx.compose.material:material-icons-core:$version"
-            const val extention =
+            const val extension =
                 "androidx.compose.material:material-icons-extended:$version"
         }
         object You {
@@ -54,7 +61,6 @@ object JetpackCompose {
         }
         const val coil = "io.coil-kt:coil-compose:2.2.2"
         const val scalableDp = "com.intuit.sdp:sdp-android:1.1.0"
-        const val pagination = "androidx.paging:paging-compose:1.0.0-alpha17"
         const val navigationHilt = "androidx.hilt:hilt-navigation-compose:1.0.0"
     }
 
