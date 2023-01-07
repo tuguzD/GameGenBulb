@@ -43,10 +43,10 @@ object JetpackCompose {
                 "com.google.accompanist:accompanist-navigation-animation:$version"
         }
         const val pager = "com.google.accompanist:accompanist-pager:$version"
+        const val flowLayout =
+            "com.google.accompanist:accompanist-flowlayout:$version"
         const val placeholder =
             "com.google.accompanist:accompanist-placeholder-material:$version"
-        const val refreshSwipe =
-            "com.google.accompanist:accompanist-swiperefresh:$version"
     }
 
     object AndroidStudio {

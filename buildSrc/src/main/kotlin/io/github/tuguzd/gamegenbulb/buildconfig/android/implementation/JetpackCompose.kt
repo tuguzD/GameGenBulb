@@ -23,6 +23,6 @@ fun DependencyHandler.composeThirdPartyImplementation() {
 
 fun DependencyHandler.accompanistFeatureImplementation() {
     implementation(JetpackCompose.Accompanist.pager)
+    implementation(JetpackCompose.Accompanist.flowLayout)
     implementation(JetpackCompose.Accompanist.placeholder)
-    implementation(JetpackCompose.Accompanist.refreshSwipe)
 }
