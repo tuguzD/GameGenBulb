@@ -1,21 +1,26 @@
 package io.github.tuguzd.gamegenbulb.data.repository
 
-import io.github.tuguzd.gamegenbulb.data.datasource.interfaces.GameDataSource
+import io.github.tuguzd.gamegenbulb.data.datasource.local.LocalGameDataSource
+import io.github.tuguzd.gamegenbulb.data.datasource.remote.IgdbGameDataSource
 import io.github.tuguzd.gamegenbulb.domain.model.content.Game
 import io.github.tuguzd.gamegenbulb.domain.model.util.Id
 import io.github.tuguzd.gamegenbulb.domain.repository.GameRepository
 import io.github.tuguzd.gamegenbulb.domain.util.DomainResult
 
-class GameRepositoryImpl(private val dataSource: GameDataSource) : GameRepository {
+class GameRepositoryImpl(
+    private val remoteDataSource: IgdbGameDataSource,
+    private val localDataSource: LocalGameDataSource,
+) : GameRepository {
+
     override suspend fun save(item: Game):
-        DomainResult<Game> = dataSource.save(item)
+        DomainResult<Game> = localDataSource.save(item)
 
     override suspend fun read(id: Id<Game>):
-        DomainResult<Game?> = dataSource.read(id)
+        DomainResult<Game?> = remoteDataSource.read(id)
 
     override suspend fun search(input: String):
-        DomainResult<List<Game>> = dataSource.search(input)
+        DomainResult<List<Game>> = remoteDataSource.search(input)
 
     override suspend fun readAll(page: Int):
-        DomainResult<List<Game>> = dataSource.readAll(page)
+        DomainResult<List<Game>> = remoteDataSource.readAll(page)
 }

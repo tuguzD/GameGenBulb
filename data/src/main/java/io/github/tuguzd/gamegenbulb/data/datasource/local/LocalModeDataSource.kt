@@ -1,6 +1,5 @@
 package io.github.tuguzd.gamegenbulb.data.datasource.local
 
-import io.github.tuguzd.gamegenbulb.data.datasource.interfaces.ModeDataSource
 import io.github.tuguzd.gamegenbulb.data.model.local.ModeEntity
 import io.github.tuguzd.gamegenbulb.data.model.local.ModeEntity_
 import io.github.tuguzd.gamegenbulb.domain.model.content.Game
@@ -12,8 +11,8 @@ import io.objectbox.kotlin.awaitCallInTx
 import io.objectbox.kotlin.query
 import io.objectbox.query.QueryBuilder
 
-class LocalModeDataSource(private val client: DatabaseClient) : ModeDataSource {
-    override suspend fun read(id: Id<Mode>): DomainResult<Mode?> {
+class LocalModeDataSource(private val client: DatabaseClient) {
+    suspend fun read(id: Id<Mode>): DomainResult<Mode?> {
         val entity = client.boxStore.awaitCallInTx {
             client.modeBox.query {
                 equal(
@@ -25,14 +24,14 @@ class LocalModeDataSource(private val client: DatabaseClient) : ModeDataSource {
         return success(entity?.toDomain())
     }
 
-    override suspend fun readAll(page: Int, game: Id<Game>): DomainResult<List<Mode>> = success(
+    suspend fun readAll(page: Int, game: Id<Game>): DomainResult<List<Mode>> = success(
         client.boxStore.awaitCallInTx { client.modeBox.all }!!
             .filter { mode ->
                 mode.game.target?.id == game.id.toLong()
             }.map(ModeEntity::toDomain)
     )
 
-    override suspend fun save(item: Mode): DomainResult<Mode> {
+    suspend fun save(item: Mode): DomainResult<Mode> {
         val entity = client.boxStore.awaitCallInTx {
             val query = client.modeBox.query {
                 equal(
@@ -49,7 +48,7 @@ class LocalModeDataSource(private val client: DatabaseClient) : ModeDataSource {
         return success(entity.toDomain())
     }
 
-    override suspend fun search(input: String): DomainResult<List<Mode>> {
+    suspend fun search(input: String): DomainResult<List<Mode>> {
         val entity = client.boxStore.awaitCallInTx {
             client.modeBox.query {
                 contains(

@@ -1,6 +1,5 @@
 package io.github.tuguzd.gamegenbulb.data.datasource.local
 
-import io.github.tuguzd.gamegenbulb.data.datasource.interfaces.GameDataSource
 import io.github.tuguzd.gamegenbulb.data.model.local.GameEntity
 import io.github.tuguzd.gamegenbulb.data.model.local.GameEntity_
 import io.github.tuguzd.gamegenbulb.data.model.local.GenreEntity
@@ -13,8 +12,8 @@ import io.objectbox.kotlin.awaitCallInTx
 import io.objectbox.kotlin.query
 import io.objectbox.query.QueryBuilder
 
-class LocalGameDataSource(private val client: DatabaseClient) : GameDataSource {
-    override suspend fun read(id: Id<Game>): DomainResult<Game?> {
+class LocalGameDataSource(private val client: DatabaseClient) {
+    suspend fun read(id: Id<Game>): DomainResult<Game?> {
         val entity = client.boxStore.awaitCallInTx {
             client.gameBox.query {
                 equal(
@@ -26,12 +25,12 @@ class LocalGameDataSource(private val client: DatabaseClient) : GameDataSource {
         return success(entity?.toDomain())
     }
 
-    override suspend fun readAll(page: Int): DomainResult<List<Game>> = success(
+    suspend fun readAll(page: Int): DomainResult<List<Game>> = success(
         client.boxStore.awaitCallInTx { client.gameBox.all }!!
             .map(GameEntity::toDomain)
     )
 
-    override suspend fun save(item: Game): DomainResult<Game> {
+    suspend fun save(item: Game): DomainResult<Game> {
         val entity = client.boxStore.awaitCallInTx {
             val query = client.gameBox.query {
                 equal(
@@ -48,7 +47,7 @@ class LocalGameDataSource(private val client: DatabaseClient) : GameDataSource {
         return success(entity.toDomain())
     }
 
-    override suspend fun search(input: String): DomainResult<List<Game>> {
+    suspend fun search(input: String): DomainResult<List<Game>> {
         val entity = client.boxStore.awaitCallInTx {
             client.gameBox.query {
                 contains(

@@ -1,6 +1,5 @@
 package io.github.tuguzd.gamegenbulb.data.datasource.local
 
-import io.github.tuguzd.gamegenbulb.data.datasource.interfaces.GenreDataSource
 import io.github.tuguzd.gamegenbulb.data.model.local.GenreEntity
 import io.github.tuguzd.gamegenbulb.data.model.local.GenreEntity_
 import io.github.tuguzd.gamegenbulb.domain.model.content.Game
@@ -12,8 +11,8 @@ import io.objectbox.kotlin.awaitCallInTx
 import io.objectbox.kotlin.query
 import io.objectbox.query.QueryBuilder
 
-class LocalGenreDataSource(private val client: DatabaseClient) : GenreDataSource {
-    override suspend fun read(id: Id<Genre>): DomainResult<Genre?> {
+class LocalGenreDataSource(private val client: DatabaseClient) {
+    suspend fun read(id: Id<Genre>): DomainResult<Genre?> {
         val entity = client.boxStore.awaitCallInTx {
             client.genreBox.query {
                 equal(
@@ -25,14 +24,14 @@ class LocalGenreDataSource(private val client: DatabaseClient) : GenreDataSource
         return success(entity?.toDomain())
     }
 
-    override suspend fun readAll(page: Int, game: Id<Game>): DomainResult<List<Genre>> = success(
+    suspend fun readAll(page: Int, game: Id<Game>): DomainResult<List<Genre>> = success(
         client.boxStore.awaitCallInTx { client.genreBox.all }!!
             .filter { genre ->
                 genre.game.target?.id == game.id.toLong()
             }.map(GenreEntity::toDomain)
     )
 
-    override suspend fun save(item: Genre): DomainResult<Genre> {
+    suspend fun save(item: Genre): DomainResult<Genre> {
         val entity = client.boxStore.awaitCallInTx {
             val query = client.genreBox.query {
                 equal(
@@ -49,7 +48,7 @@ class LocalGenreDataSource(private val client: DatabaseClient) : GenreDataSource
         return success(entity.toDomain())
     }
 
-    override suspend fun search(input: String): DomainResult<List<Genre>> {
+    suspend fun search(input: String): DomainResult<List<Genre>> {
         val entity = client.boxStore.awaitCallInTx {
             client.genreBox.query {
                 contains(
