@@ -23,7 +23,7 @@ class GameIgdbDataSource(apiClient: IgdbApiClient) : GameDataSource {
         }
 
     override suspend fun readAll(): DomainResult<List<Game>> =
-        when (val result = gameApi.readAll().toResult()) {
+        when (val result = gameApi.readAll(0).toResult()) {
             is Result.Error -> result.cast()
             is Result.Success -> success(
                 result.data.map(IgdbGame::toDomain)

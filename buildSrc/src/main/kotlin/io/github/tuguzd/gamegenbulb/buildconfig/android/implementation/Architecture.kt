@@ -11,7 +11,7 @@ fun DependencyHandler.hiltImplementation() {
 
 private fun DependencyHandler.androidImplementation() {
     implementation(AndroidX.core)
-    implementation(AndroidX.pagination)
+    implementation(AndroidX.Pagination.app)
 }
 
 fun DependencyHandler.dataImplementation() {
