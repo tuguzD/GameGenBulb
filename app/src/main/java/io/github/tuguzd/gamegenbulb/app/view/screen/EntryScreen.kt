@@ -9,18 +9,18 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import io.github.tuguzd.gamegenbulb.app.view.screen.main.list.MainScreen
-import io.github.tuguzd.gamegenbulb.app.viewmodel.MainScreenViewModel
+import io.github.tuguzd.gamegenbulb.app.view.screen.main.list.GameListScreen
+import io.github.tuguzd.gamegenbulb.app.viewmodel.main.list.GameListScreenViewModel
 
 @Composable
 fun EntryScreen(
-    mainViewModel: MainScreenViewModel = viewModel(),
+    mainViewModel: GameListScreenViewModel = viewModel(),
     navController: NavHostController =
         rememberNavController(),
 ) = Surface(color = MaterialTheme.colorScheme.background) {
-    NavHost(navController = navController, startDestination = "main") {
-        composable(route = "main") {
-            MainScreen(
+    NavHost(navController = navController, startDestination = "community") {
+        composable(route = "community") {
+            GameListScreen(
                 state = mainViewModel.state,
                 onGameClick = { game ->
                     navController.navigate(route = "game/${game.id}")

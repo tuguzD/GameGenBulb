@@ -22,6 +22,6 @@ class GameRepositoryImpl(
     override suspend fun search(input: String):
         DomainResult<List<Game>> = dataSource.search(input)
 
-    override suspend fun readAll():
-        DomainResult<List<Game>> = dataSource.readAll()
+    override suspend fun readAll(page: Int):
+        DomainResult<List<Game>> = dataSource.readAll(page)
 }

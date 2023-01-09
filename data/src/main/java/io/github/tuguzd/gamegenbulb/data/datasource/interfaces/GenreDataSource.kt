@@ -11,7 +11,7 @@ interface GenreDataSource {
     suspend fun read(id: Id<Genre>):
         DomainResult<Genre?>
 
-    suspend fun readAll():
+    suspend fun readAll(page: Int):
         DomainResult<List<Genre>>
 
     suspend fun update(id: Id<Genre>):

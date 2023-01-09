@@ -11,7 +11,7 @@ interface GameDataSource {
     suspend fun read(id: Id<Game>):
         DomainResult<Game?>
 
-    suspend fun readAll():
+    suspend fun readAll(page: Int):
         DomainResult<List<Game>>
 
     suspend fun update(id: Id<Game>):

@@ -17,7 +17,7 @@ internal interface GameIgdbApi {
     suspend fun readList(@Body body: String = query): ApiResponse<List<IgdbGame>>
 }
 
-internal suspend fun GameIgdbApi.readAll(page: Int = 0, limit: Int = 6):
+internal suspend fun GameIgdbApi.readAll(page: Int = 0, limit: Int = 10):
     ApiResponse<List<IgdbGame>> = readList(
     GameIgdbApi.query + "limit $limit; offset ${page * limit};",
 )

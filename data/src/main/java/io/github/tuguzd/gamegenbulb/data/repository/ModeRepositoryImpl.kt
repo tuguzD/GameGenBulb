@@ -22,6 +22,6 @@ class ModeRepositoryImpl(
     override suspend fun search(input: String):
         DomainResult<List<Mode>> = dataSource.search(input)
 
-    override suspend fun readAll():
-        DomainResult<List<Mode>> = dataSource.readAll()
+    override suspend fun readAll(page: Int):
+        DomainResult<List<Mode>> = dataSource.readAll(page)
 }

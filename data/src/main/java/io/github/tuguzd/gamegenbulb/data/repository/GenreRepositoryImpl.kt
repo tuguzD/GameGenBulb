@@ -22,6 +22,6 @@ class GenreRepositoryImpl(
     override suspend fun search(input: String):
         DomainResult<List<Genre>> = dataSource.search(input)
 
-    override suspend fun readAll():
-        DomainResult<List<Genre>> = dataSource.readAll()
+    override suspend fun readAll(page: Int):
+        DomainResult<List<Genre>> = dataSource.readAll(page)
 }

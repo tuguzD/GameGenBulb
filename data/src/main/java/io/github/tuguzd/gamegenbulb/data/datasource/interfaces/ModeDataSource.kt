@@ -11,7 +11,7 @@ interface ModeDataSource {
     suspend fun read(id: Id<Mode>):
         DomainResult<Mode?>
 
-    suspend fun readAll():
+    suspend fun readAll(page: Int):
         DomainResult<List<Mode>>
 
     suspend fun update(id: Id<Mode>):
