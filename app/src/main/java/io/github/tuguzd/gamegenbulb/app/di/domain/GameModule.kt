@@ -11,8 +11,8 @@ import io.github.tuguzd.gamegenbulb.domain.usecase.content.game.*
 @InstallIn(SingletonComponent::class)
 object GameModule {
     @Provides
-    fun provideCreateGame(repository: GameRepository):
-        CreateGameUseCase = CreateGameUseCase(repository)
+    fun provideSaveGame(repository: GameRepository):
+        SaveGameUseCase = SaveGameUseCase(repository)
 
     @Provides
     fun provideGetGame(repository: GameRepository):
@@ -21,10 +21,6 @@ object GameModule {
     @Provides
     fun provideSearchGame(repository: GameRepository):
         SearchGameUseCase = SearchGameUseCase(repository)
-
-    @Provides
-    fun provideUpdateGame(repository: GameRepository):
-        UpdateGameUseCase = UpdateGameUseCase(repository)
 
     @Provides
     fun provideReadAllGame(repository: GameRepository):

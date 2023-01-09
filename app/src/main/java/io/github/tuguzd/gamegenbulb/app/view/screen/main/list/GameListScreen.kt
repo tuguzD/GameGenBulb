@@ -43,10 +43,6 @@ private fun GameList(
     // TODO fix restarting view model on navigation
     val games = state.games.collectAsLazyPagingItems()
 
-    // TODO fix duplicate items in list
-    // (API send items in different order each time,
-    // so it looks like it's needed to cache items and
-    // with each response check if item is already in list
     LazyColumn(
         modifier = modifier,
         contentPadding = PaddingValues(16.dp),

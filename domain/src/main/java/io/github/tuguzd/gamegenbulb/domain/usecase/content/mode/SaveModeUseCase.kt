@@ -2,9 +2,9 @@ package io.github.tuguzd.gamegenbulb.domain.usecase.content.mode
 
 import io.github.tuguzd.gamegenbulb.domain.model.content.Mode
 import io.github.tuguzd.gamegenbulb.domain.repository.ModeRepository
-import io.github.tuguzd.gamegenbulb.domain.usecase.util.crud.CreateUseCase
+import io.github.tuguzd.gamegenbulb.domain.usecase.util.crud.SaveUseCase
 
-public class CreateModeUseCase(
+public class SaveModeUseCase(
     modeRepository: ModeRepository
 ) :
-    CreateUseCase<Mode>(modeRepository)
+    SaveUseCase<Mode>(modeRepository)

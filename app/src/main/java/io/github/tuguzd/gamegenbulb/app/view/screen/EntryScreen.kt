@@ -10,11 +10,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import io.github.tuguzd.gamegenbulb.app.view.screen.main.list.GameListScreen
-import io.github.tuguzd.gamegenbulb.app.viewmodel.main.list.GameListScreenViewModel
+import io.github.tuguzd.gamegenbulb.app.viewmodel.main.list.GameListViewModel
 
 @Composable
 fun EntryScreen(
-    mainViewModel: GameListScreenViewModel = viewModel(),
+    mainViewModel: GameListViewModel = viewModel(),
     navController: NavHostController =
         rememberNavController(),
 ) = Surface(color = MaterialTheme.colorScheme.background) {

@@ -6,18 +6,12 @@ import io.github.tuguzd.gamegenbulb.domain.model.util.Id
 import io.github.tuguzd.gamegenbulb.domain.repository.GameRepository
 import io.github.tuguzd.gamegenbulb.domain.util.DomainResult
 
-class GameRepositoryImpl(
-    private val dataSource: GameDataSource
-) : GameRepository {
-
-    override suspend fun create(item: Game):
-        DomainResult<Game> = dataSource.create(item)
+class GameRepositoryImpl(private val dataSource: GameDataSource) : GameRepository {
+    override suspend fun save(item: Game):
+        DomainResult<Game> = dataSource.save(item)
 
     override suspend fun read(id: Id<Game>):
         DomainResult<Game?> = dataSource.read(id)
-
-    override suspend fun update(id: Id<Game>):
-        DomainResult<Game> = dataSource.update(id)
 
     override suspend fun search(input: String):
         DomainResult<List<Game>> = dataSource.search(input)

@@ -6,8 +6,9 @@ import retrofit2.http.*
 
 internal interface GameIgdbApi {
     companion object {
-        const val query = "fields name, summary, game_modes.name, genres.name;" +
-            "where aggregated_rating >= 95 & rating != 0;"
+        const val query = "fields name, summary, game_modes.name, genres.name; " +
+            "where (rating != 0 | aggregated_rating != 0) & game_modes != null " +
+            "& genres != null; sort total_rating desc; "
     }
 
     @POST("games")

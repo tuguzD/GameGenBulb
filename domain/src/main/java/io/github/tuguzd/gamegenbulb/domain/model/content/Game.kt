@@ -5,8 +5,6 @@ import io.github.tuguzd.gamegenbulb.domain.model.util.Node
 
 public data class Game(
     override val id: Id<Game>,
-    val name: String?,
-    val desc: String?,
-    val modes: List<Mode>,
-    val genres: List<Genre>,
+    val name: String?, val desc: String?,
+    val modes: List<Mode>, val genres: List<Genre>,
 ) : Node

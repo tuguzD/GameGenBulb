@@ -5,22 +5,17 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.github.tuguzd.gamegenbulb.domain.repository.GenreRepository
-import io.github.tuguzd.gamegenbulb.domain.usecase.content.genre.CreateGenreUseCase
 import io.github.tuguzd.gamegenbulb.domain.usecase.content.genre.GetGenreUseCase
-import io.github.tuguzd.gamegenbulb.domain.usecase.content.genre.UpdateGenreUseCase
+import io.github.tuguzd.gamegenbulb.domain.usecase.content.genre.SaveGenreUseCase
 
 @Module
 @InstallIn(SingletonComponent::class)
 object GenreModule {
     @Provides
-    fun provideCreateGenre(repository: GenreRepository):
-        CreateGenreUseCase = CreateGenreUseCase(repository)
+    fun provideSaveGenre(repository: GenreRepository):
+        SaveGenreUseCase = SaveGenreUseCase(repository)
 
     @Provides
     fun provideGetGenre(repository: GenreRepository):
         GetGenreUseCase = GetGenreUseCase(repository)
-
-    @Provides
-    fun provideUpdateGenre(repository: GenreRepository):
-        UpdateGenreUseCase = UpdateGenreUseCase(repository)
 }

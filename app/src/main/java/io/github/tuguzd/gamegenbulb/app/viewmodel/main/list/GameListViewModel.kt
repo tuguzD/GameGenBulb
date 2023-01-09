@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 @HiltViewModel
-class GameListScreenViewModel @Inject constructor(
+class GameListViewModel @Inject constructor(
     private val readAllGameUseCase: ReadAllGameUseCase,
 ) : ViewModel() {
     private var _state by mutableStateOf(GameListState())
