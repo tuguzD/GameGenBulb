@@ -22,5 +22,5 @@ class GenreRepositoryImpl(
         DomainResult<List<Genre>> = localDataSource.search(input)
 
     override suspend fun readAllOf(page: Int, item: Id<Game>):
-        DomainResult<List<Genre>> = localDataSource.readAll(page, item)
+        DomainResult<List<Genre>> = localDataSource.readAll(page, game = item)
 }

@@ -8,7 +8,7 @@ internal interface GameIgdbApi {
     companion object {
         const val query = "fields name, summary, game_modes.name, genres.name; " +
             "where (rating != 0 | aggregated_rating != 0) & game_modes != null " +
-            "& genres != null; sort total_rating desc; "
+            "& genres != null; sort id desc; "
     }
 
     @POST("games")
@@ -18,7 +18,7 @@ internal interface GameIgdbApi {
     suspend fun readList(@Body body: String = query): ApiResponse<List<IgdbGame>>
 }
 
-internal suspend fun GameIgdbApi.readAll(page: Int = 0, limit: Int = 10):
+internal suspend fun GameIgdbApi.readAll(page: Int, limit: Int):
     ApiResponse<List<IgdbGame>> = readList(
     GameIgdbApi.query + "limit $limit; offset ${page * limit};",
 )

@@ -23,8 +23,8 @@ class IgdbGameDataSource(apiClient: IgdbApiClient) {
             )
         }
 
-    suspend fun readAll(page: Int): DomainResult<List<Game>> =
-        when (val result = gameApi.readAll(page).toResult()) {
+    suspend fun readAll(page: Int = 0, limit: Int = 10): DomainResult<List<Game>> =
+        when (val result = gameApi.readAll(page, limit).toResult()) {
             is Result.Error -> result.cast()
             is Result.Success -> success(
                 result.data.map(IgdbGame::toDomain)

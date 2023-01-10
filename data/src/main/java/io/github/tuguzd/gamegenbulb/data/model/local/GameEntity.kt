@@ -8,7 +8,7 @@ import io.objectbox.relation.ToMany
 
 @Entity
 internal data class GameEntity(
-    @Id var id: Long = 0,
+    @Id(assignable = true) var id: Long = 0,
     @Unique var name: String? = null,
     var desc: String? = null,
 ) {

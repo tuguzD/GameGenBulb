@@ -16,8 +16,9 @@ kotlin {
 }
 
 dependencies {
-    implementation(Kotlin.logger)
+    implementation(Kotlin.X.Coroutine.core)
 
+    implementation(Kotlin.logger)
     testImplementation(QualityAssurance.UnitTest.jUnit4)
     testImplementation(kotlin("test"))
 }

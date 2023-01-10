@@ -6,37 +6,63 @@ import io.github.tuguzd.gamegenbulb.data.model.local.GenreEntity
 import io.github.tuguzd.gamegenbulb.data.model.local.ModeEntity
 import io.github.tuguzd.gamegenbulb.domain.model.content.Game
 import io.github.tuguzd.gamegenbulb.domain.model.util.Id
+import io.github.tuguzd.gamegenbulb.domain.util.DomainError
 import io.github.tuguzd.gamegenbulb.domain.util.DomainResult
 import io.github.tuguzd.gamegenbulb.domain.util.success
+import io.objectbox.exception.DbException
 import io.objectbox.kotlin.awaitCallInTx
 import io.objectbox.kotlin.query
 import io.objectbox.query.QueryBuilder
 
 class LocalGameDataSource(private val client: DatabaseClient) {
-    suspend fun read(id: Id<Game>): DomainResult<Game?> {
+    suspend fun read(id: Id<Game>): DomainResult<Game?> = try {
         val entity = client.boxStore.awaitCallInTx {
             client.gameBox.query {
-                equal(
-                    GameEntity_.id, id.id,
-                    QueryBuilder.StringOrder.CASE_SENSITIVE
-                )
+                equal(GameEntity_.id, id.id.toLong())
             }.findUnique()
         }
-        return success(entity?.toDomain())
+        success(entity?.toDomain())
+    } catch (dbException: DbException) {
+        val error = DomainError.StorageError(
+            message = "Failed to get game by id '$id'",
+            cause = dbException,
+        )
+        error(error)
+    } catch (exception: Exception) {
+        val error = DomainError.LogicError(
+            message = "Failed to get game by id '$id'",
+            cause = exception,
+        )
+        error(error)
     }
 
-    suspend fun readAll(page: Int): DomainResult<List<Game>> = success(
-        client.boxStore.awaitCallInTx { client.gameBox.all }!!
-            .map(GameEntity::toDomain)
-    )
+    suspend fun readAll(page: Int, limit: Int = 10): DomainResult<List<Game>> = try {
+        val entity = client.boxStore.awaitCallInTx {
+            client.gameBox.query {
+                orderDesc(GameEntity_.id)
+            }.find(
+                (page * limit).toLong(), limit.toLong()
+            )
+        }!!
+        success(entity.map(GameEntity::toDomain))
+    } catch (dbException: DbException) {
+        val error = DomainError.StorageError(
+            message = "Failed to get games at page $page with limit $limit",
+            cause = dbException,
+        )
+        error(error)
+    } catch (exception: Exception) {
+        val error = DomainError.LogicError(
+            message = "Failed to get games at page $page with limit $limit",
+            cause = exception,
+        )
+        error(error)
+    }
 
-    suspend fun save(item: Game): DomainResult<Game> {
+    suspend fun save(item: Game): DomainResult<Game> = try {
         val entity = client.boxStore.awaitCallInTx {
             val query = client.gameBox.query {
-                equal(
-                    GameEntity_.id, item.id.id,
-                    QueryBuilder.StringOrder.CASE_SENSITIVE
-                )
+                equal(GameEntity_.id, item.id.id.toLong())
             }
             val entity = query.findUnique()?.apply {
                 name = item.name; desc = item.desc
@@ -44,10 +70,22 @@ class LocalGameDataSource(private val client: DatabaseClient) {
             client.gameBox.put(entity)
             entity
         }!!
-        return success(entity.toDomain())
+        success(entity.toDomain())
+    } catch (dbException: DbException) {
+        val error = DomainError.StorageError(
+            message = "Failed to save game $item",
+            cause = dbException,
+        )
+        error(error)
+    } catch (exception: Exception) {
+        val error = DomainError.LogicError(
+            message = "Failed to save game $item",
+            cause = exception,
+        )
+        error(error)
     }
 
-    suspend fun search(input: String): DomainResult<List<Game>> {
+    suspend fun search(input: String): DomainResult<List<Game>> = try {
         val entity = client.boxStore.awaitCallInTx {
             client.gameBox.query {
                 contains(
@@ -56,7 +94,19 @@ class LocalGameDataSource(private val client: DatabaseClient) {
                 )
             }.find()
         }!!
-        return success(entity.map(GameEntity::toDomain))
+        success(entity.map(GameEntity::toDomain))
+    } catch (dbException: DbException) {
+        val error = DomainError.StorageError(
+            message = "Failed to get games similar to input \"$input\"",
+            cause = dbException,
+        )
+        error(error)
+    } catch (exception: Exception) {
+        val error = DomainError.LogicError(
+            message = "Failed to get games similar to input \"$input\"",
+            cause = exception,
+        )
+        error(error)
     }
 }
 

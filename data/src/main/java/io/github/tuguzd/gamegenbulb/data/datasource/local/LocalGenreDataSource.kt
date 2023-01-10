@@ -5,33 +5,65 @@ import io.github.tuguzd.gamegenbulb.data.model.local.GenreEntity_
 import io.github.tuguzd.gamegenbulb.domain.model.content.Game
 import io.github.tuguzd.gamegenbulb.domain.model.content.Genre
 import io.github.tuguzd.gamegenbulb.domain.model.util.Id
+import io.github.tuguzd.gamegenbulb.domain.util.DomainError
 import io.github.tuguzd.gamegenbulb.domain.util.DomainResult
 import io.github.tuguzd.gamegenbulb.domain.util.success
+import io.objectbox.exception.DbException
 import io.objectbox.kotlin.awaitCallInTx
 import io.objectbox.kotlin.query
 import io.objectbox.query.QueryBuilder
 
 class LocalGenreDataSource(private val client: DatabaseClient) {
-    suspend fun read(id: Id<Genre>): DomainResult<Genre?> {
+    suspend fun read(id: Id<Genre>): DomainResult<Genre?> = try {
         val entity = client.boxStore.awaitCallInTx {
             client.genreBox.query {
-                equal(
-                    GenreEntity_.id, id.id,
-                    QueryBuilder.StringOrder.CASE_SENSITIVE
-                )
+                equal(GenreEntity_.id, id.id.toLong())
             }.findUnique()
         }
-        return success(entity?.toDomain())
+        success(entity?.toDomain())
+    } catch (dbException: DbException) {
+        val error = DomainError.StorageError(
+            message = "Failed to get genre by id '$id'",
+            cause = dbException,
+        )
+        error(error)
+    } catch (exception: Exception) {
+        val error = DomainError.LogicError(
+            message = "Failed to get genre by id '$id'",
+            cause = exception,
+        )
+        error(error)
     }
 
-    suspend fun readAll(page: Int, game: Id<Game>): DomainResult<List<Genre>> = success(
-        client.boxStore.awaitCallInTx { client.genreBox.all }!!
-            .filter { genre ->
+    suspend fun readAll(page: Int, limit: Int = 10, game: Id<Game>):
+        DomainResult<List<Genre>> = try {
+        val entity = client.boxStore.awaitCallInTx {
+            client.genreBox.query {
+                orderDesc(GenreEntity_.id)
+            }.find(
+                (page * limit).toLong(), limit.toLong()
+            )
+        }!!
+        success(
+            entity.filter { genre ->
                 genre.game.target?.id == game.id.toLong()
             }.map(GenreEntity::toDomain)
-    )
+        )
+    } catch (dbException: DbException) {
+        val error = DomainError.StorageError(
+            message = "Failed to get genres at page $page with limit $limit",
+            cause = dbException,
+        )
+        error(error)
+    } catch (exception: Exception) {
+        val error = DomainError.LogicError(
+            message = "Failed to get genres at page $page with limit $limit",
+            cause = exception,
+        )
+        error(error)
+    }
 
-    suspend fun save(item: Genre): DomainResult<Genre> {
+    suspend fun save(item: Genre): DomainResult<Genre> = try {
         val entity = client.boxStore.awaitCallInTx {
             val query = client.genreBox.query {
                 equal(
@@ -45,10 +77,47 @@ class LocalGenreDataSource(private val client: DatabaseClient) {
             client.genreBox.put(entity)
             entity
         }!!
-        return success(entity.toDomain())
+        success(entity.toDomain())
+//        val entity = client.boxStore.awaitCallInTx {
+//            val gameEntity = game?.let {
+//                client.gameBox.query {
+//                    equal(GameEntity_.id, item.id.id.toLong())
+//                }.findUnique() ?: throw IllegalArgumentException(
+//                    "Game wasn't found by id `$game`"
+//                )
+//            }
+//            val query = client.genreBox.query {
+//                equal(GenreEntity_.id, item.id.id.toLong())
+//            }
+//            val genreEntity = kotlin.run {
+//                val entity = query.findUnique()?.apply { name = item.name }
+//                if (entity == null && gameEntity == null) {
+//                    throw IllegalArgumentException(
+//                        "Cannot create genre $item without parent game"
+//                    )
+//                }
+//                entity ?: item.toEntity()
+//            }
+//            gameEntity?.let { genreEntity.game.target = it }
+//            client.genreBox.put(genreEntity)
+//            genreEntity
+//        }!!
+//        success(entity.toDomain())
+    } catch (dbException: DbException) {
+        val error = DomainError.StorageError(
+            message = "Failed to save genre $item",
+            cause = dbException,
+        )
+        error(error)
+    } catch (exception: Exception) {
+        val error = DomainError.LogicError(
+            message = "Failed to save genre $item",
+            cause = exception,
+        )
+        error(error)
     }
 
-    suspend fun search(input: String): DomainResult<List<Genre>> {
+    suspend fun search(input: String): DomainResult<List<Genre>> = try {
         val entity = client.boxStore.awaitCallInTx {
             client.genreBox.query {
                 contains(
@@ -57,7 +126,19 @@ class LocalGenreDataSource(private val client: DatabaseClient) {
                 )
             }.find()
         }!!
-        return success(entity.map(GenreEntity::toDomain))
+        success(entity.map(GenreEntity::toDomain))
+    } catch (dbException: DbException) {
+        val error = DomainError.StorageError(
+            message = "Failed to get genres similar to input \"$input\"",
+            cause = dbException,
+        )
+        error(error)
+    } catch (exception: Exception) {
+        val error = DomainError.LogicError(
+            message = "Failed to get genres similar to input \"$input\"",
+            cause = exception,
+        )
+        error(error)
     }
 }
 

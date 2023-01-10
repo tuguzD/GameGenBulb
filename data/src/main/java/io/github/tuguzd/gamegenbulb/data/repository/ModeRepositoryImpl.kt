@@ -22,5 +22,5 @@ class ModeRepositoryImpl(
         DomainResult<List<Mode>> = localDataSource.search(input)
 
     override suspend fun readAllOf(page: Int, item: Id<Game>):
-        DomainResult<List<Mode>> = localDataSource.readAll(page, item)
+        DomainResult<List<Mode>> = localDataSource.readAll(page, game = item)
 }

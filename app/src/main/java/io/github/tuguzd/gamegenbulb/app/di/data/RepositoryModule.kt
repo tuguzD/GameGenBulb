@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.github.tuguzd.gamegenbulb.data.GameRemoteMediator
 import io.github.tuguzd.gamegenbulb.data.datasource.local.*
 import io.github.tuguzd.gamegenbulb.data.datasource.remote.IgdbGameDataSource
 import io.github.tuguzd.gamegenbulb.data.repository.*
@@ -29,4 +30,10 @@ object RepositoryModule {
 //        remoteDataSource: IgdbGenreDataSource,
         localDataSource: LocalGenreDataSource,
     ): GenreRepository = GenreRepositoryImpl(localDataSource)
+
+    @Provides
+    fun provideGameRemoteMediator(
+        remoteDataSource: IgdbGameDataSource,
+        localDataSource: LocalGameDataSource,
+    ): GameRemoteMediator = GameRemoteMediator(remoteDataSource, localDataSource)
 }

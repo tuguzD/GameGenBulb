@@ -2,7 +2,6 @@ package io.github.tuguzd.gamegenbulb.app.view.screen
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -22,13 +21,13 @@ fun EntryScreen(
         composable(route = "community") {
             GameListScreen(
                 state = mainViewModel.state,
-                onGameClick = { game ->
-                    navController.navigate(route = "game/${game.id}")
+                onGameClick = {
+                    //game -> navController.navigate(route = "game/${game.id}")
                 },
             )
         }
-        composable(route = "game/{id}") {
-            Text("hehe")
-        }
+        //composable(route = "game/{id}") {
+        //    Text("hehe")
+        //}
     }
 }
