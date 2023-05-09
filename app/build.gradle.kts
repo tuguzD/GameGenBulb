@@ -1,11 +1,66 @@
-@file:Suppress("UnstableApiUsage")
-
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.android.gradle)
+    alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.google.ksp)
+}
+kapt {
+    correctErrorTypes = true
+    useBuildCache = true
 }
 
+dependencies {
+    // Android implementation
+    implementation(libs.core.ktx)
+    implementation(libs.core.splashscreen)
+    implementation(libs.lifecycle.runtime)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.activity.compose)
+
+    // DataStore implementation
+    implementation(libs.security.crypto)
+    implementation(libs.datastore)
+    implementation(libs.datastore.crypto)
+
+    // Third-party implementation
+    implementation(libs.coil)
+    implementation(libs.hilt)
+    implementation(libs.hilt.navigation)
+    kapt(libs.hilt.kapt)
+
+    // MVIKotlin implementation
+    implementation(libs.mvi)
+    implementation(libs.mvi.main)
+    implementation(libs.mvi.logging)
+    implementation(libs.mvi.coroutines)
+
+    // Jetpack Compose core implementation
+    val composeBom = platform(libs.compose.bom)
+    implementation(composeBom)
+    implementation(libs.ui)
+    implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling.preview)
+    debugImplementation(libs.ui.tooling)
+    debugImplementation(libs.ui.test.manifest)
+    implementation(libs.material.icons)
+    implementation(libs.material3)
+    implementation(libs.material3.window.size)
+
+    // Jetpack Compose addon implementation
+    implementation(libs.accompanist.placeholder)
+    implementation(libs.destinations.core)
+    ksp(libs.destinations.ksp)
+
+    // Testing implementation
+    testImplementation(libs.junit)
+    androidTestImplementation(composeBom)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(libs.junit.ext)
+}
+
+@Suppress("UnstableApiUsage")
 android {
     namespace = "io.github.tuguzd.gamegenbulb"
     compileSdk = 33
@@ -39,40 +94,15 @@ android {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_18
+        targetCompatibility = JavaVersion.VERSION_18
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        jvmToolchain(18)
     }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-}
-
-dependencies {
-    val composeBom = platform(libs.compose.bom)
-
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.activity.compose)
-    implementation(composeBom)
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.material3)
-    implementation(libs.material3.window.size)
-
-    // Testing
-    testImplementation(libs.junit)
-    androidTestImplementation(composeBom)
-    androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(libs.ui.test.junit4)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-
-    // Debugging
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
 }
