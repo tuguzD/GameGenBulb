@@ -1,24 +1,6 @@
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    id("com.android.application") version "7.3.1" apply false
-    id("com.android.library") version "7.3.1" apply false
-    kotlin("jvm") version "1.7.20" apply false
-    kotlin("android") version "1.7.20" apply false
-    kotlin("plugin.serialization") version "1.7.20" apply false
+    alias(libs.plugins.android.gradle) apply false
+    alias(libs.plugins.kotlin.android) apply false
 }
-
-buildscript {
-    dependencies {
-        classpath(
-            io.github.tuguzd.gamegenbulb.buildconfig
-                .android.dependency.local.ObjectBox.plugin
-        )
-        classpath(
-            io.github.tuguzd.gamegenbulb.buildconfig
-                .android.dependency.architecture.Hilt.plugin
-        )
-    }
-}
-
-task<Delete>("clean") {
-    delete(rootProject.buildDir)
-}
+true // Needed to make the Suppress annotation work for the plugins block

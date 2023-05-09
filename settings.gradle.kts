@@ -1,8 +1,12 @@
+rootProject.name = "GameGenBulb"
+
+include(":app")
+
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 
@@ -12,10 +16,5 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven(url = "https://jitpack.io")
-        maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots")
     }
 }
-
-rootProject.name = "GameGenBulb"
-include(":domain", ":data", ":app")

@@ -1,21 +1,18 @@
-import io.github.tuguzd.gamegenbulb.buildconfig.android.dependency.Kotlin
-import io.github.tuguzd.gamegenbulb.buildconfig.android.implementation.*
+@file:Suppress("UnstableApiUsage")
 
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    // id("com.google.relay") version "0.3.01"
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
+    alias(libs.plugins.android.gradle)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
+    namespace = "io.github.tuguzd.gamegenbulb"
     compileSdk = 33
-    namespace = "io.github.tuguzd.gamegenbulb.app"
 
     defaultConfig {
         applicationId = "io.github.tuguzd.gamegenbulb"
-        minSdk = 23
+        minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -26,73 +23,56 @@ android {
         }
     }
 
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Kotlin.CompilerExtension.version
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.3"
+    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
 dependencies {
-    // Must-have Android dependencies
-    appImplementation()
-    // Clean Architecture layers
-    implementation(project(":data"))
-    implementation(project(":domain"))
+    val composeBom = platform(libs.compose.bom)
 
-    // Kotlin extensions
-    implementation(Kotlin.X.Coroutine.android)
-    implementation(Kotlin.X.Coroutine.playServices)
+    implementation(libs.core.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.activity.compose)
+    implementation(composeBom)
+    implementation(libs.ui)
+    implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.material3)
+    implementation(libs.material3.window.size)
 
-    // Dependency Injection (DI)
-    hiltImplementation()
+    // Testing
+    testImplementation(libs.junit)
+    androidTestImplementation(composeBom)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(libs.androidx.test.ext.junit)
 
-    // Jetpack Compose
-    composeCoreImplementation()
-    materialDesignImplementation()
-    navigationImplementation()
-    // Additional features for Jetpack Compose
-    composeThirdPartyImplementation()
-    accompanistFeatureImplementation()
-
-    // Authentication
-    googleImplementation()
-
-    // Quality Assurance
-    androidTestImplementation(Kotlin.X.Coroutine.Test.dependency) {
-        exclude(
-            group = Kotlin.X.group,
-            module = Kotlin.X.Coroutine.Test.excludedModule
-        )
-    }
-    appLoggingImplementation()
-    unitTestingImplementation()
-    instrumentTestingImplementation()
+    // Debugging
+    debugImplementation(libs.ui.tooling)
+    debugImplementation(libs.ui.test.manifest)
 }
