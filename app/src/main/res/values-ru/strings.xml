@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile">Профиль</string>
+    <string name="login">Вход</string>
+    <string name="register">Регистрация</string>
+    <string name="settings">Настройки</string>
+    <string name="community">Сообщество</string>
+    <string name="workshop">Мастерская</string>
+    <string name="user_profile">Профиль</string>
+    <string name="notifications">Уведомления</string>
+    <string name="authors">Авторы</string>
+    <string name="ideas">Идеи</string>
+    <string name="games">Игры</string>
+</resources>

@@ -61,11 +61,14 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = libs.versions.test.runner.get()
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner =
+            libs.versions.test.runner.get()
     }
+
+    buildFeatures.compose = true
+    composeOptions.kotlinCompilerExtensionVersion =
+        libs.versions.compose.compiler.get()
 
     buildTypes {
         release {
@@ -75,10 +78,6 @@ android {
                 "proguard-rules.pro",
             )
         }
-    }
-    buildFeatures.compose = true
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_18

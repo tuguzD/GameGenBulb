@@ -1,3 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GameGenBulb</string>
+    <string name="app_name" translatable="false">GameGenBulb</string>
+    <string name="profile">Profile</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="settings">Settings</string>
+    <string name="community">Community</string>
+    <string name="workshop">Workshop</string>
+    <string name="user_profile">User profile</string>
+    <string name="notifications">Notifications</string>
+    <string name="authors">Authors</string>
+    <string name="ideas">Ideas</string>
+    <string name="games">Games</string>
 </resources>
