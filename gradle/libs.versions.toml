@@ -1,4 +1,10 @@
-[versions]
+[ versions ]
+# Gradle DSL versions
+sdk-min = "24"
+sdk-target = "33"
+sdk-compile = "33"
+namespace = "io.github.tuguzd.gamegenbulb"
+test-runner = "androidx.test.runner.AndroidJUnitRunner"
 # Android versions
 core-ktx = "1.10.0"
 core-splashscreen = "1.0.1"
@@ -8,7 +14,8 @@ datastore = "1.0.0"
 security = "1.0.0"
 # Third-party versions
 coil = "2.3.0"
-hilt = "2.44"
+hilt-google = "2.44"
+hilt-androidx = "1.0.0"
 mvi = "3.2.0"
 datastore-crypto = "1.0.0-alpha04"
 # Jetpack Compose versions
@@ -24,7 +31,7 @@ agp = "8.0.1"
 ksp = "1.8.10-1.0.9"
 kotlin = "1.8.10"
 
-[libraries]
+[ libraries ]
 # Android libraries
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "core-splashscreen" }
@@ -32,27 +39,27 @@ activity-compose = { group = "androidx.activity", name = "activity-compose", ver
 lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 # DataStore libraries
-datastore = { group = "androidx.datastore", name = "datastore", version.ref = "datastore" }
-#pref-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
-datastore-crypto = { group = "io.github.osipxd", name = "security-crypto-datastore", version.ref = "datastore-crypto" }
-#pref-datastore-crypto = { group = "io.github.osipxd", name = "security-crypto-datastore-preferences", version.ref = "datastore-crypto" }
+datastore-prot = { group = "androidx.datastore", name = "datastore", version.ref = "datastore" }
+datastore-prot-crypto = { group = "io.github.osipxd", name = "security-crypto-datastore", version.ref = "datastore-crypto" }
+datastore-pref = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+datastore-pref-crypto = { group = "io.github.osipxd", name = "security-crypto-datastore-preferences", version.ref = "datastore-crypto" }
 security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
 # Third-party libraries
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-kapt = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
-hilt-navigation = { group = "com.google.dagger", name = "hilt-navigation-compose", version.ref = "hilt" }
+hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-google" }
+hilt-kapt = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt-google" }
+hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-androidx" }
 # MVIKotlin libraries
 mvi = { group = "com.arkivanov.mvikotlin", name = "mvikotlin", version.ref = "mvi" }
 mvi-main = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-main", version.ref = "mvi" }
 mvi-logging = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-logging", version.ref = "mvi" }
 mvi-coroutines = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-extensions-coroutines", version.ref = "mvi" }
-# Jetpack Compose core libraries
+# Jetpack Compose libraries
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 material-icons = { group = "androidx.compose.material", name = "material-icons-extended" }
@@ -62,17 +69,34 @@ material3-window-size = { group = "androidx.compose.material3", name = "material
 accompanist-placeholder = { group = "com.google.accompanist", name = "accompanist-placeholder-material", version.ref = "accompanist" }
 destinations-core = { group = "io.github.raamcosta.compose-destinations", name = "core", version.ref = "destinations" }
 destinations-ksp = { group = "io.github.raamcosta.compose-destinations", name = "ksp", version.ref = "destinations" }
-# Testing libraries
+# General testing libraries
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-junit-ext = { group = "androidx.test.ext", name = "junit", version.ref = "junit-ext" }
+junit-android-ext = { group = "androidx.test.ext", name = "junit", version.ref = "junit-ext" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 
-[plugins] # Plugin definitions
+[ bundles ]
+# Android bundles
+core = [ "core-ktx", "core-splashscreen" ]
+lifecycle = [ "lifecycle-runtime", "lifecycle-viewmodel" ]
+# DataStore bundles
+encr-shared-pref = [ "security-crypto" ]
+encr-datastore-prot = [ "datastore-prot", "datastore-prot-crypto" ]
+encr-datastore-pref = [ "datastore-pref", "datastore-pref-crypto" ]
+# Jetpack Compose bundles
+compose-impl = [ "ui", "ui-graphics", "ui-tooling-preview" ]
+compose-debug = [ "ui-tooling", "ui-test-manifest" ]
+material3 = [ "material3", "material3-window-size" ]
+# Third-party bundles
+hilt = [ "hilt", "hilt-navigation" ]
+mvi = [ "mvi", "mvi-main", "mvi-logging", "mvi-coroutines" ]
+# General testing libraries
+junit-android = [ "junit-android-ext", "ui-test-junit4" ]
+
+[ plugins ] # Plugin definitions
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-
-[bundles]
+devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt-google" }

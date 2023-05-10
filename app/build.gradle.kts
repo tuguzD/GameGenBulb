@@ -3,76 +3,65 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.google.ksp)
+    alias(libs.plugins.devtools.ksp)
+    alias(libs.plugins.hilt.android)
 }
 kapt {
-    correctErrorTypes = true
     useBuildCache = true
+    correctErrorTypes = true
+    showProcessorStats = true
 }
 
 dependencies {
     // Android implementation
-    implementation(libs.core.ktx)
-    implementation(libs.core.splashscreen)
-    implementation(libs.lifecycle.runtime)
-    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.bundles.core)
+    implementation(libs.bundles.lifecycle)
     implementation(libs.activity.compose)
 
     // DataStore implementation
-    implementation(libs.security.crypto)
-    implementation(libs.datastore)
-    implementation(libs.datastore.crypto)
+    implementation(libs.bundles.encr.shared.pref)
+    implementation(libs.bundles.encr.datastore.prot)
+    implementation(libs.bundles.encr.datastore.pref)
 
     // Third-party implementation
     implementation(libs.coil)
-    implementation(libs.hilt)
-    implementation(libs.hilt.navigation)
+    implementation(libs.bundles.mvi)
+    implementation(libs.bundles.hilt)
     kapt(libs.hilt.kapt)
 
-    // MVIKotlin implementation
-    implementation(libs.mvi)
-    implementation(libs.mvi.main)
-    implementation(libs.mvi.logging)
-    implementation(libs.mvi.coroutines)
-
-    // Jetpack Compose core implementation
+    // Jetpack Compose implementation
     val composeBom = platform(libs.compose.bom)
     implementation(composeBom)
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
+    implementation(libs.bundles.compose.impl)
     implementation(libs.material.icons)
-    implementation(libs.material3)
-    implementation(libs.material3.window.size)
+    implementation(libs.bundles.material3)
 
     // Jetpack Compose addon implementation
     implementation(libs.accompanist.placeholder)
     implementation(libs.destinations.core)
     ksp(libs.destinations.ksp)
 
-    // Testing implementation
+    // General testing implementation
     testImplementation(libs.junit)
+    debugImplementation(libs.bundles.compose.debug)
     androidTestImplementation(composeBom)
     androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(libs.ui.test.junit4)
-    androidTestImplementation(libs.junit.ext)
+    androidTestImplementation(libs.bundles.junit.android)
 }
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "io.github.tuguzd.gamegenbulb"
-    compileSdk = 33
+    namespace = libs.versions.namespace.get()
+    compileSdk = libs.versions.sdk.compile.get().toInt()
 
     defaultConfig {
-        applicationId = "io.github.tuguzd.gamegenbulb"
-        minSdk = 24
-        targetSdk = 33
+        applicationId = libs.versions.namespace.get()
+        minSdk = libs.versions.sdk.min.get().toInt()
+        targetSdk = libs.versions.sdk.target.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = libs.versions.test.runner.get()
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -87,9 +76,7 @@ android {
             )
         }
     }
-    buildFeatures {
-        compose = true
-    }
+    buildFeatures.compose = true
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
