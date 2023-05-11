@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package io.github.tuguzd.gamegenbulb.view.screen.root
+package io.github.tuguzd.gamegenbulb.view.screen
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
@@ -12,7 +12,7 @@ import io.github.tuguzd.gamegenbulb.view.screen.destinations.CommunityScreenDest
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.UserProfileScreenDestination
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.WorkshopScreenDestination
 
-enum class BottomBarDestination(
+enum class AppDestination(
     val direction: DirectionDestinationSpec,
     val icon: ImageVector,
     @StringRes val label: Int,

@@ -11,7 +11,7 @@ import io.github.tuguzd.gamegenbulb.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBar(
+fun AppTopBar(
     modifier: Modifier = Modifier,
     title: String = stringResource(R.string.app_name),
 ) = CenterAlignedTopAppBar(
