@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen
+package io.github.tuguzd.gamegenbulb.view.screen.workshop
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

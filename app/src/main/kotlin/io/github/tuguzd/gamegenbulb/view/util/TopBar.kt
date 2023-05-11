@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen.basic
+package io.github.tuguzd.gamegenbulb.view.util
 
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -11,7 +11,7 @@ import io.github.tuguzd.gamegenbulb.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BasicTopBar(
+fun TopBar(
     modifier: Modifier = Modifier,
     title: String = stringResource(R.string.app_name),
 ) = CenterAlignedTopAppBar(

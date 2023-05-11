@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen
+package io.github.tuguzd.gamegenbulb.view.screen.community
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons

@@ -1,10 +1,11 @@
-package io.github.tuguzd.gamegenbulb
+package io.github.tuguzd.gamegenbulb.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import io.github.tuguzd.gamegenbulb.view.MainActivityContent
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
