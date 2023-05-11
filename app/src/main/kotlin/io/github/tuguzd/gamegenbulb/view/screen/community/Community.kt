@@ -13,28 +13,26 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
-import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import io.github.tuguzd.gamegenbulb.R
+import com.ramcosta.composedestinations.annotation.Destination as AntDestination
 
 @RootNavGraph(start = true)
-@Destination
+@AntDestination
 @Composable
 fun CommunityScreen() {
     var state by remember { mutableStateOf(0) }
-    val list = listOf(
-        stringResource(R.string.authors),
-        stringResource(R.string.ideas),
-        stringResource(R.string.games),
-    )
+    val list = CommunityDestination.values()
+
     Column {
         TabRow(selectedTabIndex = state) {
             list.forEachIndexed { index, item ->
+                val label = stringResource(item.label)
                 LeadingIconTab(
                     selected = state == index,
                     onClick = { state = index },
-                    text = { Text(text = item) },
-                    icon = { Icon(Icons.Filled.SdCard, contentDescription = item) },
+                    text = { Text(text = label) },
+                    icon = { Icon(Icons.Filled.SdCard, label) },
                 )
             }
         }
