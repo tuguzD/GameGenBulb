@@ -13,12 +13,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
+import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import io.github.tuguzd.gamegenbulb.R
-import com.ramcosta.composedestinations.annotation.Destination as AntDestination
 
 @RootNavGraph(start = true)
-@AntDestination
+@Destination
 @Composable
 fun CommunityScreen() {
     var state by remember { mutableStateOf(0) }
