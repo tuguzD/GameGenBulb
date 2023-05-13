@@ -1,6 +1,7 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.android.junit5)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.devtools.ksp)
@@ -17,7 +18,6 @@ dependencies {
     implementation(libs.bundles.core)
     implementation(libs.bundles.lifecycle)
     implementation(libs.activity.compose)
-
     // DataStore implementation
     implementation(libs.bundles.encr.shared.pref)
     implementation(libs.bundles.encr.datastore.prot)
@@ -29,24 +29,28 @@ dependencies {
     implementation(libs.bundles.hilt)
     kapt(libs.hilt.kapt)
 
-    // Jetpack Compose implementation
     val composeBom = platform(libs.compose.bom)
+    // Jetpack Compose implementation
     implementation(composeBom)
     implementation(libs.bundles.compose.impl)
     implementation(libs.material.icons)
     implementation(libs.bundles.material3)
-
     // Jetpack Compose addon implementation
     implementation(libs.accompanist.placeholder)
     implementation(libs.destinations.core)
     ksp(libs.destinations.ksp)
 
     // General testing implementation
-    testImplementation(libs.junit)
-    debugImplementation(libs.bundles.compose.debug)
-    androidTestImplementation(composeBom)
     androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(libs.bundles.junit.android)
+    // JUnit 4 implementation
+    androidTestImplementation(composeBom)
+    testImplementation(libs.junit4)
+    debugImplementation(libs.bundles.compose.debug)
+    androidTestImplementation(libs.bundles.junit4.android)
+    // JUnit 5 implementation
+    testImplementation(libs.bundles.junit5.core)
+    testRuntimeOnly(libs.bundles.junit5.engine)
+    androidTestImplementation(libs.junit5.api)
 }
 
 @Suppress("UnstableApiUsage")
@@ -58,12 +62,16 @@ android {
         applicationId = libs.versions.namespace.get()
         minSdk = libs.versions.sdk.min.get().toInt()
         targetSdk = libs.versions.sdk.target.get().toInt()
+
         versionCode = 1
         versionName = "1.0"
 
-        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner =
             libs.versions.test.runner.get()
+        testInstrumentationRunnerArguments["runnerBuilder"] =
+            libs.versions.test.args.get()
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildFeatures.compose = true

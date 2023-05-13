@@ -5,11 +5,13 @@ sdk-target = "33"
 sdk-compile = "33"
 namespace = "io.github.tuguzd.gamegenbulb"
 test-runner = "androidx.test.runner.AndroidJUnitRunner"
+test-args = "de.mannodermaus.junit5.AndroidJUnit5Builder"
 compose-compiler = "1.4.7"
 # Plugin versions
 agp = "8.0.1"
 ksp = "1.8.21-1.0.11"
 kotlin = "1.8.21"
+android-junit5 = "1.9.3.0"
 # Android versions
 core-ktx = "1.10.1"
 core-splashscreen = "1.0.1"
@@ -28,8 +30,9 @@ compose-bom = "2023.05.01"
 accompanist = "0.30.1"
 destinations = "1.8.41-beta"
 # Testing versions
-junit = "4.13.2"
-junit-ext = "1.1.5"
+junit4 = "4.13.2"
+junit4-ext = "1.1.5"
+junit5 = "5.9.3"
 espresso-core = "3.5.1"
 
 [ libraries ]
@@ -45,6 +48,7 @@ datastore-prot-crypto = { group = "io.github.osipxd", name = "security-crypto-da
 datastore-pref = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
 datastore-pref-crypto = { group = "io.github.osipxd", name = "security-crypto-datastore-preferences", version.ref = "datastore-crypto" }
 security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
+
 # Third-party libraries
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-google" }
@@ -55,6 +59,7 @@ mvi = { group = "com.arkivanov.mvikotlin", name = "mvikotlin", version.ref = "mv
 mvi-main = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-main", version.ref = "mvi" }
 mvi-logging = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-logging", version.ref = "mvi" }
 mvi-coroutines = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-extensions-coroutines", version.ref = "mvi" }
+
 # Jetpack Compose libraries
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
 ui = { group = "androidx.compose.ui", name = "ui" }
@@ -70,10 +75,17 @@ material3-window-size = { group = "androidx.compose.material3", name = "material
 accompanist-placeholder = { group = "com.google.accompanist", name = "accompanist-placeholder-material", version.ref = "accompanist" }
 destinations-core = { group = "io.github.raamcosta.compose-destinations", name = "core", version.ref = "destinations" }
 destinations-ksp = { group = "io.github.raamcosta.compose-destinations", name = "ksp", version.ref = "destinations" }
+
 # General testing libraries
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-junit-android-ext = { group = "androidx.test.ext", name = "junit", version.ref = "junit-ext" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+# JUnit 4 libraries
+junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
+junit4-android-ext = { group = "androidx.test.ext", name = "junit", version.ref = "junit4-ext" }
+# JUnit 5 libraries
+junit5-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit5" }
+junit5-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit5" }
+junit5-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junit5" }
+junit5-vintage-engine = { group = "org.junit.vintage", name = "junit-vintage-engine", version.ref = "junit5" }
 
 [ bundles ] # Groups of libraries
 # Android bundles
@@ -91,11 +103,14 @@ material3 = [ "material3", "material3-window-size" ]
 hilt = [ "hilt", "hilt-navigation" ]
 mvi = [ "mvi", "mvi-main", "mvi-logging", "mvi-coroutines" ]
 # General testing libraries
-junit-android = [ "junit-android-ext", "ui-test-junit4" ]
+junit4-android = [ "junit4-android-ext", "ui-test-junit4" ]
+junit5-core = [ "junit5-api", "junit5-params" ]
+junit5-engine = [ "junit5-engine", "junit5-vintage-engine" ]
 
 [ plugins ] # Plugin definitions
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+android-junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "android-junit5" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
