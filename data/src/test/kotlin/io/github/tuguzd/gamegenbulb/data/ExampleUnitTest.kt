@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb
+package io.github.tuguzd.gamegenbulb.data
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test

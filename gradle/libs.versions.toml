@@ -1,6 +1,6 @@
 [ versions ]
 # Gradle DSL versions
-sdk-min = "24"
+sdk-min = "26"
 sdk-target = "33"
 sdk-compile = "33"
 namespace = "io.github.tuguzd.gamegenbulb"
@@ -8,14 +8,16 @@ test-runner = "androidx.test.runner.AndroidJUnitRunner"
 test-args = "de.mannodermaus.junit5.AndroidJUnit5Builder"
 compose-compiler = "1.4.7"
 # Plugin versions
-agp = "8.0.1"
+agp = "8.0.2"
 ksp = "1.8.21-1.0.11"
 kotlin = "1.8.21"
 android-junit5 = "1.9.3.0"
+# KotlinX versions
+kotlinx-coroutines = "1.7.1"
 # Android versions
 core-ktx = "1.10.1"
 core-splashscreen = "1.0.1"
-activity = "1.7.1"
+activity = "1.7.2"
 lifecycle = "2.6.1"
 datastore = "1.0.0"
 security = "1.0.0"
@@ -25,6 +27,8 @@ hilt-google = "2.44"
 hilt-androidx = "1.0.0"
 mvi = "3.2.0"
 datastore-crypto = "1.0.0-alpha04"
+objectbox = "3.6.0"
+apollo-graphql = "3.8.1"
 # Jetpack Compose versions
 compose-bom = "2023.05.01"
 accompanist = "0.30.1"
@@ -36,6 +40,10 @@ junit5 = "5.9.3"
 espresso-core = "3.5.1"
 
 [ libraries ]
+# Kotlin libraries
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+coroutines-debug = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-debug", version.ref = "kotlinx-coroutines" }
 # Android libraries
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "core-splashscreen" }
@@ -51,6 +59,8 @@ security-crypto = { group = "androidx.security", name = "security-crypto", versi
 
 # Third-party libraries
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+apollo-runtime = { group = "com.apollographql.apollo3", name = "apollo-runtime", version.ref = "apollo-graphql" }
+# Hilt libraries
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-google" }
 hilt-kapt = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt-google" }
 hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-androidx" }
@@ -59,6 +69,11 @@ mvi = { group = "com.arkivanov.mvikotlin", name = "mvikotlin", version.ref = "mv
 mvi-main = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-main", version.ref = "mvi" }
 mvi-logging = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-logging", version.ref = "mvi" }
 mvi-coroutines = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-extensions-coroutines", version.ref = "mvi" }
+# ObjectBox libraries
+objectbox-gradle = { group = "io.objectbox", name = "objectbox-gradle-plugin", version.ref = "objectbox" }
+objectbox-kotlin = { group = "io.objectbox", name = "objectbox-kotlin", version.ref = "objectbox" }
+objectbox-android = { group = "io.objectbox", name = "objectbox-android", version.ref = "objectbox" }
+objectbox-android-objectbrowser = { group = "io.objectbox", name = "objectbox-android-objectbrowser", version.ref = "objectbox" }
 
 # Jetpack Compose libraries
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
@@ -106,6 +121,7 @@ mvi = [ "mvi", "mvi-main", "mvi-logging", "mvi-coroutines" ]
 junit4-android = [ "junit4-android-ext", "ui-test-junit4" ]
 junit5-core = [ "junit5-api", "junit5-params" ]
 junit5-engine = [ "junit5-engine", "junit5-vintage-engine" ]
+coroutines-test = [ "coroutines-test", "coroutines-debug" ]
 
 [ plugins ] # Plugin definitions
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -116,3 +132,5 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt-google" }
+objectbox = { id = "io.objectbox", version.ref = "objectbox" }
+apollo-graphql = { id = "com.apollographql.apollo3", version.ref = "apollo-graphql" }

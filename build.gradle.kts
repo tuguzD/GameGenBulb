@@ -8,5 +8,12 @@ plugins {
     alias(libs.plugins.kotlin.kapt) apply false
     alias(libs.plugins.devtools.ksp) apply false
     alias(libs.plugins.hilt.android) apply false
+    alias(libs.plugins.apollo.graphql) apply false
+}
+
+buildscript {
+    dependencies {
+        classpath(libs.objectbox.gradle)
+    }
 }
 true // Needed to make the Suppress annotation work for the plugins block

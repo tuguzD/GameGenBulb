@@ -14,20 +14,20 @@ kapt {
 }
 
 dependencies {
+    // Clean Architecture layers
+    implementation(project(":data"))
+    implementation(project(":domain"))
+
     // Android implementation
     implementation(libs.bundles.core)
     implementation(libs.bundles.lifecycle)
     implementation(libs.activity.compose)
-    // DataStore implementation
-    implementation(libs.bundles.encr.shared.pref)
-    implementation(libs.bundles.encr.datastore.prot)
-    implementation(libs.bundles.encr.datastore.pref)
 
     // Third-party implementation
     implementation(libs.coil)
     implementation(libs.bundles.mvi)
-    implementation(libs.bundles.hilt)
     kapt(libs.hilt.kapt)
+    implementation(libs.bundles.hilt)
 
     val composeBom = platform(libs.compose.bom)
     // Jetpack Compose implementation
@@ -53,13 +53,15 @@ dependencies {
     androidTestImplementation(libs.junit5.api)
 }
 
+val appNamespace: String = libs.versions.namespace.get()
+
 @Suppress("UnstableApiUsage")
 android {
-    namespace = libs.versions.namespace.get()
+    namespace = appNamespace
     compileSdk = libs.versions.sdk.compile.get().toInt()
 
     defaultConfig {
-        applicationId = libs.versions.namespace.get()
+        applicationId = appNamespace
         minSdk = libs.versions.sdk.min.get().toInt()
         targetSdk = libs.versions.sdk.target.get().toInt()
 

@@ -1,6 +1,6 @@
 rootProject.name = "GameGenBulb"
 
-include(":app")
+include(":domain", ":data", ":app")
 
 pluginManagement {
     repositories {
