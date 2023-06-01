@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 fun BadgeIconButton(
     modifier: Modifier = Modifier,
     text: Int? = null,
+    needBadge: Boolean = false,
     imageVector: ImageVector,
     contentDescription: String?,
     onClick: () -> Unit,
@@ -29,19 +30,21 @@ fun BadgeIconButton(
         imageVector = imageVector,
         contentDescription = contentDescription,
     )
-    BadgedBox(
-        badge = {
-            text?.also {
-                Badge { Text(text.toString()) }
-            } ?: Badge()
+    if (needBadge) {
+        BadgedBox(
+            badge = {
+                text?.also {
+                    Badge { Text(text.toString()) }
+                } ?: Badge()
+            }
+        ) {
+            Icon(
+                modifier = Modifier
+                    .size(18.dp)
+                    .alpha(0f),
+                imageVector = imageVector,
+                contentDescription = null,
+            )
         }
-    ) {
-        Icon(
-            modifier = Modifier
-                .size(18.dp)
-                .alpha(0f),
-            imageVector = imageVector,
-            contentDescription = null,
-        )
     }
 }

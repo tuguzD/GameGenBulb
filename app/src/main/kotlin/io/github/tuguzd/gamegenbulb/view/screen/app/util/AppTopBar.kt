@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import com.ramcosta.composedestinations.navigation.navigate
 import io.github.tuguzd.gamegenbulb.R
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
+import io.github.tuguzd.gamegenbulb.view.screen.destinations.NotificationScreenDestination
 import io.github.tuguzd.gamegenbulb.view.util.BadgeIconButton
 import io.github.tuguzd.gamegenbulb.view.util.MyIconButton
 import io.github.tuguzd.gamegenbulb.view.util.OneLineTitle
@@ -35,10 +36,11 @@ fun AppTopBar(
     },
     actions = {
         BadgeIconButton(
+//            needBadge = true,
             imageVector = Icons.Rounded.Notifications,
             contentDescription = stringResource(R.string.notifications),
         ) {
-            navController.navigate(NavGraphs.root)
+            navController.navigate(NotificationScreenDestination)
         }
     },
 )
