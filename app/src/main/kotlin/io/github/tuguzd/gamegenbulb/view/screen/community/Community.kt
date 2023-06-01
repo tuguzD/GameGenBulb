@@ -13,29 +13,69 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavController
+import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
-import io.github.tuguzd.gamegenbulb.R
+import com.ramcosta.composedestinations.navigation.navigate
+import com.ramcosta.composedestinations.rememberNavHostEngine
+import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
+import io.github.tuguzd.gamegenbulb.view.screen.appCurrentDestinationAsState
+import io.github.tuguzd.gamegenbulb.view.screen.startAppDestination
 
 @RootNavGraph(start = true)
 @Destination
 @Composable
 fun CommunityScreen() {
-    var state by remember { mutableStateOf(0) }
-    val list = CommunityDestination.values()
+    val engine = rememberNavHostEngine()
+    val navController = engine.rememberNavController()
 
     Column {
-        TabRow(selectedTabIndex = state) {
-            list.forEachIndexed { index, item ->
-                val label = stringResource(item.label)
-                LeadingIconTab(
-                    selected = state == index,
-                    onClick = { state = index },
-                    text = { Text(text = label) },
-                    icon = { Icon(Icons.Filled.SdCard, label) },
-                )
+        CommunityTabRow(navController)
+        DestinationsNavHost(
+            engine = engine,
+            navController = navController,
+            navGraph = NavGraphs.community,
+        )
+    }
+}
+
+@Composable
+fun CommunityTabRow(
+    navController: NavController,
+) {
+    val currentDestination =
+        navController.appCurrentDestinationAsState().value
+            ?: NavGraphs.community.startAppDestination
+
+    val index = CommunityDestination.values()
+        .indexOfFirst { it.direction == currentDestination }
+
+    var state by remember(index) { mutableStateOf(index) }
+
+    TabRow(selectedTabIndex = state) {
+        CommunityDestination.values().forEachIndexed { index, destination ->
+            val selected = state == index
+            CommunityIconTab(destination, selected) {
+                if (!selected) {
+                    state = index
+                    navController.navigate(destination.direction)
+                }
             }
         }
-        Text(text = "${stringResource(R.string.community)} — ${list[state]}")
     }
+}
+
+@Composable
+private fun CommunityIconTab(
+    destination: CommunityDestination,
+    selected: Boolean,
+    onClick: () -> Unit,
+) {
+    val label = stringResource(destination.label)
+    LeadingIconTab(
+        selected = selected, onClick = onClick,
+        text = { Text(text = label) },
+        icon = { Icon(Icons.Filled.SdCard, label) },
+    )
 }

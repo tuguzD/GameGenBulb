@@ -32,7 +32,7 @@ fun AppBottomBar(
 }
 
 @Composable
-fun RowScope.AppBottomBarItem(
+private fun RowScope.AppBottomBarItem(
     destination: AppDestination,
     currentDestination: Destination,
     navController: NavController,
