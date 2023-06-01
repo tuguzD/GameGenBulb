@@ -1,10 +1,12 @@
 @file:Suppress("unused")
 
-package io.github.tuguzd.gamegenbulb.view.screen.community
+package io.github.tuguzd.gamegenbulb.view.screen.community.util
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.SdCard
+import androidx.compose.material.icons.rounded.People
+import androidx.compose.material.icons.rounded.SportsEsports
+import androidx.compose.material.icons.rounded.TipsAndUpdates
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
 import io.github.tuguzd.gamegenbulb.R
@@ -19,17 +21,17 @@ enum class CommunityDestination(
 ) {
     Authors(
         direction = AuthorListScreenDestination,
-        icon = Icons.Filled.SdCard,
+        icon = Icons.Rounded.People,
         label = R.string.authors,
     ),
     Ideas(
         direction = IdeaListScreenDestination,
-        icon = Icons.Filled.SdCard,
+        icon = Icons.Rounded.TipsAndUpdates,
         label = R.string.ideas,
     ),
     Games(
         direction = GameListScreenDestination,
-        icon = Icons.Filled.SdCard,
+        icon = Icons.Rounded.SportsEsports,
         label = R.string.games,
     ),
 }
