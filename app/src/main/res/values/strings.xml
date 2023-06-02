@@ -13,4 +13,9 @@
     <string name="ideas">Ideas</string>
     <string name="games">Games</string>
     <string name="search">Search</string>
+    <string name="navigate_up">Navigate up</string>
+    <string name="clear">Clear</string>
+    <string name="results">results</string>
+    <string name="search_params">Search params</string>
+    <string name="sorting">Sorting</string>
 </resources>

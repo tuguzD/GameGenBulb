@@ -12,4 +12,9 @@
     <string name="ideas">Идеи</string>
     <string name="games">Игры</string>
     <string name="search">Поиск</string>
+    <string name="navigate_up">Назад</string>
+    <string name="clear">Очистить</string>
+    <string name="results">результат</string>
+    <string name="search_params">Параметры поиска</string>
+    <string name="sorting">Сортировка</string>
 </resources>

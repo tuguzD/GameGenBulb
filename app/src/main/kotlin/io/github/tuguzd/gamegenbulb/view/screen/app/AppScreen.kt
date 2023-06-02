@@ -4,29 +4,35 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.rememberNavHostEngine
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppBottomBar
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppTopBar
 
+@RootNavGraph(start = true)
+@Destination
 @Composable
 fun AppScreen(
     modifier: Modifier = Modifier,
+    rootNavController: NavController,
 ) {
     val engine = rememberNavHostEngine()
-    val navController = engine.rememberNavController()
+    val appNavController = engine.rememberNavController()
 
     Scaffold(
         modifier = modifier,
-        topBar = { AppTopBar(navController = navController) },
-        bottomBar = { AppBottomBar(navController = navController) },
+        topBar = { AppTopBar(navController = rootNavController) },
+        bottomBar = { AppBottomBar(navController = appNavController) },
     ) { padding ->
         DestinationsNavHost(
-            engine = engine,
-            navController = navController,
-            navGraph = NavGraphs.root,
             modifier = Modifier.padding(padding),
+            engine = engine,
+            navController = appNavController,
+            navGraph = NavGraphs.app,
         )
     }
 }

@@ -23,7 +23,7 @@ fun AppBottomBar(
 ) {
     val currentDestination: Destination =
         navController.appCurrentDestinationAsState().value
-            ?: NavGraphs.root.startAppDestination
+            ?: NavGraphs.app.startAppDestination
 
     NavigationBar(
         modifier = modifier,

@@ -21,7 +21,7 @@ fun BadgeIconButton(
     needBadge: Boolean = false,
     imageVector: ImageVector,
     contentDescription: String?,
-    onClick: () -> Unit,
+    onClick: () -> Unit = { },
 ) = IconButton(
     modifier = modifier,
     onClick = onClick,
@@ -34,13 +34,13 @@ fun BadgeIconButton(
         BadgedBox(
             badge = {
                 text?.also {
-                    Badge { Text(text.toString()) }
+                    Badge { Text(it.toString()) }
                 } ?: Badge()
             }
         ) {
             Icon(
                 modifier = Modifier
-                    .size(18.dp)
+                    .size(16.dp)
                     .alpha(0f),
                 imageVector = imageVector,
                 contentDescription = null,

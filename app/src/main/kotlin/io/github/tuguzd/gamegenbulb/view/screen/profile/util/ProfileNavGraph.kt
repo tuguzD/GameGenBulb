@@ -3,9 +3,9 @@
 package io.github.tuguzd.gamegenbulb.view.screen.profile.util
 
 import com.ramcosta.composedestinations.annotation.NavGraph
-import com.ramcosta.composedestinations.annotation.RootNavGraph
+import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppNavGraph
 
-@RootNavGraph
+@AppNavGraph
 @NavGraph
 annotation class ProfileNavGraph(
     val start: Boolean = false,

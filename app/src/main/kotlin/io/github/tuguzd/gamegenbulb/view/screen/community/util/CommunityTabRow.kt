@@ -1,12 +1,16 @@
 package io.github.tuguzd.gamegenbulb.view.screen.community.util
 
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LeadingIconTab
 import androidx.compose.material3.TabRow
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.ramcosta.composedestinations.navigation.navigate
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
@@ -44,4 +48,20 @@ fun CommunityTabRow(
             }
         }
     }
+}
+
+@Composable
+private fun CommunityIconTab(
+    modifier: Modifier = Modifier,
+    destination: CommunityDestination,
+    selected: Boolean,
+    onClick: () -> Unit,
+) {
+    val label = stringResource(destination.label)
+    LeadingIconTab(
+        modifier = modifier,
+        selected = selected, onClick = onClick,
+        text = { Text(text = label) },
+        icon = { Icon(destination.icon, label) },
+    )
 }

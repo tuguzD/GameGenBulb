@@ -1,16 +1,17 @@
 package io.github.tuguzd.gamegenbulb.view.screen.community
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.rememberNavHostEngine
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
+import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppNavGraph
 import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityTabRow
 
-@RootNavGraph(start = true)
+@AppNavGraph(start = true)
 @Destination
 @Composable
 fun CommunityScreen(
@@ -19,7 +20,7 @@ fun CommunityScreen(
     val engine = rememberNavHostEngine()
     val navController = engine.rememberNavController()
 
-    Column(modifier = modifier) {
+    Column(modifier = modifier.fillMaxSize()) {
         CommunityTabRow(navController = navController)
         DestinationsNavHost(
             engine = engine,

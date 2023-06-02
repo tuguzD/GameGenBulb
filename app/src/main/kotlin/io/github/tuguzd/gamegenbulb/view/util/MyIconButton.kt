@@ -11,7 +11,7 @@ fun MyIconButton(
     modifier: Modifier = Modifier,
     imageVector: ImageVector,
     contentDescription: String?,
-    onClick: () -> Unit,
+    onClick: () -> Unit = { },
 ) = IconButton(
     modifier = modifier,
     onClick = onClick
