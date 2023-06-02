@@ -20,8 +20,8 @@ import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import io.github.tuguzd.gamegenbulb.R
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.SearchResultScreenDestination
-import io.github.tuguzd.gamegenbulb.view.util.MyIconButton
 import io.github.tuguzd.gamegenbulb.view.util.NavigateUpIconButton
+import io.github.tuguzd.gamegenbulb.view.util.TooltipIconButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RootNavGraph
@@ -54,7 +54,7 @@ fun SearchScreen(
         },
         trailingIcon = {
             if (text.isNotBlank()) {
-                MyIconButton(
+                TooltipIconButton(
                     imageVector = Icons.Rounded.Close,
                     contentDescription = stringResource(R.string.clear),
                 ) { text = "" }
