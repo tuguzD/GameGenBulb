@@ -36,7 +36,7 @@ dependencies {
     implementation(libs.material.icons)
     implementation(libs.bundles.material3)
     // Jetpack Compose addon implementation
-    implementation(libs.accompanist.placeholder)
+    implementation(libs.bundles.accompanist)
     implementation(libs.destinations.core)
     ksp(libs.destinations.ksp)
 

@@ -22,17 +22,17 @@ lifecycle = "2.6.1"
 datastore = "1.0.0"
 security = "1.0.0"
 # Third-party versions
-coil = "2.3.0"
-hilt-google = "2.44"
+coil = "2.4.0"
+hilt-google = "2.46.1"
 hilt-androidx = "1.0.0"
-mvi = "3.2.0"
-datastore-crypto = "1.0.0-alpha04"
+mvi = "3.2.1"
+datastore-crypto = "1.0.0-beta01"
 objectbox = "3.6.0"
 apollo-graphql = "3.8.1"
 # Jetpack Compose versions
 compose-bom = "2023.05.01"
 accompanist = "0.30.1"
-destinations = "1.8.41-beta"
+destinations = "1.9.42-beta"
 # Testing versions
 junit4 = "4.13.2"
 junit4-ext = "1.1.5"
@@ -115,6 +115,7 @@ compose-impl = [ "ui", "ui-graphics", "ui-tooling-preview" ]
 compose-debug = [ "ui-tooling", "ui-test-manifest" ]
 material3 = [ "material3", "material3-window-size" ]
 # Third-party bundles
+accompanist = [ "accompanist-placeholder" ]
 hilt = [ "hilt", "hilt-navigation" ]
 mvi = [ "mvi", "mvi-main", "mvi-logging", "mvi-coroutines" ]
 # General testing libraries
