@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.util
+package io.github.tuguzd.gamegenbulb.view.util.topbar
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.FilterList
@@ -9,6 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import io.github.tuguzd.gamegenbulb.R
+import io.github.tuguzd.gamegenbulb.view.util.button.BadgeIconButton
+import io.github.tuguzd.gamegenbulb.view.util.button.NavigateUpIconButton
 
 @Composable
 fun SearchResultTopBar(

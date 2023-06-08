@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.util
+package io.github.tuguzd.gamegenbulb.view.util.button
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material3.ExperimentalMaterial3Api

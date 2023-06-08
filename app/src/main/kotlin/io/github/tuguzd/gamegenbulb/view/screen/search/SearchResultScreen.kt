@@ -14,7 +14,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import io.github.tuguzd.gamegenbulb.R
-import io.github.tuguzd.gamegenbulb.view.util.SearchResultTopBar
+import io.github.tuguzd.gamegenbulb.view.util.topbar.SearchResultTopBar
 
 @RootNavGraph
 @Destination

@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.util
+package io.github.tuguzd.gamegenbulb.view.util.text
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalTextStyle
@@ -37,27 +37,25 @@ fun OneLineTitle(
     minLines: Int = 1,
     onTextLayout: (TextLayoutResult) -> Unit = {},
     style: TextStyle = LocalTextStyle.current,
-) {
-    Text(
-        text = text,
-        modifier = modifier,
-        color = color,
-        fontSize = fontSize,
-        fontStyle = fontStyle,
-        fontWeight = fontWeight,
-        fontFamily = fontFamily,
-        letterSpacing = letterSpacing,
-        textDecoration = textDecoration,
-        textAlign = textAlign,
-        lineHeight = lineHeight,
-        overflow = overflow,
-        softWrap = softWrap,
-        maxLines = 1,
-        minLines = minLines,
-        onTextLayout = onTextLayout,
-        style = style,
-    )
-}
+) = Text(
+    text = text,
+    modifier = modifier,
+    color = color,
+    fontSize = fontSize,
+    fontStyle = fontStyle,
+    fontWeight = fontWeight,
+    fontFamily = fontFamily,
+    letterSpacing = letterSpacing,
+    textDecoration = textDecoration,
+    textAlign = textAlign,
+    lineHeight = lineHeight,
+    overflow = overflow,
+    softWrap = softWrap,
+    maxLines = 1,
+    minLines = minLines,
+    onTextLayout = onTextLayout,
+    style = style,
+)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview

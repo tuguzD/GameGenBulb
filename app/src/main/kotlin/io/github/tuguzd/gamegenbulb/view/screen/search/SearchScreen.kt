@@ -20,8 +20,8 @@ import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import io.github.tuguzd.gamegenbulb.R
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.SearchResultScreenDestination
-import io.github.tuguzd.gamegenbulb.view.util.NavigateUpIconButton
-import io.github.tuguzd.gamegenbulb.view.util.TooltipIconButton
+import io.github.tuguzd.gamegenbulb.view.util.button.NavigateUpIconButton
+import io.github.tuguzd.gamegenbulb.view.util.button.TooltipIconButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RootNavGraph

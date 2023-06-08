@@ -13,9 +13,9 @@ import com.ramcosta.composedestinations.navigation.navigate
 import io.github.tuguzd.gamegenbulb.R
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.NotificationScreenDestination
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.SearchScreenDestination
-import io.github.tuguzd.gamegenbulb.view.util.BadgeIconButton
-import io.github.tuguzd.gamegenbulb.view.util.OneLineTitle
-import io.github.tuguzd.gamegenbulb.view.util.TooltipIconButton
+import io.github.tuguzd.gamegenbulb.view.util.button.BadgeIconButton
+import io.github.tuguzd.gamegenbulb.view.util.text.OneLineTitle
+import io.github.tuguzd.gamegenbulb.view.util.button.TooltipIconButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

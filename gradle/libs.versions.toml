@@ -28,9 +28,9 @@ hilt-androidx = "1.0.0"
 mvi = "3.2.1"
 datastore-crypto = "1.0.0-beta01"
 objectbox = "3.6.0"
-apollo-graphql = "3.8.1"
+apollo-graphql = "3.8.2"
 # Jetpack Compose versions
-compose-bom = "2023.05.01"
+compose-bom = "2023.06.00"
 accompanist = "0.30.1"
 destinations = "1.9.42-beta"
 # Testing versions
@@ -48,7 +48,7 @@ coroutines-debug = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "core-splashscreen" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
 lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 # DataStore libraries
 datastore-prot = { group = "androidx.datastore", name = "datastore", version.ref = "datastore" }

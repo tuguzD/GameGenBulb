@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.util
+package io.github.tuguzd.gamegenbulb.view.util.button
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack

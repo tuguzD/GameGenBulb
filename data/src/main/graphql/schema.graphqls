@@ -1331,16 +1331,40 @@ scalar Url
 type User {
   id: UUID!
 
-  image: DiscImage
+  name: String!
 
-  name: String
+  displayName: String!
 
-  surname: String
+  role: UserRole!
 
-  createDate: DateTime!
+  email: String
 
-  updateDate: DateTime
+  avatarUrl: String
 }
+
+enum UserRole {
+  USER
+
+  GUEST
+
+  MODERATOR
+
+  ADMINISTRATOR
+}
+
+#type User {
+#  id: UUID!
+#
+#  image: DiscImage
+#
+#  name: String
+#
+#  surname: String
+#
+#  createDate: DateTime!
+#
+#  updateDate: DateTime
+#}
 
 input UserFilters {
   id: UUID
