@@ -69,10 +69,10 @@ fun AuthContent(
             )
             .padding(48.dp),
     ) {
-//        Spacer(modifier = Modifier.height(32.dp))
-//        AppNameWithLogo(modifier = Modifier.fillMaxWidth())
-//
-//        Spacer(modifier = Modifier.height(48.dp))
+        Spacer(modifier = Modifier.height(32.dp))
+        AppNameWithLogo(modifier = Modifier.fillMaxWidth())
+
+        Spacer(modifier = Modifier.height(48.dp))
         AuthTitle(
             title = title,
             modifier = Modifier.fillMaxWidth(),
@@ -106,7 +106,7 @@ private fun AppNameWithLogo(
     horizontalAlignment = Alignment.CenterHorizontally,
 ) {
     Image(
-        painter = painterResource(R.mipmap.ic_launcher_round),
+        painter = painterResource(R.mipmap.app_icon_foreground),
         contentDescription = null,
         modifier = Modifier.size(128.dp),
     )
