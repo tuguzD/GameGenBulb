@@ -11,6 +11,7 @@
     <string name="notifications">Notifications</string>
     <string name="authors">Authors</string>
     <string name="ideas">Ideas</string>
+    <string name="user_ideas">My ideas</string>
     <string name="games">Games</string>
     <string name="search">Search</string>
     <string name="navigate_up">Navigate up</string>
@@ -34,4 +35,5 @@
     <string name="user_with_name_already_exists">User with name %1$s already exists</string>
     <string name="create_new_account">Create new account</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="sessions">Sessions</string>
 </resources>

@@ -1,0 +1,191 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "5:3324720866464994545",
+      "lastPropertyId": "7:8286561510389644027",
+      "name": "UserEntity",
+      "properties": [
+        {
+          "id": "1:7023423712454643752",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:564384886929980991",
+          "name": "uuid",
+          "indexId": "3:5379674352870382776",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "3:6787358831274100029",
+          "name": "name",
+          "indexId": "4:8278251554043279802",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "4:9025897176990876454",
+          "name": "displayName",
+          "type": 9
+        },
+        {
+          "id": "5:6708006995318749032",
+          "name": "role",
+          "type": 9
+        },
+        {
+          "id": "6:238605600596458733",
+          "name": "email",
+          "indexId": "5:4306652096375136747",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "7:8286561510389644027",
+          "name": "avatar",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "6:3887005905084121695",
+      "lastPropertyId": "1:7582633164878071040",
+      "name": "DataSourceLinkEntity",
+      "properties": [
+        {
+          "id": "1:7582633164878071040",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "7:1600676867528825845",
+      "lastPropertyId": "1:4862614653856674568",
+      "name": "GameCategoryEntity",
+      "properties": [
+        {
+          "id": "1:4862614653856674568",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "8:2015435913855445707",
+      "lastPropertyId": "6:281356067758112721",
+      "name": "GameEntity",
+      "properties": [
+        {
+          "id": "1:2062993247397360277",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3748057740883267142",
+          "name": "uuid",
+          "indexId": "6:8889822926123996632",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "3:4877399717987653103",
+          "name": "name",
+          "indexId": "7:8504036360228651907",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "4:1721545332142854560",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "5:4883402907207713594",
+          "name": "publishDate",
+          "type": 9
+        },
+        {
+          "id": "6:281356067758112721",
+          "name": "updateDate",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "4:967839534893678077",
+          "name": "socialMedia",
+          "targetId": "9:5081773792147720426"
+        },
+        {
+          "id": "5:817238120347153094",
+          "name": "dataSource",
+          "targetId": "6:3887005905084121695"
+        },
+        {
+          "id": "6:6252098486949486471",
+          "name": "category",
+          "targetId": "7:1600676867528825845"
+        }
+      ]
+    },
+    {
+      "id": "9:5081773792147720426",
+      "lastPropertyId": "1:6802588691531285160",
+      "name": "MediaLinkEntity",
+      "properties": [
+        {
+          "id": "1:6802588691531285160",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "9:5081773792147720426",
+  "lastIndexId": "7:8504036360228651907",
+  "lastRelationId": "6:6252098486949486471",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [
+    4209028937809996367,
+    8850794224466875351,
+    4488550697063321433,
+    8306721013525346910
+  ],
+  "retiredIndexUids": [
+    6840709508600077341,
+    6764316372222523433
+  ],
+  "retiredPropertyUids": [
+    3541761732212558458,
+    2589855036141838195,
+    3573939933665178108,
+    2539067941468963686,
+    8986234673408634223,
+    6421274793237164804,
+    1276001406825442590,
+    2688052130524752140,
+    7578860276979731763
+  ],
+  "retiredRelationUids": [
+    6788406629855719663,
+    4377296238551347679,
+    942728110299899045
+  ],
+  "version": 1
+}

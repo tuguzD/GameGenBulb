@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen.community.util
+package io.github.tuguzd.gamegenbulb.view.screen.workshop.util
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LeadingIconTab
@@ -19,15 +19,15 @@ import io.github.tuguzd.gamegenbulb.view.screen.destinations.Destination
 import io.github.tuguzd.gamegenbulb.view.screen.startAppDestination
 
 @Composable
-fun CommunityTabRow(
+fun WorkshopTabRow(
     modifier: Modifier = Modifier,
     navController: NavController,
 ) {
     val currentDestination: Destination =
         navController.appCurrentDestinationAsState().value
-            ?: NavGraphs.community.startAppDestination
+            ?: NavGraphs.workshop.startAppDestination
 
-    val index = CommunityDestination.values()
+    val index = WorkshopDestination.values()
         .indexOfFirst { it.direction == currentDestination }
 
     var state by remember(index) { mutableStateOf(index) }
@@ -36,8 +36,8 @@ fun CommunityTabRow(
         modifier = modifier,
         selectedTabIndex = state,
     ) {
-        CommunityDestination.values().forEachIndexed { index, destination ->
-            CommunityIconTab(
+        WorkshopDestination.values().forEachIndexed { index, destination ->
+            WorkshopIconTab(
                 destination = destination,
                 selected = state == index,
             ) {
@@ -52,9 +52,9 @@ fun CommunityTabRow(
 }
 
 @Composable
-private fun CommunityIconTab(
+private fun WorkshopIconTab(
     modifier: Modifier = Modifier,
-    destination: CommunityDestination,
+    destination: WorkshopDestination,
     selected: Boolean,
     onClick: () -> Unit,
 ) {

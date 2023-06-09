@@ -15,7 +15,7 @@ import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityNavGraph
 @CommunityNavGraph(start = true)
 @Destination
 @Composable
-fun IdeaListScreen(
+fun CommunityIdeaListScreen(
     modifier: Modifier = Modifier,
 ) {
     Column(

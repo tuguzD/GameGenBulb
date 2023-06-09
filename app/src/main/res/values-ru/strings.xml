@@ -32,4 +32,6 @@
     <string name="user_with_name_already_exists">Пользователь с именем %1$s уже существует</string>
     <string name="create_new_account">Создать новый аккаунт</string>
     <string name="already_have_an_account">Уже есть аккаунт?</string>
+    <string name="user_ideas">Мои идеи</string>
+    <string name="sessions">Сессии</string>
 </resources>
