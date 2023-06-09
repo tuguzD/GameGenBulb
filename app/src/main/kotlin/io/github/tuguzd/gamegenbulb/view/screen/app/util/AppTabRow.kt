@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen.workshop.util
+package io.github.tuguzd.gamegenbulb.view.screen.app.util
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LeadingIconTab
@@ -13,31 +13,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.ramcosta.composedestinations.navigation.navigate
-import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
+import io.github.tuguzd.gamegenbulb.view.screen.NavGraph
 import io.github.tuguzd.gamegenbulb.view.screen.appCurrentDestinationAsState
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.Destination
 import io.github.tuguzd.gamegenbulb.view.screen.startAppDestination
+import io.github.tuguzd.gamegenbulb.view.util.UtilDestination
 
 @Composable
-fun WorkshopTabRow(
+fun <D : UtilDestination> AppTabRow(
     modifier: Modifier = Modifier,
+    navGraph: NavGraph,
     navController: NavController,
+    destinations: Array<D>,
 ) {
     val currentDestination: Destination =
         navController.appCurrentDestinationAsState().value
-            ?: NavGraphs.workshop.startAppDestination
+            ?: navGraph.startAppDestination
 
-    val index = WorkshopDestination.values()
-        .indexOfFirst { it.direction == currentDestination }
-
+    val index = destinations.indexOfFirst {
+        it.direction == currentDestination
+    }
     var state by remember(index) { mutableStateOf(index) }
 
     TabRow(
         modifier = modifier,
         selectedTabIndex = state,
     ) {
-        WorkshopDestination.values().forEachIndexed { index, destination ->
-            WorkshopIconTab(
+        destinations.forEachIndexed { index, destination ->
+            AppIconTab(
                 destination = destination,
                 selected = state == index,
             ) {
@@ -52,9 +55,9 @@ fun WorkshopTabRow(
 }
 
 @Composable
-private fun WorkshopIconTab(
+private fun <D : UtilDestination> AppIconTab(
     modifier: Modifier = Modifier,
-    destination: WorkshopDestination,
+    destination: D,
     selected: Boolean,
     onClick: () -> Unit,
 ) {

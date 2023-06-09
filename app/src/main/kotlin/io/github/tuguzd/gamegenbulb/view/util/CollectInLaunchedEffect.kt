@@ -17,9 +17,9 @@ inline fun <reified T> Flow<T>.collectInLaunchedEffect(
     context: CoroutineContext = EmptyCoroutineContext,
     noinline action: suspend (value: T) -> Unit,
 ) = LaunchedEffect(this, context) {
-    if (context == EmptyCoroutineContext) {
+    if (context == EmptyCoroutineContext)
         this@collectInLaunchedEffect.collectLatest(action)
-    } else withContext(context) {
+    else withContext(context) {
         this@collectInLaunchedEffect.collectLatest(action)
     }
 }
@@ -34,9 +34,9 @@ inline fun <reified T> Flow<T>.collectInLaunchedEffectWithLifecycle(
     val lifecycle = lifecycleOwner.lifecycle
     LaunchedEffect(this, lifecycle, minActiveState, context) {
         lifecycle.repeatOnLifecycle(minActiveState) {
-            if (context == EmptyCoroutineContext) {
+            if (context == EmptyCoroutineContext)
                 this@collectInLaunchedEffectWithLifecycle.collectLatest(action)
-            } else withContext(context) {
+            else withContext(context) {
                 this@collectInLaunchedEffectWithLifecycle.collectLatest(action)
             }
         }

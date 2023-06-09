@@ -13,12 +13,13 @@ import io.github.tuguzd.gamegenbulb.R
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.AuthorListScreenDestination
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.CommunityIdeaListScreenDestination
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.GameListScreenDestination
+import io.github.tuguzd.gamegenbulb.view.util.UtilDestination
 
 enum class CommunityDestination(
-    val direction: DirectionDestinationSpec,
-    val icon: ImageVector,
-    @StringRes val label: Int,
-) {
+    override val direction: DirectionDestinationSpec,
+    override val icon: ImageVector,
+    @StringRes override val label: Int,
+) : UtilDestination {
     Authors(
         direction = AuthorListScreenDestination,
         icon = Icons.Rounded.People,

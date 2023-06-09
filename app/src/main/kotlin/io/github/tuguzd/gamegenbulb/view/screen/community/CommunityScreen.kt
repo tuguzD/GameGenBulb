@@ -9,7 +9,8 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.rememberNavHostEngine
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppNavGraph
-import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityTabRow
+import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppTabRow
+import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityDestination
 
 @AppNavGraph(start = true)
 @Destination
@@ -18,14 +19,19 @@ fun CommunityScreen(
     modifier: Modifier = Modifier,
 ) {
     val engine = rememberNavHostEngine()
+    val navGraph = NavGraphs.community
     val navController = engine.rememberNavController()
 
     Column(modifier = modifier.fillMaxSize()) {
-        CommunityTabRow(navController = navController)
+        AppTabRow(
+            navGraph = navGraph,
+            navController = navController,
+            destinations = CommunityDestination.values(),
+        )
         DestinationsNavHost(
             engine = engine,
+            navGraph = navGraph,
             navController = navController,
-            navGraph = NavGraphs.community,
         )
     }
 }

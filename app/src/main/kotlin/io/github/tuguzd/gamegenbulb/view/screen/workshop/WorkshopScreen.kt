@@ -9,7 +9,8 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.rememberNavHostEngine
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppNavGraph
-import io.github.tuguzd.gamegenbulb.view.screen.workshop.util.WorkshopTabRow
+import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppTabRow
+import io.github.tuguzd.gamegenbulb.view.screen.workshop.util.WorkshopDestination
 
 @AppNavGraph
 @Destination
@@ -18,14 +19,19 @@ fun WorkshopScreen(
     modifier: Modifier = Modifier,
 ) {
     val engine = rememberNavHostEngine()
+    val navGraph = NavGraphs.workshop
     val navController = engine.rememberNavController()
 
     Column(modifier = modifier.fillMaxSize()) {
-        WorkshopTabRow(navController = navController)
+        AppTabRow(
+            navGraph = navGraph,
+            navController = navController,
+            destinations = WorkshopDestination.values(),
+        )
         DestinationsNavHost(
             engine = engine,
+            navGraph = navGraph,
             navController = navController,
-            navGraph = NavGraphs.workshop,
         )
     }
 }
