@@ -34,4 +34,9 @@
     <string name="already_have_an_account">Уже есть аккаунт?</string>
     <string name="user_ideas">Мои идеи</string>
     <string name="sessions">Сессии</string>
+    <string name="analyzes">Анализы</string>
+    <string name="new_idea">Новая идея</string>
+    <string name="new_analysis">Новый анализ</string>
+    <string name="new_session">Новая сессия</string>
+    <string name="add">Добавить</string>
 </resources>

@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen.workshop.ideas
+package io.github.tuguzd.gamegenbulb.view.screen.workshop.analyzes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,10 +14,10 @@ import io.github.tuguzd.gamegenbulb.R
 import io.github.tuguzd.gamegenbulb.view.screen.workshop.util.WorkshopNavGraph
 import io.github.tuguzd.gamegenbulb.view.util.scaffold.AddFABScaffold
 
-@WorkshopNavGraph(start = true)
+@WorkshopNavGraph
 @Destination
 @Composable
-fun WorkshopIdeaListScreen(
+fun AnalysisListScreen(
     modifier: Modifier = Modifier,
 ) = AddFABScaffold(
     onClick = { /*TODO()*/ },
@@ -29,6 +29,6 @@ fun WorkshopIdeaListScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = stringResource(R.string.user_ideas))
+        Text(text = stringResource(R.string.analyzes))
     }
 }

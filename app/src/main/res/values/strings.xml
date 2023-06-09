@@ -36,4 +36,9 @@
     <string name="create_new_account">Create new account</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sessions">Sessions</string>
+    <string name="analyzes">Analyzes</string>
+    <string name="new_idea">New idea</string>
+    <string name="new_analysis">New analysis</string>
+    <string name="new_session">New session</string>
+    <string name="add">Add</string>
 </resources>
