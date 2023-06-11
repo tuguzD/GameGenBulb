@@ -13,8 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ramcosta.composedestinations.annotation.Destination
 import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityNavGraph
-import io.github.tuguzd.gamegenbulb.view.util.card.Characteristic
-import io.github.tuguzd.gamegenbulb.view.util.card.Link
+import io.github.tuguzd.gamegenbulb.view.util.card.Game
+import io.github.tuguzd.gamegenbulb.view.util.card.GameCard
+import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
+import io.github.tuguzd.gamegenbulb.view.util.card.content.Link
 
 @CommunityNavGraph
 @Destination
@@ -22,10 +24,12 @@ import io.github.tuguzd.gamegenbulb.view.util.card.Link
 fun GameListScreen(
     modifier: Modifier = Modifier,
 ) {
+    val padding = 16.dp
+
     LazyColumn(
-        modifier = modifier.padding(horizontal = 16.dp),
+        modifier = modifier.padding(horizontal = padding),
     ) {
-        item { Spacer(modifier = Modifier.height(16.dp)) }
+        item { Spacer(modifier = Modifier.height(padding)) }
         item {
             GameCard(
                 game = Game(
@@ -70,7 +74,7 @@ fun GameListScreen(
                     ),
                 ),
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(padding))
         }
         item {
             GameCard(
@@ -113,7 +117,7 @@ fun GameListScreen(
                     ),
                 ),
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(padding))
         }
         item {
             GameCard(
@@ -164,7 +168,7 @@ fun GameListScreen(
                     ),
                 ),
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(padding))
         }
     }
 }

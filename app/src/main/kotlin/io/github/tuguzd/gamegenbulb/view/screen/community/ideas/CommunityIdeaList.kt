@@ -1,16 +1,20 @@
 package io.github.tuguzd.gamegenbulb.view.screen.community.ideas
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.AutoStories
+import androidx.compose.material.icons.rounded.ColorLens
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.ramcosta.composedestinations.annotation.Destination
-import io.github.tuguzd.gamegenbulb.R
 import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityNavGraph
+import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
+import io.github.tuguzd.gamegenbulb.view.util.card.Idea
+import io.github.tuguzd.gamegenbulb.view.util.card.IdeaCard
 
 @CommunityNavGraph(start = true)
 @Destination
@@ -18,11 +22,35 @@ import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityNavGraph
 fun CommunityIdeaListScreen(
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    val padding = 16.dp
+
+    LazyColumn(
+        modifier = modifier.padding(horizontal = padding),
     ) {
-        Text(text = stringResource(R.string.ideas))
+        item { Spacer(modifier = Modifier.height(padding)) }
+        item {
+            IdeaCard(
+                idea = Idea(
+                    name = "Infernal Calamity",
+                    creator = "Steven Manzo",
+                    imagePath = "https://www.cuttingedgefirewood.com/wp-content/" +
+                            "uploads/2021/11/fire-crack-1.jpg",
+                    authors = listOf(
+                        "Irma K.", "Sigurdór G.",
+                    ),
+                ),
+                characteristics = listOf(
+                    Characteristic(
+                        name = "Симулятор",
+                        icon = Icons.Rounded.AutoStories,
+                    ),
+                    Characteristic(
+                        name = "3D",
+                        icon = Icons.Rounded.ColorLens,
+                    ),
+                ),
+            )
+            Spacer(modifier = Modifier.height(padding))
+        }
     }
 }

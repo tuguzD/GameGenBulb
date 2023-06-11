@@ -1,10 +1,10 @@
-package io.github.tuguzd.gamegenbulb.view.screen.community.games
+package io.github.tuguzd.gamegenbulb.view.util.card
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.tuguzd.gamegenbulb.view.util.card.Characteristic
-import io.github.tuguzd.gamegenbulb.view.util.card.ContentCard
-import io.github.tuguzd.gamegenbulb.view.util.card.Link
+import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
+import io.github.tuguzd.gamegenbulb.view.util.card.content.ContentCard
+import io.github.tuguzd.gamegenbulb.view.util.card.content.Link
 
 @Composable
 fun GameCard(

@@ -20,7 +20,8 @@ import io.github.tuguzd.gamegenbulb.view.util.scaffold.AddFABScaffold
 fun AnalysisListScreen(
     modifier: Modifier = Modifier,
 ) = AddFABScaffold(
-    onClick = { /*TODO()*/ },
+    label = stringResource(R.string.conduct_new),
+    onClick = { },
 ) { padding ->
     Column(
         modifier = modifier

@@ -38,7 +38,7 @@
     <string name="new_idea">Новая идея</string>
     <string name="new_analysis">Новый анализ</string>
     <string name="new_session">Новая сессия</string>
-    <string name="add">Добавить</string>
+    <string name="add_new">Добавить</string>
     <string name="user">Пользователь</string>
     <string name="guest">Гость</string>
     <string name="moderator">Модератор</string>
@@ -62,4 +62,6 @@
     <string name="shrink">Свернуть</string>
     <string name="image">Изображение</string>
     <string name="no_data">Нет данных</string>
+    <string name="conduct_new">Провести</string>
+    <string name="hold_new">Осуществить</string>
 </resources>

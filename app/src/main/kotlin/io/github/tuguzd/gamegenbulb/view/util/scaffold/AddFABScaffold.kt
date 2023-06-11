@@ -20,7 +20,7 @@ import io.github.tuguzd.gamegenbulb.R
 fun AddFABScaffold(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
-    label: String = stringResource(R.string.add),
+    label: String = stringResource(R.string.add_new),
     smallFAB: @Composable () -> Unit = { },
     content: @Composable (padding: PaddingValues) -> Unit = { },
 ) = Scaffold(

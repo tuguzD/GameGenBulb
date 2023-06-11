@@ -20,7 +20,7 @@ import io.github.tuguzd.gamegenbulb.view.util.scaffold.AddFABScaffold
 fun WorkshopIdeaListScreen(
     modifier: Modifier = Modifier,
 ) = AddFABScaffold(
-    onClick = { /*TODO()*/ },
+    onClick = { },
 ) { padding ->
     Column(
         modifier = modifier

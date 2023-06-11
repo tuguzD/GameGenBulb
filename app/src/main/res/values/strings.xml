@@ -40,7 +40,7 @@
     <string name="new_idea">New idea</string>
     <string name="new_analysis">New analysis</string>
     <string name="new_session">New session</string>
-    <string name="add">Add</string>
+    <string name="add_new">Add new</string>
     <string name="user">User</string>
     <string name="guest">Guest</string>
     <string name="moderator">Moderator</string>
@@ -64,4 +64,6 @@
     <string name="shrink">Shrink</string>
     <string name="image">Image</string>
     <string name="no_data">No data</string>
+    <string name="conduct_new">Conduct new</string>
+    <string name="hold_new">Hold new</string>
 </resources>
