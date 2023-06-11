@@ -15,11 +15,13 @@ fun NavigateUpIconButton(
     navigator: DestinationsNavigator,
     imageVector: ImageVector = Icons.Rounded.ArrowBack,
     contentDescription: String = stringResource(R.string.navigate_up),
+    enabled: Boolean = true,
     beforeNavigation: () -> Unit = { },
 ) = TooltipIconButton(
     modifier = modifier,
     imageVector = imageVector,
     contentDescription = contentDescription,
+    enabled = enabled,
 ) {
     beforeNavigation()
     navigator.navigateUp()

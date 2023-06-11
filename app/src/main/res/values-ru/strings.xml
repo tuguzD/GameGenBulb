@@ -39,4 +39,27 @@
     <string name="new_analysis">Новый анализ</string>
     <string name="new_session">Новая сессия</string>
     <string name="add">Добавить</string>
+    <string name="user">Пользователь</string>
+    <string name="guest">Гость</string>
+    <string name="moderator">Модератор</string>
+    <string name="administrator">Администратор</string>
+    <string name="user_avatar">Аватар пользователя</string>
+    <string name="more_actions">Действия</string>
+    <string name="edit">Изменить</string>
+    <string name="delete">Удалить</string>
+    <string name="sign_out">Выйти</string>
+    <string name="share_profile">Поделиться профилем</string>
+    <string name="delete_profile_confirmation">Вы точно хотите удалить свой профиль?</string>
+    <string name="sign_out_confirmation">Вы точно хотите выйти из приложения?</string>
+    <string name="cancel">Отменить</string>
+    <string name="user_with_email_already_exists">Пользователь с почтой %1$s уже существует</string>
+    <string name="edit_profile">Изменить профиль</string>
+    <string name="close">Закрыть</string>
+    <string name="submit">Подтвердить</string>
+    <string name="display_name">Отображаемое имя</string>
+    <string name="email">Электронная почта</string>
+    <string name="expand">Развернуть</string>
+    <string name="shrink">Свернуть</string>
+    <string name="image">Изображение</string>
+    <string name="no_data">Нет данных</string>
 </resources>
