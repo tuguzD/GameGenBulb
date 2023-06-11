@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.bundles.accompanist)
     implementation(libs.destinations.core)
     ksp(libs.destinations.ksp)
+    implementation(libs.revealswipe)
 
     // General testing implementation
     androidTestImplementation(libs.espresso.core)

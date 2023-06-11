@@ -22,6 +22,7 @@ fun GameCard(
     contentImage = game.imagePath,
     links = links,
     characteristics = characteristics,
+    canModify = false,
     devPubNeeded = true,
     developerName = developerName,
     publisherName = publisherName,

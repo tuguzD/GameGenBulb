@@ -6,11 +6,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonColors
 import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.PlainTooltipBox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -20,6 +22,7 @@ fun TooltipIconButton(
     imageVector: ImageVector,
     contentDescription: String,
     enabled: Boolean = true,
+    iconTint: Color = LocalContentColor.current,
     colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable () -> Unit = { },
@@ -32,7 +35,8 @@ fun TooltipIconButton(
         imageVector = imageVector,
         contentDescription = contentDescription,
         enabled = enabled,
-        colors = colors,
+        iconTint = iconTint,
+        buttonColors = colors,
         interactionSource = interactionSource,
         content = content,
         onClick = onClick,
@@ -45,20 +49,22 @@ private fun IconButton(
     imageVector: ImageVector,
     contentDescription: String?,
     enabled: Boolean = true,
-    colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
+    iconTint: Color = LocalContentColor.current,
+    buttonColors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable () -> Unit = { },
     onClick: () -> Unit = { },
 ) = IconButton(
     modifier = modifier,
     enabled = enabled,
-    colors = colors,
+    colors = buttonColors,
     interactionSource = interactionSource,
     onClick = onClick,
 ) {
     Icon(
         imageVector = imageVector,
         contentDescription = contentDescription,
+        tint = iconTint,
     )
     content()
 }

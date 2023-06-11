@@ -12,9 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ramcosta.composedestinations.annotation.Destination
 import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityNavGraph
-import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
 import io.github.tuguzd.gamegenbulb.view.util.card.Idea
 import io.github.tuguzd.gamegenbulb.view.util.card.IdeaCard
+import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
 
 @CommunityNavGraph(start = true)
 @Destination
@@ -39,6 +39,7 @@ fun CommunityIdeaListScreen(
                         "Irma K.", "Sigurdór G.",
                     ),
                 ),
+                canModify = true,
                 characteristics = listOf(
                     Characteristic(
                         name = "Симулятор",

@@ -66,4 +66,7 @@
     <string name="no_data">No data</string>
     <string name="conduct_new">Conduct new</string>
     <string name="create_new">Create new</string>
+    <string name="favourite">Favourite</string>
+    <string name="unfavourite">Unfavourite</string>
+    <string name="share">Share</string>
 </resources>

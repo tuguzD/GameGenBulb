@@ -64,4 +64,7 @@
     <string name="no_data">Нет данных</string>
     <string name="conduct_new">Провести</string>
     <string name="create_new">Создать</string>
+    <string name="favourite">В Избранное</string>
+    <string name="unfavourite">Из Избранного</string>
+    <string name="share">Поделиться</string>
 </resources>
