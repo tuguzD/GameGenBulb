@@ -2,6 +2,7 @@ package io.github.tuguzd.gamegenbulb.view.util.card.content.util
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Code
@@ -34,11 +35,7 @@ fun IconTitleRow(
         if (devName == pubName) {
             if (authors == null && creatorName != null) {
                 condition = false
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                ) {
+                ModifiedRow {
                     PubDevTitle(label = devName)
                     OneLineIconTitle(
                         imageVector = Icons.Rounded.RecordVoiceOver,
@@ -47,11 +44,7 @@ fun IconTitleRow(
                 }
             } else PubDevTitle(label = devName)
         } else {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-            ) {
+            ModifiedRow {
                 OneLineIconTitle(
                     imageVector = Icons.Rounded.Code,
                     label = devName,
@@ -65,11 +58,7 @@ fun IconTitleRow(
     }
     if (condition) {
         creatorName?.let {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-            ) {
+            ModifiedRow {
                 OneLineIconTitle(
                     imageVector = Icons.Rounded.RecordVoiceOver,
                     label = it,
@@ -84,3 +73,13 @@ fun IconTitleRow(
         }
     }
 }
+
+@Composable
+private fun ModifiedRow(
+    content: @Composable RowScope.() -> Unit,
+) = Row(
+    modifier = Modifier.fillMaxWidth(),
+    verticalAlignment = Alignment.CenterVertically,
+    horizontalArrangement = Arrangement.spacedBy(16.dp),
+    content = content,
+)

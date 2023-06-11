@@ -13,22 +13,18 @@ import io.github.tuguzd.gamegenbulb.view.util.button.TooltipIconButton
 fun ExpandButton(
     expandedState: Boolean,
     onClick: () -> Unit,
-) {
-    val expandIcon =
+) = TooltipIconButton(
+    imageVector = run {
         if (!expandedState) Icons.Rounded.Fullscreen
         else Icons.Rounded.FullscreenExit
-    val expandLabel = stringResource(
-        if (expandedState) R.string.shrink
-        else R.string.expand
-    )
-    val expandColors =
+    },
+    contentDescription = stringResource(
+        if (!expandedState) R.string.expand
+        else R.string.shrink
+    ),
+    colors = run {
         if (!expandedState) IconButtonDefaults.iconButtonColors()
         else IconButtonDefaults.filledTonalIconButtonColors()
-
-    TooltipIconButton(
-        imageVector = expandIcon,
-        contentDescription = expandLabel,
-        colors = expandColors,
-        onClick = onClick,
-    )
-}
+    },
+    onClick = onClick,
+)

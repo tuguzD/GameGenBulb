@@ -63,5 +63,5 @@
     <string name="image">Изображение</string>
     <string name="no_data">Нет данных</string>
     <string name="conduct_new">Провести</string>
-    <string name="hold_new">Осуществить</string>
+    <string name="create_new">Создать</string>
 </resources>

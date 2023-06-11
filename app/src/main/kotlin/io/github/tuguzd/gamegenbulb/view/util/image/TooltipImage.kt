@@ -22,7 +22,7 @@ import com.google.accompanist.placeholder.material.placeholder
 fun TooltipImage(
     modifier: Modifier = Modifier,
     label: String,
-    imagePath: String,
+    imagePath: String?,
     crossfade: Boolean = true,
     colorFilter: ColorFilter? = null,
     error: @Composable (() -> Unit)? = null,

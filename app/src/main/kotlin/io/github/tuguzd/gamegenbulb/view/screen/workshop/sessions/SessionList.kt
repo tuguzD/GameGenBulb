@@ -20,7 +20,7 @@ import io.github.tuguzd.gamegenbulb.view.util.scaffold.AddFABScaffold
 fun SessionListScreen(
     modifier: Modifier = Modifier,
 ) = AddFABScaffold(
-    label = stringResource(R.string.hold_new),
+    label = stringResource(R.string.create_new),
     onClick = { },
 ) { padding ->
     Column(
