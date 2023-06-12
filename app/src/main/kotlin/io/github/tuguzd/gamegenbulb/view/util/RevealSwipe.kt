@@ -1,8 +1,13 @@
-package io.github.tuguzd.gamegenbulb.view.util.card.content.util
+package io.github.tuguzd.gamegenbulb.view.util
 
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.Easing
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.LocalContentColor
@@ -82,5 +87,16 @@ fun RevealSwipe(
     state = state,
     hiddenContentEnd = hiddenContentEnd,
     hiddenContentStart = hiddenContentStart,
+    content = content,
+)
+
+@Composable
+fun HiddenContentColumn(
+    content: @Composable ColumnScope.() -> Unit,
+) = Column(
+    modifier = Modifier
+        .fillMaxHeight()
+        .padding(8.dp),
+    verticalArrangement = Arrangement.spacedBy(8.dp),
     content = content,
 )

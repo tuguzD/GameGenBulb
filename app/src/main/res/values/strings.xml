@@ -69,4 +69,5 @@
     <string name="favourite">Favourite</string>
     <string name="unfavourite">Unfavourite</string>
     <string name="share">Share</string>
+    <string name="user_popular">Popular categories</string>
 </resources>

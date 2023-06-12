@@ -16,6 +16,7 @@ fun UserEntity.toDomain(): User = User(
         displayName = requireNotNull(displayName),
         role = Role.valueOf(requireNotNull(role)),
         email = email,
+        phone = phone,
         avatar = avatar,
     ),
 )

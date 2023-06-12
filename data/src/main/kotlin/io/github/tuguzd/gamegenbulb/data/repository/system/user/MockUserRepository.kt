@@ -50,6 +50,7 @@ class MockUserRepository : UserRepository {
             displayName = name,
             role = Role.User,
             email = null,
+            phone = null,
             avatar = null,
         )
         users[id] = new
@@ -114,6 +115,7 @@ class MockUserRepository : UserRepository {
             displayName = "Damir Tugushev",
             role = Role.Administrator,
             email = "0damir.1tugushev@gmail.com",
+            phone = "+7 (977) 794-18-85",
             avatar = "https://avatars.githubusercontent.com/u/56772528",
         ),
     )

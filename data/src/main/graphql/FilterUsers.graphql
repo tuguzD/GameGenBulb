@@ -5,6 +5,7 @@ query FilterUsers($filters: UserFilters!) {
         displayName
         role
         email
+        phone
         avatarUrl
     }
 }

@@ -2,7 +2,7 @@ package io.github.tuguzd.gamegenbulb.view.util.card
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
+import io.github.tuguzd.gamegenbulb.view.util.card.content.Category
 import io.github.tuguzd.gamegenbulb.view.util.card.content.ContentCard
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Link
 
@@ -11,7 +11,7 @@ fun GameCard(
     modifier: Modifier = Modifier,
     game: Game,
     links: List<Link>? = null,
-    characteristics: List<Characteristic>? = null,
+    categories: List<Category>? = null,
     developerName: String? = null,
     publisherName: String? = null,
     votePercentage: Int? = null,
@@ -21,7 +21,7 @@ fun GameCard(
     contentName = game.name,
     contentImage = game.imagePath,
     links = links,
-    characteristics = characteristics,
+    categories = categories,
     canModify = false,
     devPubNeeded = true,
     developerName = developerName,

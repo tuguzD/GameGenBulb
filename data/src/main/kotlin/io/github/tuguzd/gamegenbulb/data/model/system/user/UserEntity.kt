@@ -19,5 +19,6 @@ data class UserEntity(
     val displayName: String? = null,
     val role: String? = null,
     @Unique val email: String? = null,
+    @Unique val phone: String? = null,
     val avatar: String? = null,
 )

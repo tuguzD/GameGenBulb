@@ -43,7 +43,7 @@
     <string name="guest">Гость</string>
     <string name="moderator">Модератор</string>
     <string name="administrator">Администратор</string>
-    <string name="user_avatar">Аватар пользователя</string>
+    <string name="user_avatar">Аватар</string>
     <string name="more_actions">Действия</string>
     <string name="edit">Изменить</string>
     <string name="delete">Удалить</string>
@@ -67,4 +67,5 @@
     <string name="favourite">В Избранное</string>
     <string name="unfavourite">Из Избранного</string>
     <string name="share">Поделиться</string>
+    <string name="user_popular">Популярные категории</string>
 </resources>

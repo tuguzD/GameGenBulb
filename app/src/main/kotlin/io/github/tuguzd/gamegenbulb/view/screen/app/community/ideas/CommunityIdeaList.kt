@@ -14,7 +14,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import io.github.tuguzd.gamegenbulb.view.screen.app.community.util.CommunityNavGraph
 import io.github.tuguzd.gamegenbulb.view.util.card.Idea
 import io.github.tuguzd.gamegenbulb.view.util.card.IdeaCard
-import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
+import io.github.tuguzd.gamegenbulb.view.util.card.content.Category
 
 @CommunityNavGraph(start = true)
 @Destination
@@ -23,7 +23,6 @@ fun CommunityIdeaListScreen(
     modifier: Modifier = Modifier,
 ) {
     val padding = 16.dp
-
     LazyColumn(
         modifier = modifier.padding(horizontal = padding),
     ) {
@@ -40,12 +39,12 @@ fun CommunityIdeaListScreen(
                     ),
                 ),
                 canModify = true,
-                characteristics = listOf(
-                    Characteristic(
+                categories = listOf(
+                    Category(
                         name = "Симулятор",
                         icon = Icons.Rounded.AutoStories,
                     ),
-                    Characteristic(
+                    Category(
                         name = "3D",
                         icon = Icons.Rounded.ColorLens,
                     ),

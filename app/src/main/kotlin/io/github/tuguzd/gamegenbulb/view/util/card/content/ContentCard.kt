@@ -5,8 +5,6 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
@@ -27,9 +25,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.charlex.compose.RevealDirection
 import io.github.tuguzd.gamegenbulb.R
+import io.github.tuguzd.gamegenbulb.view.util.HiddenContentColumn
+import io.github.tuguzd.gamegenbulb.view.util.RevealSwipe
 import io.github.tuguzd.gamegenbulb.view.util.button.FavouriteIconButton
 import io.github.tuguzd.gamegenbulb.view.util.button.TooltipIconButton
-import io.github.tuguzd.gamegenbulb.view.util.card.content.util.*
+import io.github.tuguzd.gamegenbulb.view.util.card.util.CategoryChipRow
+import io.github.tuguzd.gamegenbulb.view.util.card.content.util.ContentHeader
+import io.github.tuguzd.gamegenbulb.view.util.card.content.util.ContentImage
+import io.github.tuguzd.gamegenbulb.view.util.card.content.util.IconTitleRow
+import io.github.tuguzd.gamegenbulb.view.util.card.content.util.LinkImageRow
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
@@ -38,7 +42,7 @@ fun ContentCard(
     contentName: String,
     contentImage: String? = null,
     links: List<Link>? = null,
-    characteristics: List<Characteristic>? = null,
+    categories: List<Category>? = null,
     canModify: Boolean,
     devPubNeeded: Boolean,
     developerName: String? = null,
@@ -99,7 +103,7 @@ fun ContentCard(
                 ContentHeader(
                     contentName = contentName,
                     votePercentage = votePercentage,
-                    expandNeeded = (links != null || characteristics != null),
+                    expandNeeded = (links != null || categories != null),
                     expandedState = expandedState,
                     onClick = { expandedState = !expandedState }
                 )
@@ -109,33 +113,22 @@ fun ContentCard(
                 )
             }
             AnimatedVisibility(
-                visible = (expandedState && characteristics != null),
+                visible = (expandedState && categories != null),
                 enter = expandVertically(expandFrom = Alignment.Top),
                 exit = shrinkVertically(shrinkTowards = Alignment.Top),
             ) {
-                CharsChipRow(characteristics)
+                CategoryChipRow(categories)
             }
         }
     }
 }
-
-@Composable
-private fun HiddenContentColumn(
-    content: @Composable ColumnScope.() -> Unit,
-) = Column(
-    modifier = Modifier
-        .fillMaxHeight()
-        .padding(8.dp),
-    verticalArrangement = Arrangement.spacedBy(8.dp),
-    content = content,
-)
 
 data class Link(
     val name: String,
     val imagePath: String,
 )
 
-data class Characteristic(
+data class Category(
     val name: String,
     val icon: ImageVector,
 )

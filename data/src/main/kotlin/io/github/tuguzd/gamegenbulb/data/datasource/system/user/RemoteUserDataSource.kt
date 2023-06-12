@@ -18,6 +18,7 @@ fun FilterUsersQuery.User.toDomain(): User = User(
         displayName = displayName,
         role = role.toDomain(),
         email = email,
+        phone = phone,
         avatar = avatarUrl,
     ),
 )

@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "5:3324720866464994545",
-      "lastPropertyId": "7:8286561510389644027",
+      "lastPropertyId": "8:5761423582241135169",
       "name": "UserEntity",
       "properties": [
         {
@@ -49,6 +49,13 @@
           "id": "7:8286561510389644027",
           "name": "avatar",
           "type": 9
+        },
+        {
+          "id": "8:5761423582241135169",
+          "name": "phone",
+          "indexId": "8:6033455485431961860",
+          "type": 9,
+          "flags": 2080
         }
       ],
       "relations": []
@@ -156,7 +163,7 @@
     }
   ],
   "lastEntityId": "9:5081773792147720426",
-  "lastIndexId": "7:8504036360228651907",
+  "lastIndexId": "8:6033455485431961860",
   "lastRelationId": "6:6252098486949486471",
   "lastSequenceId": "0:0",
   "modelVersion": 5,

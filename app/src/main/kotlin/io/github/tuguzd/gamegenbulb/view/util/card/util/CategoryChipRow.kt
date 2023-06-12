@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.util.card.content.util
+package io.github.tuguzd.gamegenbulb.view.util.card.util
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -12,18 +12,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
+import io.github.tuguzd.gamegenbulb.view.util.card.content.Category
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-fun CharsChipRow(
-    characteristics: List<Characteristic>?,
+fun CategoryChipRow(
+    categories: List<Category>?,
+    modifier: Modifier = Modifier,
+    chipModifier: Modifier = Modifier,
 ) = FlowRow(
-    modifier = Modifier.fillMaxWidth(),
+    modifier = modifier.fillMaxWidth(),
     horizontalArrangement = Arrangement.spacedBy(8.dp),
 ) {
-    characteristics?.forEach { char ->
+    categories?.forEach { char ->
         ElevatedFilterChip(
+            modifier = chipModifier,
             leadingIcon = {
                 Icon(
                     modifier = Modifier.size(18.dp),

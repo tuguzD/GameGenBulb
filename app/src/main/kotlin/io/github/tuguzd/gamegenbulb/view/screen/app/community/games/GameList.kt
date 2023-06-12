@@ -15,7 +15,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import io.github.tuguzd.gamegenbulb.view.screen.app.community.util.CommunityNavGraph
 import io.github.tuguzd.gamegenbulb.view.util.card.Game
 import io.github.tuguzd.gamegenbulb.view.util.card.GameCard
-import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
+import io.github.tuguzd.gamegenbulb.view.util.card.content.Category
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Link
 
 @CommunityNavGraph
@@ -25,7 +25,6 @@ fun GameListScreen(
     modifier: Modifier = Modifier,
 ) {
     val padding = 16.dp
-
     LazyColumn(
         modifier = modifier.padding(horizontal = padding),
     ) {
@@ -55,20 +54,20 @@ fun GameListScreen(
                 votePercentage = 95,
                 developerName = "Bay12 Games",
                 publisherName = "Kitfox Games",
-                characteristics = listOf(
-                    Characteristic(
+                categories = listOf(
+                    Category(
                         name = "Стратегия",
                         icon = Icons.Rounded.AutoStories,
                     ),
-                    Characteristic(
+                    Category(
                         name = "Инди",
                         icon = Icons.Rounded.Person,
                     ),
-                    Characteristic(
+                    Category(
                         name = "Пиксель",
                         icon = Icons.Rounded.ColorLens,
                     ),
-                    Characteristic(
+                    Category(
                         name = "ASCII",
                         icon = Icons.Rounded.ColorLens,
                     ),
@@ -102,16 +101,16 @@ fun GameListScreen(
                 ),
                 votePercentage = 98,
                 developerName = "Ludeon Studios",
-                characteristics = listOf(
-                    Characteristic(
+                categories = listOf(
+                    Category(
                         name = "Стратегия",
                         icon = Icons.Rounded.AutoStories,
                     ),
-                    Characteristic(
+                    Category(
                         name = "Инди",
                         icon = Icons.Rounded.Person,
                     ),
-                    Characteristic(
+                    Category(
                         name = "2D",
                         icon = Icons.Rounded.ColorLens,
                     ),
@@ -153,16 +152,16 @@ fun GameListScreen(
                 votePercentage = 74,
                 developerName = "KING Art",
                 publisherName = "THQ Nordic",
-                characteristics = listOf(
-                    Characteristic(
+                categories = listOf(
+                    Category(
                         name = "Ролевая",
                         icon = Icons.Rounded.AutoStories,
                     ),
-                    Characteristic(
+                    Category(
                         name = "А-класс",
                         icon = Icons.Rounded.Person,
                     ),
-                    Characteristic(
+                    Category(
                         name = "3D",
                         icon = Icons.Rounded.ColorLens,
                     ),
@@ -215,20 +214,20 @@ fun GameListScreen(
                 ),
                 votePercentage = 97,
                 developerName = "Re-Logic",
-                characteristics = listOf(
-                    Characteristic(
+                categories = listOf(
+                    Category(
                         name = "Приключение",
                         icon = Icons.Rounded.AutoStories,
                     ),
-                    Characteristic(
+                    Category(
                         name = "Песочница",
                         icon = Icons.Rounded.AutoStories,
                     ),
-                    Characteristic(
+                    Category(
                         name = "Инди",
                         icon = Icons.Rounded.Person,
                     ),
-                    Characteristic(
+                    Category(
                         name = "2D",
                         icon = Icons.Rounded.ColorLens,
                     ),
