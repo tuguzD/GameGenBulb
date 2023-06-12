@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen.workshop.sessions
+package io.github.tuguzd.gamegenbulb.view.screen.app.workshop.ideas
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,16 +11,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.ramcosta.composedestinations.annotation.Destination
 import io.github.tuguzd.gamegenbulb.R
-import io.github.tuguzd.gamegenbulb.view.screen.workshop.util.WorkshopNavGraph
+import io.github.tuguzd.gamegenbulb.view.screen.app.workshop.util.WorkshopNavGraph
 import io.github.tuguzd.gamegenbulb.view.util.scaffold.AddFABScaffold
 
-@WorkshopNavGraph
+@WorkshopNavGraph(start = true)
 @Destination
 @Composable
-fun SessionListScreen(
+fun WorkshopIdeaListScreen(
     modifier: Modifier = Modifier,
 ) = AddFABScaffold(
-    label = stringResource(R.string.create_new),
     onClick = { },
 ) { padding ->
     Column(
@@ -30,6 +29,6 @@ fun SessionListScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = stringResource(R.string.sessions))
+        Text(text = stringResource(R.string.user_ideas))
     }
 }

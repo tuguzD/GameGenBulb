@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen.notification
+package io.github.tuguzd.gamegenbulb.view.screen.app.notification
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

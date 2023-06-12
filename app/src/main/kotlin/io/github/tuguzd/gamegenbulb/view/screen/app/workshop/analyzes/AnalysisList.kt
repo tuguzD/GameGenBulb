@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen.workshop.analyzes
+package io.github.tuguzd.gamegenbulb.view.screen.app.workshop.analyzes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.ramcosta.composedestinations.annotation.Destination
 import io.github.tuguzd.gamegenbulb.R
-import io.github.tuguzd.gamegenbulb.view.screen.workshop.util.WorkshopNavGraph
+import io.github.tuguzd.gamegenbulb.view.screen.app.workshop.util.WorkshopNavGraph
 import io.github.tuguzd.gamegenbulb.view.util.scaffold.AddFABScaffold
 
 @WorkshopNavGraph

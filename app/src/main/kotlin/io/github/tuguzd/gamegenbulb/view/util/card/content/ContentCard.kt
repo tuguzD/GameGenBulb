@@ -1,10 +1,11 @@
 package io.github.tuguzd.gamegenbulb.view.util.card.content
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExperimentalMaterialApi
@@ -12,10 +13,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.Share
-import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,17 +26,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.charlex.compose.RevealDirection
-import de.charlex.compose.RevealSwipe
 import io.github.tuguzd.gamegenbulb.R
 import io.github.tuguzd.gamegenbulb.view.util.button.FavouriteIconButton
 import io.github.tuguzd.gamegenbulb.view.util.button.TooltipIconButton
-import io.github.tuguzd.gamegenbulb.view.util.card.content.util.CharsChipRow
-import io.github.tuguzd.gamegenbulb.view.util.card.content.util.ContentImage
-import io.github.tuguzd.gamegenbulb.view.util.card.content.util.ExpandButton
-import io.github.tuguzd.gamegenbulb.view.util.card.content.util.IconTitleRow
-import io.github.tuguzd.gamegenbulb.view.util.card.content.util.LinkImageRow
-import io.github.tuguzd.gamegenbulb.view.util.text.OneLineIconTitle
-import io.github.tuguzd.gamegenbulb.view.util.text.OneLineTitle
+import io.github.tuguzd.gamegenbulb.view.util.card.content.util.*
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
@@ -56,11 +48,6 @@ fun ContentCard(
     votePercentage: Int? = null,
     onClick: () -> Unit = { },
 ) = RevealSwipe(
-    maxRevealDp = 64.dp,
-    closeOnBackgroundClick = false,
-    shape = MaterialTheme.shapes.medium,
-    backgroundCardEndColor = MaterialTheme.colorScheme.secondaryContainer,
-    backgroundCardStartColor = MaterialTheme.colorScheme.secondaryContainer,
     hiddenContentStart = {
         HiddenContentColumn {
             var isFavourite by remember { mutableStateOf(false) }
@@ -95,43 +82,39 @@ fun ContentCard(
     ) {
         var expandedState by remember { mutableStateOf(false) }
 
-        if (expandedState && links != null)
+        AnimatedVisibility(
+            visible = expandedState && links != null,
+            enter = expandVertically(expandFrom = Alignment.Bottom),
+            exit = shrinkVertically(shrinkTowards = Alignment.Bottom),
+        ) {
             LinkImageRow(links)
+        }
         ContentImage(contentImage = contentImage)
 
         Column(
             modifier = Modifier.padding(16.dp, 8.dp, 16.dp, 16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    OneLineTitle(
-                        text = contentName,
-                        style = MaterialTheme.typography.titleLarge,
-                    )
-                    OneLineIconTitle(
-                        imageVector = Icons.Rounded.Star,
-                        label = votePercentage?.let { "$it%" } ?: "N/A",
-                    )
-                    Spacer(Modifier.weight(1f))
-
-                    if (links != null || characteristics != null)
-                        ExpandButton(expandedState) {
-                            expandedState = !expandedState
-                        }
-                }
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                ContentHeader(
+                    contentName = contentName,
+                    votePercentage = votePercentage,
+                    expandNeeded = (links != null || characteristics != null),
+                    expandedState = expandedState,
+                    onClick = { expandedState = !expandedState }
+                )
                 IconTitleRow(
                     devPubNeeded, developerName,
                     publisherName, creatorName, authors,
                 )
             }
-            if (expandedState && characteristics != null)
+            AnimatedVisibility(
+                visible = (expandedState && characteristics != null),
+                enter = expandVertically(expandFrom = Alignment.Top),
+                exit = shrinkVertically(shrinkTowards = Alignment.Top),
+            ) {
                 CharsChipRow(characteristics)
+            }
         }
     }
 }

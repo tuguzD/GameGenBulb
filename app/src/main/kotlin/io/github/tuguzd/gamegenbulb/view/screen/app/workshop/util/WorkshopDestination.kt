@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package io.github.tuguzd.gamegenbulb.view.screen.workshop.util
+package io.github.tuguzd.gamegenbulb.view.screen.app.workshop.util
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons

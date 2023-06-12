@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen.community.games
+package io.github.tuguzd.gamegenbulb.view.screen.app.community.games
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ramcosta.composedestinations.annotation.Destination
-import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityNavGraph
+import io.github.tuguzd.gamegenbulb.view.screen.app.community.util.CommunityNavGraph
 import io.github.tuguzd.gamegenbulb.view.util.card.Game
 import io.github.tuguzd.gamegenbulb.view.util.card.GameCard
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
@@ -164,6 +164,72 @@ fun GameListScreen(
                     ),
                     Characteristic(
                         name = "3D",
+                        icon = Icons.Rounded.ColorLens,
+                    ),
+                ),
+            )
+            Spacer(modifier = Modifier.height(padding))
+        }
+        item {
+            GameCard(
+                game = Game(
+                    name = "Terraria",
+                    imagePath = "https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg"
+                ),
+                links = listOf(
+                    Link(
+                        name = "Steam",
+                        imagePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/" +
+                                "Steam_icon_logo.svg/768px-Steam_icon_logo.svg.png",
+                    ),
+                    Link(
+                        name = "GOG.com",
+                        imagePath = "https://icon-library.com/images/gog-icon/gog-icon-17.jpg",
+                    ),
+                    Link(
+                        name = "App Store",
+                        imagePath = "https://www.apple.com/v/app-store/b/images/" +
+                                "overview/icon_appstore__ev0z770zyxoy_large_2x.png",
+                    ),
+                    Link(
+                        name = "Google Play",
+                        imagePath = "https://static.vecteezy.com/system/resources/previews/022/" +
+                                "613/026/original/google-play-store-icon-logo-symbol-free-png.png",
+                    ),
+                    Link(
+                        name = "Nintendo Switch",
+                        imagePath = "https://cdn.icon-icons.com/icons2/2429/PNG/" +
+                                "512/nintendo_logo_icon_147258.png",
+                    ),
+                    Link(
+                        name = "Xbox",
+                        imagePath = "https://cdn.icon-icons.com/icons2/17/" +
+                                "PNG/256/microsoft_xbox_xbox360_2158.png",
+                    ),
+                    Link(
+                        name = "PlayStation",
+                        imagePath = "https://w7.pngwing.com/pngs/645/422/" +
+                                "png-transparent-circle-gaming-playstation-round-" +
+                                "icon-popular-services-brands-vol-2-icon.png",
+                    ),
+                ),
+                votePercentage = 97,
+                developerName = "Re-Logic",
+                characteristics = listOf(
+                    Characteristic(
+                        name = "Приключение",
+                        icon = Icons.Rounded.AutoStories,
+                    ),
+                    Characteristic(
+                        name = "Песочница",
+                        icon = Icons.Rounded.AutoStories,
+                    ),
+                    Characteristic(
+                        name = "Инди",
+                        icon = Icons.Rounded.Person,
+                    ),
+                    Characteristic(
+                        name = "2D",
                         icon = Icons.Rounded.ColorLens,
                     ),
                 ),

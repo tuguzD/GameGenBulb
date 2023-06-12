@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen.workshop
+package io.github.tuguzd.gamegenbulb.view.screen.app.workshop
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +10,7 @@ import com.ramcosta.composedestinations.rememberNavHostEngine
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppNavGraph
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppTabRow
-import io.github.tuguzd.gamegenbulb.view.screen.workshop.util.WorkshopDestination
+import io.github.tuguzd.gamegenbulb.view.screen.app.workshop.util.WorkshopDestination
 
 @AppNavGraph
 @Destination

@@ -1,8 +1,9 @@
-package io.github.tuguzd.gamegenbulb.view.screen.community.authors
+package io.github.tuguzd.gamegenbulb.view.screen.app.workshop.sessions
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -10,19 +11,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.ramcosta.composedestinations.annotation.Destination
 import io.github.tuguzd.gamegenbulb.R
-import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityNavGraph
+import io.github.tuguzd.gamegenbulb.view.screen.app.workshop.util.WorkshopNavGraph
+import io.github.tuguzd.gamegenbulb.view.util.scaffold.AddFABScaffold
 
-@CommunityNavGraph
+@WorkshopNavGraph
 @Destination
 @Composable
-fun AuthorListScreen(
+fun SessionListScreen(
     modifier: Modifier = Modifier,
-) {
+) = AddFABScaffold(
+    label = stringResource(R.string.create_new),
+    onClick = { },
+) { padding ->
     Column(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(padding),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = stringResource(R.string.authors))
+        Text(text = stringResource(R.string.sessions))
     }
 }

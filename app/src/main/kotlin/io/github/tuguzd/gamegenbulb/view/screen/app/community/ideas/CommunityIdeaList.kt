@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.screen.community.ideas
+package io.github.tuguzd.gamegenbulb.view.screen.app.community.ideas
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ramcosta.composedestinations.annotation.Destination
-import io.github.tuguzd.gamegenbulb.view.screen.community.util.CommunityNavGraph
+import io.github.tuguzd.gamegenbulb.view.screen.app.community.util.CommunityNavGraph
 import io.github.tuguzd.gamegenbulb.view.util.card.Idea
 import io.github.tuguzd.gamegenbulb.view.util.card.IdeaCard
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Characteristic
