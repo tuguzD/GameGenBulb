@@ -5,6 +5,7 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
@@ -95,7 +96,10 @@ fun ContentCard(
         ) {
             LinkImageRow(links)
         }
-        ContentImage(contentImage = contentImage)
+        ContentImage(
+            modifier = Modifier.height(180.dp),
+            contentImage = contentImage,
+        )
 
         Column(
             modifier = Modifier.padding(16.dp, 8.dp, 16.dp, 16.dp),

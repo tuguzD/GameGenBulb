@@ -1,4 +1,4 @@
-package io.github.tuguzd.gamegenbulb.view.util.tab
+package io.github.tuguzd.gamegenbulb.view.util.row.tab
 
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.TabPosition

@@ -26,7 +26,7 @@ import io.github.tuguzd.gamegenbulb.view.util.button.FavouriteIconButton
 import io.github.tuguzd.gamegenbulb.view.util.button.TooltipIconButton
 import io.github.tuguzd.gamegenbulb.view.util.card.Game
 import io.github.tuguzd.gamegenbulb.view.util.card.content.util.ContentImage
-import io.github.tuguzd.gamegenbulb.view.util.tab.AppTabRow
+import io.github.tuguzd.gamegenbulb.view.util.row.tab.AppTabRow
 import io.github.tuguzd.gamegenbulb.view.util.topbar.NavigateUpMediumTopBar
 
 @RootNavGraph

@@ -12,7 +12,7 @@ import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
 import io.github.tuguzd.gamegenbulb.view.screen.app.community.util.CommunityDestination
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppNavGraph
 import io.github.tuguzd.gamegenbulb.view.util.RootNavController
-import io.github.tuguzd.gamegenbulb.view.util.tab.AppTabRow
+import io.github.tuguzd.gamegenbulb.view.util.row.tab.AppTabRow
 
 @AppNavGraph(start = true)
 @Destination
