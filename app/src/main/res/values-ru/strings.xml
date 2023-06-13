@@ -68,4 +68,9 @@
     <string name="unfavourite">Из Избранного</string>
     <string name="share">Поделиться</string>
     <string name="user_popular">Популярные категории</string>
+    <string name="description">Описание</string>
+    <string name="rating">Оценки</string>
+    <string name="similar">Похожее</string>
+    <string name="social_media">Соц. сети</string>
+    <string name="store_list">Магазины</string>
 </resources>

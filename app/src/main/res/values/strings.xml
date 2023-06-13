@@ -70,4 +70,9 @@
     <string name="unfavourite">Unfavourite</string>
     <string name="share">Share</string>
     <string name="user_popular">Popular categories</string>
+    <string name="description">Description</string>
+    <string name="rating">Rating</string>
+    <string name="similar">Similar</string>
+    <string name="social_media">Social media</string>
+    <string name="store_list">Stores</string>
 </resources>

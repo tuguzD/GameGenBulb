@@ -12,7 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.navigate
 import io.github.tuguzd.gamegenbulb.view.screen.app.community.util.CommunityNavGraph
+import io.github.tuguzd.gamegenbulb.view.screen.destinations.GameScreenDestination
+import io.github.tuguzd.gamegenbulb.view.util.RootNavController
 import io.github.tuguzd.gamegenbulb.view.util.card.Game
 import io.github.tuguzd.gamegenbulb.view.util.card.GameCard
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Category
@@ -22,6 +25,7 @@ import io.github.tuguzd.gamegenbulb.view.util.card.content.Link
 @Destination
 @Composable
 fun GameListScreen(
+    rootNavController: RootNavController,
     modifier: Modifier = Modifier,
 ) {
     val padding = 16.dp
@@ -31,6 +35,16 @@ fun GameListScreen(
         item { Spacer(modifier = Modifier.height(padding)) }
         item {
             GameCard(
+                onClick = {
+                    rootNavController.value.navigate(
+                        direction = GameScreenDestination(
+                            Game(
+                                name = "Dwarf Fortress",
+                                imagePath = "https://cdn.mos.cms.futurecdn.net/9GTJo42N2uEr99T8Svxava.png"
+                            )
+                        ),
+                    )
+                },
                 game = Game(
                     name = "Dwarf Fortress",
                     imagePath = "https://cdn.mos.cms.futurecdn.net/9GTJo42N2uEr99T8Svxava.png"

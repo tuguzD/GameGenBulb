@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.junit5)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.devtools.ksp)
     alias(libs.plugins.hilt.android)
 }
@@ -28,6 +29,8 @@ dependencies {
     implementation(libs.bundles.mvi)
     kapt(libs.hilt.kapt)
     implementation(libs.bundles.hilt)
+
+    implementation(libs.serialization.json)
 
     val composeBom = platform(libs.compose.bom)
     // Jetpack Compose implementation

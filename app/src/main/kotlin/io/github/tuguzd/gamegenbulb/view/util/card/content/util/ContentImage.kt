@@ -23,9 +23,10 @@ import io.github.tuguzd.gamegenbulb.view.util.image.TooltipImage
 
 @Composable
 fun ContentImage(
+    modifier: Modifier = Modifier,
     contentImage: String?
 ) = TooltipImage(
-    modifier = Modifier
+    modifier = modifier
         .height(180.dp)
         .clip(RoundedCornerShape(12.dp))
         .border(0.dp, Color.Transparent, RoundedCornerShape(12.dp)),

@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Category
 import io.github.tuguzd.gamegenbulb.view.util.card.content.ContentCard
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Link
+import kotlinx.serialization.Serializable
 
 @Composable
 fun GameCard(
@@ -30,6 +31,7 @@ fun GameCard(
     onClick = onClick,
 )
 
+@Serializable
 data class Game(
     val name: String,
     val imagePath: String?,

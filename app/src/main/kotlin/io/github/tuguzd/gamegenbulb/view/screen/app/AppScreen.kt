@@ -13,6 +13,7 @@ import com.ramcosta.composedestinations.rememberNavHostEngine
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppBottomBar
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppTopBar
+import io.github.tuguzd.gamegenbulb.view.util.RootNavController
 import io.github.tuguzd.gamegenbulb.viewmodel.user.current.CurrentUserViewModel
 
 @RootNavGraph(start = true)
@@ -38,6 +39,9 @@ fun AppScreen(
             navGraph = NavGraphs.app,
             dependenciesContainerBuilder = {
                 dependency(viewModel)
+                dependency(
+                    RootNavController(rootNavController)
+                )
             }
         )
     }

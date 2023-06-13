@@ -26,6 +26,7 @@ fun WorkshopScreen(
         AppTabRow(
             navGraph = navGraph,
             navController = navController,
+            isPrimary = false,
             destinations = WorkshopDestination.values(),
         )
         DestinationsNavHost(
