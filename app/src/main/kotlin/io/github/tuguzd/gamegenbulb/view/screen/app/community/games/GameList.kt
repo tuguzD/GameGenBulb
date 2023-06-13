@@ -19,6 +19,7 @@ import io.github.tuguzd.gamegenbulb.view.screen.destinations.GameScreenDestinati
 import io.github.tuguzd.gamegenbulb.view.util.RootNavController
 import io.github.tuguzd.gamegenbulb.view.util.card.Game
 import io.github.tuguzd.gamegenbulb.view.util.card.GameCard
+import io.github.tuguzd.gamegenbulb.view.util.card.GameCardContent
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Category
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Link
 
@@ -251,9 +252,3 @@ fun GameListScreen(
         }
     }
 }
-
-data class GameCardContent(
-    val game: Game,
-    val categories: List<Category>,
-    val favourite: Boolean,
-)

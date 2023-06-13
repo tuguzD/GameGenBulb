@@ -37,15 +37,16 @@ import io.github.tuguzd.gamegenbulb.view.util.image.TooltipImage
 @Composable
 fun UserCard(
     user: UserData,
+    isFavourite: Boolean,
     modifier: Modifier = Modifier,
     categories: List<Category>? = null,
     onClick: () -> Unit = { },
 ) = RevealSwipe(
     hiddenContentStart = {
         HiddenContentColumn {
-            var isFavourite by remember { mutableStateOf(false) }
-            FavouriteIconButton(isFavourite) {
-                isFavourite = !isFavourite
+            var favouriteState by remember { mutableStateOf(isFavourite) }
+            FavouriteIconButton(favouriteState) {
+                favouriteState = !favouriteState
             }
             TooltipIconButton(
                 imageVector = Icons.Rounded.Share,
@@ -74,11 +75,11 @@ fun UserCard(
                 user.email, user.phone,
             )
         }
-        categories?.let {
+        if (!categories.isNullOrEmpty()) {
             Surface(tonalElevation = 1.dp) {
                 var expandedState by remember { mutableStateOf(false) }
                 ExpandColumn(
-                    categories = it,
+                    categories = categories,
                     expandedState = expandedState,
                     onClick = { expandedState = !expandedState }
                 )
@@ -86,3 +87,9 @@ fun UserCard(
         }
     }
 }
+
+data class UserCardContent(
+    val user: UserData,
+    val categories: List<Category>?,
+    val favourite: Boolean,
+)

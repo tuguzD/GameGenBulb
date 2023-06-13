@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Category
 import io.github.tuguzd.gamegenbulb.view.util.card.content.ContentCard
 import io.github.tuguzd.gamegenbulb.view.util.card.content.Link
+import kotlinx.serialization.Serializable
 
 @Composable
 fun IdeaCard(
@@ -12,11 +13,7 @@ fun IdeaCard(
     idea: Idea,
     canModify: Boolean,
     isFavourite: Boolean,
-    links: List<Link>? = null,
     categories: List<Category>? = null,
-    developerName: String? = null,
-    publisherName: String? = null,
-    votePercentage: Int? = null,
     onClick: () -> Unit = { },
 ) = ContentCard(
     modifier = modifier,
@@ -24,20 +21,31 @@ fun IdeaCard(
     contentImage = idea.imagePath,
     creatorName = idea.creator,
     authors = idea.authors,
-    links = links,
+    links = idea.links,
     categories = categories,
     canModify = canModify,
     isFavourite = isFavourite,
     devPubNeeded = false,
-    developerName = developerName,
-    publisherName = publisherName,
-    rating = votePercentage,
+    developerName = idea.developerName,
+    publisherName = idea.publisherName,
+    rating = idea.rating,
     onClick = onClick,
 )
 
+data class IdeaCardContent(
+    val idea: Idea,
+    val categories: List<Category>,
+    val favourite: Boolean,
+)
+
+@Serializable
 data class Idea(
     val name: String,
     val creator: String,
     val authors: List<String>?,
     val imagePath: String?,
+    val rating: Int? = null,
+    val links: List<Link>? = null,
+    val developerName: String? = null,
+    val publisherName: String? = null,
 )

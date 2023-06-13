@@ -38,3 +38,9 @@ data class Game(
     val developerName: String? = null,
     val publisherName: String? = null,
 )
+
+data class GameCardContent(
+    val game: Game,
+    val categories: List<Category>,
+    val favourite: Boolean,
+)
