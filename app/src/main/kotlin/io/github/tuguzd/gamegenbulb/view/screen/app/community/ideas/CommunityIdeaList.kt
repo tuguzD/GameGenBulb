@@ -39,6 +39,7 @@ fun CommunityIdeaListScreen(
                     ),
                 ),
                 canModify = true,
+                isFavourite = true,
                 categories = listOf(
                     Category(
                         name = "Симулятор",

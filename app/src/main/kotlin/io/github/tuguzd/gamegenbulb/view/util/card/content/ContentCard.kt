@@ -29,34 +29,36 @@ import io.github.tuguzd.gamegenbulb.view.util.HiddenContentColumn
 import io.github.tuguzd.gamegenbulb.view.util.RevealSwipe
 import io.github.tuguzd.gamegenbulb.view.util.button.FavouriteIconButton
 import io.github.tuguzd.gamegenbulb.view.util.button.TooltipIconButton
-import io.github.tuguzd.gamegenbulb.view.util.card.util.CategoryChipRow
 import io.github.tuguzd.gamegenbulb.view.util.card.content.util.ContentHeader
 import io.github.tuguzd.gamegenbulb.view.util.card.content.util.ContentImage
 import io.github.tuguzd.gamegenbulb.view.util.card.content.util.IconTitleRow
 import io.github.tuguzd.gamegenbulb.view.util.card.content.util.LinkImageRow
+import io.github.tuguzd.gamegenbulb.view.util.card.util.CategoryChipRow
+import kotlinx.serialization.Serializable
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 fun ContentCard(
     modifier: Modifier = Modifier,
     contentName: String,
+    canModify: Boolean,
+    isFavourite: Boolean,
+    devPubNeeded: Boolean,
     contentImage: String? = null,
     links: List<Link>? = null,
     categories: List<Category>? = null,
-    canModify: Boolean,
-    devPubNeeded: Boolean,
     developerName: String? = null,
     publisherName: String? = null,
     creatorName: String? = null,
     authors: List<String>? = null,
-    votePercentage: Int? = null,
+    rating: Int? = null,
     onClick: () -> Unit = { },
 ) = RevealSwipe(
     hiddenContentStart = {
         HiddenContentColumn {
-            var isFavourite by remember { mutableStateOf(false) }
-            FavouriteIconButton(isFavourite) {
-                isFavourite = !isFavourite
+            var favouriteState by remember { mutableStateOf(isFavourite) }
+            FavouriteIconButton(favouriteState) {
+                favouriteState = !favouriteState
             }
             TooltipIconButton(
                 imageVector = Icons.Rounded.Share,
@@ -102,7 +104,7 @@ fun ContentCard(
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 ContentHeader(
                     contentName = contentName,
-                    votePercentage = votePercentage,
+                    votePercentage = rating,
                     expandNeeded = (links != null || categories != null),
                     expandedState = expandedState,
                     onClick = { expandedState = !expandedState }
@@ -123,6 +125,7 @@ fun ContentCard(
     }
 }
 
+@Serializable
 data class Link(
     val name: String,
     val imagePath: String,

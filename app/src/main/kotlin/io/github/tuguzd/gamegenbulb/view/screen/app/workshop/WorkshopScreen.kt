@@ -9,7 +9,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.rememberNavHostEngine
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppNavGraph
-import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppTabRow
+import io.github.tuguzd.gamegenbulb.view.util.tab.AppTabRow
 import io.github.tuguzd.gamegenbulb.view.screen.app.workshop.util.WorkshopDestination
 
 @AppNavGraph
@@ -27,6 +27,7 @@ fun WorkshopScreen(
             navGraph = navGraph,
             navController = navController,
             isPrimary = false,
+            isScrollable = false,
             destinations = WorkshopDestination.values(),
         )
         DestinationsNavHost(

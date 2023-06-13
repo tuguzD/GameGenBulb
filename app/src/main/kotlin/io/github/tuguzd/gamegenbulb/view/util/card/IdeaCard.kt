@@ -11,6 +11,7 @@ fun IdeaCard(
     modifier: Modifier = Modifier,
     idea: Idea,
     canModify: Boolean,
+    isFavourite: Boolean,
     links: List<Link>? = null,
     categories: List<Category>? = null,
     developerName: String? = null,
@@ -26,10 +27,11 @@ fun IdeaCard(
     links = links,
     categories = categories,
     canModify = canModify,
+    isFavourite = isFavourite,
     devPubNeeded = false,
     developerName = developerName,
     publisherName = publisherName,
-    votePercentage = votePercentage,
+    rating = votePercentage,
     onClick = onClick,
 )
 

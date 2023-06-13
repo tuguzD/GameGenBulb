@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AutoStories
 import androidx.compose.material.icons.rounded.ColorLens
@@ -29,26 +30,15 @@ fun GameListScreen(
     modifier: Modifier = Modifier,
 ) {
     val padding = 16.dp
-    LazyColumn(
-        modifier = modifier.padding(horizontal = padding),
-    ) {
-        item { Spacer(modifier = Modifier.height(padding)) }
-        item {
-            GameCard(
-                onClick = {
-                    rootNavController.value.navigate(
-                        direction = GameScreenDestination(
-                            Game(
-                                name = "Dwarf Fortress",
-                                imagePath = "https://cdn.mos.cms.futurecdn.net/9GTJo42N2uEr99T8Svxava.png"
-                            )
-                        ),
-                    )
-                },
-                game = Game(
-                    name = "Dwarf Fortress",
-                    imagePath = "https://cdn.mos.cms.futurecdn.net/9GTJo42N2uEr99T8Svxava.png"
-                ),
+
+    val list = mutableListOf(
+        GameCardContent(
+            game = Game(
+                name = "Dwarf Fortress",
+                imagePath = "https://cdn.mos.cms.futurecdn.net/9GTJo42N2uEr99T8Svxava.png",
+                developerName = "Bay12 Games",
+                publisherName = "Kitfox Games",
+                rating = 95,
                 links = listOf(
                     Link(
                         name = "Steam",
@@ -65,38 +55,35 @@ fun GameListScreen(
                         imagePath = "https://media.moddb.com/images/groups/1/6/5721/logo.jpg",
                     ),
                 ),
-                votePercentage = 95,
-                developerName = "Bay12 Games",
-                publisherName = "Kitfox Games",
-                categories = listOf(
-                    Category(
-                        name = "Стратегия",
-                        icon = Icons.Rounded.AutoStories,
-                    ),
-                    Category(
-                        name = "Инди",
-                        icon = Icons.Rounded.Person,
-                    ),
-                    Category(
-                        name = "Пиксель",
-                        icon = Icons.Rounded.ColorLens,
-                    ),
-                    Category(
-                        name = "ASCII",
-                        icon = Icons.Rounded.ColorLens,
-                    ),
+            ),
+            categories = listOf(
+                Category(
+                    name = "Стратегия",
+                    icon = Icons.Rounded.AutoStories,
                 ),
-            )
-            Spacer(modifier = Modifier.height(padding))
-        }
-        item {
-            GameCard(
-                game = Game(
-                    name = "RimWorld",
-                    imagePath = "https://cdn1.epicgames.com/7051eadbb8c2435caf32a9bc0dc17936/" +
-                            "offer/EGS_RimWorld_LudeonStudios_S1-2560x1440-" +
-                            "410a62ec21d44260409182e1174cce2e.jpg"
+                Category(
+                    name = "Инди",
+                    icon = Icons.Rounded.Person,
                 ),
+                Category(
+                    name = "Пиксель",
+                    icon = Icons.Rounded.ColorLens,
+                ),
+                Category(
+                    name = "ASCII",
+                    icon = Icons.Rounded.ColorLens,
+                ),
+            ),
+            favourite = false,
+        ),
+        GameCardContent(
+            game = Game(
+                name = "RimWorld",
+                imagePath = "https://cdn1.epicgames.com/7051eadbb8c2435caf32a9bc0dc17936/" +
+                        "offer/EGS_RimWorld_LudeonStudios_S1-2560x1440-" +
+                        "410a62ec21d44260409182e1174cce2e.jpg",
+                developerName = "Ludeon Studios",
+                rating = 98,
                 links = listOf(
                     Link(
                         name = "Steam",
@@ -113,33 +100,32 @@ fun GameListScreen(
                         imagePath = "https://icon-library.com/images/gog-icon/gog-icon-17.jpg",
                     ),
                 ),
-                votePercentage = 98,
-                developerName = "Ludeon Studios",
-                categories = listOf(
-                    Category(
-                        name = "Стратегия",
-                        icon = Icons.Rounded.AutoStories,
-                    ),
-                    Category(
-                        name = "Инди",
-                        icon = Icons.Rounded.Person,
-                    ),
-                    Category(
-                        name = "2D",
-                        icon = Icons.Rounded.ColorLens,
-                    ),
+            ),
+            categories = listOf(
+                Category(
+                    name = "Стратегия",
+                    icon = Icons.Rounded.AutoStories,
                 ),
-            )
-            Spacer(modifier = Modifier.height(padding))
-        }
-        item {
-            GameCard(
-                game = Game(
-                    name = "The Dwarves",
-                    imagePath = "https://images.gog-statics.com/" +
-                            "d4395cfca9c5173c14dab2f69bba019abb12dec67f5fc2587cf00ffb8d094e9b_" +
-                            "product_card_v2_mobile_slider_639.jpg"
+                Category(
+                    name = "Инди",
+                    icon = Icons.Rounded.Person,
                 ),
+                Category(
+                    name = "2D",
+                    icon = Icons.Rounded.ColorLens,
+                ),
+            ),
+            favourite = false,
+        ),
+        GameCardContent(
+            game = Game(
+                name = "The Dwarves",
+                imagePath = "https://images.gog-statics.com/" +
+                        "d4395cfca9c5173c14dab2f69bba019abb12dec67f5fc2587cf00ffb8d094e9b_" +
+                        "product_card_v2_mobile_slider_639.jpg",
+                developerName = "KING Art",
+                publisherName = "THQ Nordic",
+                rating = 74,
                 links = listOf(
                     Link(
                         name = "Steam",
@@ -163,32 +149,29 @@ fun GameListScreen(
                                 "icon-popular-services-brands-vol-2-icon.png",
                     ),
                 ),
-                votePercentage = 74,
-                developerName = "KING Art",
-                publisherName = "THQ Nordic",
-                categories = listOf(
-                    Category(
-                        name = "Ролевая",
-                        icon = Icons.Rounded.AutoStories,
-                    ),
-                    Category(
-                        name = "А-класс",
-                        icon = Icons.Rounded.Person,
-                    ),
-                    Category(
-                        name = "3D",
-                        icon = Icons.Rounded.ColorLens,
-                    ),
+            ),
+            categories = listOf(
+                Category(
+                    name = "Ролевая",
+                    icon = Icons.Rounded.AutoStories,
                 ),
-            )
-            Spacer(modifier = Modifier.height(padding))
-        }
-        item {
-            GameCard(
-                game = Game(
-                    name = "Terraria",
-                    imagePath = "https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg"
+                Category(
+                    name = "А-класс",
+                    icon = Icons.Rounded.Person,
                 ),
+                Category(
+                    name = "3D",
+                    icon = Icons.Rounded.ColorLens,
+                ),
+            ),
+            favourite = false,
+        ),
+        GameCardContent(
+            game = Game(
+                name = "Terraria",
+                imagePath = "https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg",
+                developerName = "Re-Logic",
+                rating = 97,
                 links = listOf(
                     Link(
                         name = "Steam",
@@ -226,28 +209,51 @@ fun GameListScreen(
                                 "icon-popular-services-brands-vol-2-icon.png",
                     ),
                 ),
-                votePercentage = 97,
-                developerName = "Re-Logic",
-                categories = listOf(
-                    Category(
-                        name = "Приключение",
-                        icon = Icons.Rounded.AutoStories,
-                    ),
-                    Category(
-                        name = "Песочница",
-                        icon = Icons.Rounded.AutoStories,
-                    ),
-                    Category(
-                        name = "Инди",
-                        icon = Icons.Rounded.Person,
-                    ),
-                    Category(
-                        name = "2D",
-                        icon = Icons.Rounded.ColorLens,
-                    ),
+            ),
+            categories = listOf(
+                Category(
+                    name = "Приключение",
+                    icon = Icons.Rounded.AutoStories,
                 ),
+                Category(
+                    name = "Песочница",
+                    icon = Icons.Rounded.AutoStories,
+                ),
+                Category(
+                    name = "Инди",
+                    icon = Icons.Rounded.Person,
+                ),
+                Category(
+                    name = "2D",
+                    icon = Icons.Rounded.ColorLens,
+                ),
+            ),
+            favourite = false,
+        ),
+    )
+
+    LazyColumn(
+        modifier = modifier.padding(horizontal = padding),
+    ) {
+        item { Spacer(modifier = Modifier.height(padding)) }
+        items(list) {
+            GameCard(
+                onClick = {
+                    rootNavController.value.navigate(
+                        direction = GameScreenDestination(it.game),
+                    )
+                },
+                game = it.game,
+                categories = it.categories,
+                isFavourite = it.favourite,
             )
             Spacer(modifier = Modifier.height(padding))
         }
     }
 }
+
+data class GameCardContent(
+    val game: Game,
+    val categories: List<Category>,
+    val favourite: Boolean,
+)

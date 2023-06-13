@@ -21,12 +21,12 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.ramcosta.composedestinations.rememberNavHostEngine
 import io.github.tuguzd.gamegenbulb.R
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
-import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppScrollableTabRow
 import io.github.tuguzd.gamegenbulb.view.screen.game.util.GameDestination
 import io.github.tuguzd.gamegenbulb.view.util.button.FavouriteIconButton
 import io.github.tuguzd.gamegenbulb.view.util.button.TooltipIconButton
 import io.github.tuguzd.gamegenbulb.view.util.card.Game
 import io.github.tuguzd.gamegenbulb.view.util.card.content.util.ContentImage
+import io.github.tuguzd.gamegenbulb.view.util.tab.AppTabRow
 import io.github.tuguzd.gamegenbulb.view.util.topbar.NavigateUpMediumTopBar
 
 @RootNavGraph
@@ -67,10 +67,11 @@ fun GameScreen(
             modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
             contentImage = game.imagePath,
         )
-        AppScrollableTabRow(
+        AppTabRow(
             navGraph = navGraph,
             navController = navController,
             isPrimary = true,
+            isScrollable = true,
             destinations = GameDestination.values(),
         )
         DestinationsNavHost(

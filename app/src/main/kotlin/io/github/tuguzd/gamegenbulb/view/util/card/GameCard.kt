@@ -11,28 +11,30 @@ import kotlinx.serialization.Serializable
 fun GameCard(
     modifier: Modifier = Modifier,
     game: Game,
-    links: List<Link>? = null,
+    isFavourite: Boolean = false,
     categories: List<Category>? = null,
-    developerName: String? = null,
-    publisherName: String? = null,
-    votePercentage: Int? = null,
     onClick: () -> Unit = { },
 ) = ContentCard(
     modifier = modifier,
     contentName = game.name,
     contentImage = game.imagePath,
-    links = links,
+    links = game.links,
     categories = categories,
     canModify = false,
     devPubNeeded = true,
-    developerName = developerName,
-    publisherName = publisherName,
-    votePercentage = votePercentage,
+    isFavourite = isFavourite,
+    developerName = game.developerName,
+    publisherName = game.publisherName,
+    rating = game.rating,
     onClick = onClick,
 )
 
 @Serializable
 data class Game(
     val name: String,
-    val imagePath: String?,
+    val imagePath: String? = null,
+    val rating: Int? = null,
+    val links: List<Link>? = null,
+    val developerName: String? = null,
+    val publisherName: String? = null,
 )

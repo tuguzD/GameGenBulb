@@ -14,18 +14,18 @@ import io.github.tuguzd.gamegenbulb.R
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.NotificationScreenDestination
 import io.github.tuguzd.gamegenbulb.view.screen.destinations.SearchScreenDestination
 import io.github.tuguzd.gamegenbulb.view.util.button.BadgeIconButton
-import io.github.tuguzd.gamegenbulb.view.util.text.OneLineTitle
 import io.github.tuguzd.gamegenbulb.view.util.button.TooltipIconButton
+import io.github.tuguzd.gamegenbulb.view.util.text.OneLineTitle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppTopBar(
     modifier: Modifier = Modifier,
-    title: String = stringResource(R.string.app_name),
+    appTitle: String = stringResource(R.string.app_name),
     navController: NavController,
 ) = CenterAlignedTopAppBar(
     modifier = modifier,
-    title = { OneLineTitle(text = title) },
+    title = { OneLineTitle(text = appTitle) },
     navigationIcon = {
         TooltipIconButton(
             imageVector = Icons.Rounded.Search,

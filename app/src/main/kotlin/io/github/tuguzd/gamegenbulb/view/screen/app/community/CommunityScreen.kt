@@ -11,8 +11,8 @@ import com.ramcosta.composedestinations.rememberNavHostEngine
 import io.github.tuguzd.gamegenbulb.view.screen.NavGraphs
 import io.github.tuguzd.gamegenbulb.view.screen.app.community.util.CommunityDestination
 import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppNavGraph
-import io.github.tuguzd.gamegenbulb.view.screen.app.util.AppTabRow
 import io.github.tuguzd.gamegenbulb.view.util.RootNavController
+import io.github.tuguzd.gamegenbulb.view.util.tab.AppTabRow
 
 @AppNavGraph(start = true)
 @Destination
@@ -30,6 +30,7 @@ fun CommunityScreen(
             navGraph = navGraph,
             navController = navController,
             isPrimary = false,
+            isScrollable = false,
             destinations = CommunityDestination.values(),
         )
         DestinationsNavHost(
