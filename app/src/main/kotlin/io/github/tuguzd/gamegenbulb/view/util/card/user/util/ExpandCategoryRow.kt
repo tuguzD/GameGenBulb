@@ -21,6 +21,7 @@ import io.github.tuguzd.gamegenbulb.view.util.text.OneLineTitle
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExpandCategoryRow(
+    text: String,
     expandedState: Boolean,
     onClick: () -> Unit,
 ) {
@@ -40,7 +41,7 @@ fun ExpandCategoryRow(
                 modifier = Modifier
                     .weight(1f)
                     .padding(start = 4.dp),
-                text = stringResource(R.string.user_popular),
+                text = text,
             )
             Icon(
                 imageVector = run {

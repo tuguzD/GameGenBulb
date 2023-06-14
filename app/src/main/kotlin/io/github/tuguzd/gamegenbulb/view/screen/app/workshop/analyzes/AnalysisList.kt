@@ -45,12 +45,40 @@ fun AnalysisListScreen(
             item {
                 AnalysisCard(
                     analysis = IdeaAnalysis(
-                        ideaName = "Minduni",
+                        ideaName = "Mindʊni",
                         criterion = "Уникальность",
-                        position = 24,
+                        position = 42,
                         listSize = 100,
                         listType = "Игры",
                         timePassed = "2 мин. назад",
+                    ),
+                    isFavourite = false,
+                )
+                Spacer(modifier = Modifier.height(padding))
+            }
+            item {
+                AnalysisCard(
+                    analysis = IdeaAnalysis(
+                        ideaName = "Mindʊni",
+                        criterion = "Признание игроков",
+                        position = 8,
+                        listSize = 50,
+                        listType = "Идеи",
+                        timePassed = "1 день назад",
+                    ),
+                    isFavourite = false,
+                )
+                Spacer(modifier = Modifier.height(padding))
+            }
+            item {
+                AnalysisCard(
+                    analysis = IdeaAnalysis(
+                        ideaName = "Mindʊni",
+                        criterion = "Прибыльность",
+                        position = 67,
+                        listSize = 100,
+                        listType = "Игры",
+                        timePassed = "1 день назад",
                     ),
                     isFavourite = false,
                 )

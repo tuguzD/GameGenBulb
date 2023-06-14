@@ -1,11 +1,11 @@
-package io.github.tuguzd.gamegenbulb.view.util.card.user
+package io.github.tuguzd.gamegenbulb.view.util.card.session
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Delete
+import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,24 +20,22 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.charlex.compose.RevealDirection
 import io.github.tuguzd.gamegenbulb.R
-import io.github.tuguzd.gamegenbulb.domain.model.system.user.data.UserData
 import io.github.tuguzd.gamegenbulb.view.util.HiddenContentColumn
 import io.github.tuguzd.gamegenbulb.view.util.RevealSwipe
 import io.github.tuguzd.gamegenbulb.view.util.button.FavouriteIconButton
 import io.github.tuguzd.gamegenbulb.view.util.button.TooltipIconButton
-import io.github.tuguzd.gamegenbulb.view.util.card.content.Category
-import io.github.tuguzd.gamegenbulb.view.util.card.content.util.ContentImage
+import io.github.tuguzd.gamegenbulb.view.util.card.session.util.CompletionInfo
+import io.github.tuguzd.gamegenbulb.view.util.card.session.util.ParticipantInfo
+import io.github.tuguzd.gamegenbulb.view.util.card.session.util.SessionInfo
 import io.github.tuguzd.gamegenbulb.view.util.card.user.util.ExpandColumn
-import io.github.tuguzd.gamegenbulb.view.util.card.user.util.UserInfo
-import io.github.tuguzd.gamegenbulb.view.util.card.util.CategoryChipRow
+import kotlinx.serialization.Serializable
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun UserCard(
-    user: UserData,
+fun SessionCard(
+    session: Session,
     isFavourite: Boolean,
     modifier: Modifier = Modifier,
-    categories: List<Category>? = null,
     onClick: () -> Unit = { },
 ) = RevealSwipe(
     hiddenContentStart = {
@@ -52,45 +50,60 @@ fun UserCard(
             )
         }
     },
-    directions = mutableSetOf(RevealDirection.StartToEnd),
+    hiddenContentEnd = {
+        HiddenContentColumn {
+            TooltipIconButton(
+                imageVector = Icons.Rounded.Edit,
+                contentDescription = stringResource(R.string.edit),
+            )
+            TooltipIconButton(
+                imageVector = Icons.Rounded.Delete,
+                contentDescription = stringResource(R.string.delete),
+            )
+        }
+    },
+    directions = setOf(
+        RevealDirection.StartToEnd,
+        RevealDirection.EndToStart,
+    ),
 ) {
     ElevatedCard(
         modifier = modifier,
         onClick = onClick,
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
-            ContentImage(
-                modifier = Modifier.size(120.dp),
-                label = stringResource(R.string.user_avatar),
-                contentImage = user.avatar,
-            )
-            UserInfo(
-                user.name, user.displayName,
-                user.email, user.phone,
+            CompletionInfo(session.tasksCompleted)
+            SessionInfo(
+                mainTaskName = session.mainTaskName,
+                methodName = session.methodName,
+                ideaCount = session.ideaCount,
+                duration = session.duration,
             )
         }
-        if (!categories.isNullOrEmpty())
+        if (!session.participants.isNullOrEmpty())
             Surface(tonalElevation = 1.dp) {
                 var expandedState by remember { mutableStateOf(false) }
                 ExpandColumn(
                     expandedState = expandedState,
                     onClick = { expandedState = !expandedState },
-                    text = stringResource(R.string.user_popular),
+                    text = "Участники и их роли",
                 ) {
-                    CategoryChipRow(
-                        categories = categories,
-                        modifier = Modifier.padding(
-                            horizontal = 16.dp,
-                            vertical = 8.dp,
-                        ),
+                    ParticipantInfo(
+                        admin = session.admin,
+                        participants = session.participants,
                     )
                 }
             }
     }
 }
 
-data class UserCardContent(
-    val user: UserData,
-    val categories: List<Category>?,
-    val favourite: Boolean,
+@Serializable
+data class Session(
+    val mainTaskName: String,
+    val tasksCompleted: Boolean,
+    val methodName: String,
+    val duration: String,
+    val ideaCount: String?,
+    val admin: String,
+    val participants: List<String>?,
 )

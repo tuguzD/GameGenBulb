@@ -47,7 +47,10 @@ fun AnalysisInfo(
                 label = criterion,
             )
             OneLineIconTitle(
-                imageVector = Icons.Rounded.SportsEsports,
+                imageVector = run {
+                    if (listType == "Игры") Icons.Rounded.SportsEsports
+                    else Icons.Rounded.Lightbulb
+                },
                 label = listType,
             )
         }
