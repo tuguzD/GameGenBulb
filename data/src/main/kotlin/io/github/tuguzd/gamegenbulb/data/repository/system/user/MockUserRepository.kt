@@ -113,7 +113,7 @@ class MockUserRepository : UserRepository {
         UserId(UUID.randomUUID()) to UserData(
             name = "tuguzD",
             displayName = "Damir Tugushev",
-            role = Role.Administrator,
+            role = Role.User,
             email = "0damir.1tugushev@gmail.com",
             phone = "+7 (977) 794-18-85",
             avatar = "https://avatars.githubusercontent.com/u/56772528",

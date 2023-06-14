@@ -64,8 +64,8 @@
     <string name="no_data">Нет данных</string>
     <string name="conduct_new">Провести</string>
     <string name="create_new">Создать</string>
-    <string name="favourite">В Избранное</string>
-    <string name="unfavourite">Из Избранного</string>
+    <string name="do_favourite">В Избранное</string>
+    <string name="do_unfavourite">Из Избранного</string>
     <string name="share">Поделиться</string>
     <string name="user_popular">Популярные категории</string>
     <string name="description">Описание</string>
@@ -73,4 +73,7 @@
     <string name="similar">Похожее</string>
     <string name="social_media">Соц. сети</string>
     <string name="store_list">Магазины</string>
+    <string name="favourite">Избранное</string>
+    <string name="user_settings">Настройки пользователя</string>
+    <string name="app_settings">Настройки приложения</string>
 </resources>

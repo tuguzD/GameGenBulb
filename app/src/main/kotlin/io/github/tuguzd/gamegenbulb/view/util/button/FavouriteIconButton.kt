@@ -21,8 +21,8 @@ fun FavouriteIconButton(
             else Icons.Rounded.BookmarkBorder
         },
         contentDescription = stringResource(
-            if (!isFavourite) R.string.favourite
-            else R.string.unfavourite
+            if (!isFavourite) R.string.do_favourite
+            else R.string.do_unfavourite
         ),
         iconTint = run {
             if (isFavourite) MaterialTheme.colorScheme.primary

@@ -66,8 +66,8 @@
     <string name="no_data">No data</string>
     <string name="conduct_new">Conduct new</string>
     <string name="create_new">Create new</string>
-    <string name="favourite">Favourite</string>
-    <string name="unfavourite">Unfavourite</string>
+    <string name="do_favourite">Favourite</string>
+    <string name="do_unfavourite">Unfavourite</string>
     <string name="share">Share</string>
     <string name="user_popular">Popular categories</string>
     <string name="description">Description</string>
@@ -75,4 +75,7 @@
     <string name="similar">Similar</string>
     <string name="social_media">Social media</string>
     <string name="store_list">Stores</string>
+    <string name="favourite">Favourite</string>
+    <string name="user_settings">User settings</string>
+    <string name="app_settings">App settings</string>
 </resources>
